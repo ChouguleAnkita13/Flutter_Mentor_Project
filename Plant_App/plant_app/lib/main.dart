@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:plant_app/view/get_started_screen.dart';
 
 void main() {
+  //Entry point
   runApp(const MainApp());
 }
 
