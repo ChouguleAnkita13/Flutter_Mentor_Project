@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 Center(
                   child: Container(
                     width: width / 2,
-                    height: height*0.0007,
+                    height: height*0.005,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: const Color.fromRGBO(255, 255, 255, 0.58)),

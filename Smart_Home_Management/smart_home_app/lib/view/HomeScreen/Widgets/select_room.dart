@@ -87,7 +87,9 @@ class SelectRoom extends StatelessWidget {
 
                                         ///BUTTON TO NAVIGATE ROOMDETAILS()
                                         GestureDetector(
-                                          onTap: () {},
+                                          onTap: () {
+                                            Navigator.of(context).pushNamed("roomdetails");
+                                          },
                                           child: Container(
                                             height: height * 0.045,
                                             width: width * 0.25,
