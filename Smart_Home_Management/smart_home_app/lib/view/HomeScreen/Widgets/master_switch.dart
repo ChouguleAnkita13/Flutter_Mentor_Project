@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-//Widget to display MasterSwitch,active devices
+///WIDGET TO DISPLAY MASTER SWITCH,ACTIVE DEVICES
 class MasterSwitch extends StatelessWidget {
   const MasterSwitch({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //Master switch :Text
+        ///MASTER SWITCH:TEXT
         Text(
           "Master Switch",
           style: GoogleFonts.inter(
-              fontSize: 16,
+              fontSize: width * 0.036, //16
               fontWeight: FontWeight.w500,
               color: const Color.fromRGBO(255, 255, 255, 1)),
         ),
-        //Container to show active devices and glitter
+
+        ///CONTAINER TO SHOW ACTIVE DEVICES AND
         Container(
-          height: 60,
+          height: height * 0.067, //60
           width: MediaQuery.sizeOf(context).width,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.05),
           decoration: const BoxDecoration(
             color: Color.fromRGBO(255, 255, 255, 0.15),
             borderRadius: BorderRadius.only(
@@ -31,23 +34,26 @@ class MasterSwitch extends StatelessWidget {
           child: Row(
             children: [
               Text(
-          "5  ",
-          style: GoogleFonts.inter(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: const Color.fromRGBO(255, 255, 255, 1)),
-        ),
-        Text(
-          "Active Devices",
-          style: GoogleFonts.inter(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: const Color.fromRGBO(255, 255, 255, 1)),
-        ),
-        const Spacer(),
-        const Icon(Icons.bolt_outlined,color: Color.fromRGBO(255, 255, 255, 1)),
-        // SwitchListTile(value: true, onChanged: (value){})
-          
+                "5  ",
+                style: GoogleFonts.inter(
+                    fontSize: width * 0.06, //24,
+                    fontWeight: FontWeight.w500,
+                    color: const Color.fromRGBO(255, 255, 255, 1)),
+              ),
+              Text(
+                "Active Devices",
+                style: GoogleFonts.inter(
+                    fontSize: width * 0.037, //15.24
+                    fontWeight: FontWeight.w500,
+                    color: const Color.fromRGBO(255, 255, 255, 1)),
+              ),
+              const Spacer(),
+              Icon(
+                Icons.bolt_outlined,
+                color: const Color.fromRGBO(255, 255, 255, 1),
+                size: width * 0.06,
+              ),
+              // SwitchListTile(value: true, onChanged: (value){})
             ],
           ),
         )

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_home_app/view/HomeScreen/Widgets/greetings.dart';
 import 'package:smart_home_app/view/HomeScreen/Widgets/master_switch.dart';
 import 'package:smart_home_app/view/HomeScreen/Widgets/select_room.dart';
 import 'package:smart_home_app/view/HomeScreen/Widgets/temp_container.dart';
@@ -15,48 +15,33 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          //Screen background image
+          ///SCREEN BACKGROUND IMAGE
           Image.asset("assets/images/home.png",
               height: height, width: width, fit: BoxFit.cover),
           Padding(
-            padding: const EdgeInsets.only(top: 40, left: 30),
+            padding:  EdgeInsets.only(left: width * 0.075),//18,30
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Icon(
-                  Icons.notes,
-                  size: 30,
-                  color: Color.fromRGBO(255, 255, 255, 1),
-                ),
-                Text(
-                  "Hi Ankita",
-                  style: GoogleFonts.inter(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: const Color.fromRGBO(255, 255, 255, 1)),
-                ),
-                Text(
-                  "Welcome to your smart home",
-                  style: GoogleFonts.inter(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: const Color.fromRGBO(255, 255, 255, 1)),
-                ),
+                ///GREETTINGS() WIDGET,TO SHOW BUTTON AND GREETINGS
+                const Greetings(),
+
                 const Align(
                   alignment: Alignment.centerRight,
-                  //To display temprature,TempContainer() widget called
+                  ///TO DISPLAY TEMPRATURE,TEMPCONTAINER() WIDGET CALLED
+
                   child: TempContainer(),
                 ),
-                //MasterSwitch() widget
+                ///MASTERSWITCH() WIDGET
                 const MasterSwitch(),
-                //SelectRoom() widget
+                ///SELECTROOM() WIDGET
                 const SelectRoom(),
-                //
+                //BOTTOM LINE ON SCREEN
                 Center(
                   child: Container(
                     width: width / 2,
-                    height: 6,
+                    height: height*0.0007,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: const Color.fromRGBO(255, 255, 255, 0.58)),
