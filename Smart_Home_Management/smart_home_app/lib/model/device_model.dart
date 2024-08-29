@@ -1,4 +1,3 @@
-/// Model representing a single device data item.
 /// MODEL REPRESENTING A SINGLE DEVICE DATA ITEM
 class DeviceModel{
   final String deviceImg;  /// URL OR ASSET PATH TO THE DEVICE IMAGE

@@ -26,15 +26,23 @@ class RoomController extends ChangeNotifier {
     RoomModel(roomImg: "assets/images/livingroom.jpg", roomName: "Living Room"),
     RoomModel(roomImg: "assets/images/kitchen.jpg", roomName: "Kitchen"),
   ];
-  ///CURRENTLY SELECTED ROOM
+  ///CURRENTLY SELECTED ROOM AND DEVICE
   RoomModel? _selectedRoom;
+  DeviceModel? _selectedDevice;
 
-  ///GETTER FOR THE SELECTED ROOM
+  ///GETTER FOR THE SELECTED ROOM AND DEVICE
   RoomModel? get selectedRoom => _selectedRoom;
+  DeviceModel? get selectedDevice => _selectedDevice;
 
   /// SETS THE CURRENTLY SELECTED ROOM AND NOTIFIES LISTENERS
   void selectRoom(RoomModel room) {
     _selectedRoom = room;
+    notifyListeners();
+  }
+
+   /// SETS THE CURRENTLY SELECTED ROOM AND NOTIFIES LISTENERS
+  void selectDevice(DeviceModel device) {
+    _selectedDevice = device;
     notifyListeners();
   }
 }
