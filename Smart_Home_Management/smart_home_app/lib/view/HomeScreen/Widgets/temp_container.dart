@@ -9,14 +9,13 @@ class TempContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.sizeOf(context).height;
-    double width = MediaQuery.sizeOf(context).width;
-    log("${width*0.3}");
-    log("${width*0.23}");
-
+    final double height = MediaQuery.sizeOf(context).height;
+    final double width = MediaQuery.sizeOf(context).width;
+    log("${width * 0.3}");
+    log("${width * 0.23}");
 
     return Container(
-      height: height * 0.092,//84
+      height: height * 0.092, //84
       width: MediaQuery.sizeOf(context).width / 1.2,
       decoration: const BoxDecoration(
         color: Color.fromRGBO(255, 255, 255, 0.15),
@@ -38,7 +37,7 @@ class TempContainer extends StatelessWidget {
           ),
           Container(
               width: 2,
-              height: height * 0.044,//40
+              height: height * 0.044, //40
               color: const Color.fromRGBO(255, 255, 255, 1)),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

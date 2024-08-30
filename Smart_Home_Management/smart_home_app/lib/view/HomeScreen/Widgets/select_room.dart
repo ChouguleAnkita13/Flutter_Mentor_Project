@@ -9,8 +9,8 @@ class SelectRoom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.sizeOf(context).height;
-    double width = MediaQuery.sizeOf(context).width;
+    final double height = MediaQuery.sizeOf(context).height;
+    final double width = MediaQuery.sizeOf(context).width;
     // log("$width * $height");
 
     return Column(
@@ -88,7 +88,8 @@ class SelectRoom extends StatelessWidget {
                                         ///BUTTON TO NAVIGATE ROOMDETAILS()
                                         GestureDetector(
                                           onTap: () {
-                                            Navigator.of(context).pushNamed("roomdetails");
+                                            Navigator.of(context)
+                                                .pushNamed("roomdetails");
                                           },
                                           child: Container(
                                             height: height * 0.045,

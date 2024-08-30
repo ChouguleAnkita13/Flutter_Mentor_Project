@@ -9,8 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.sizeOf(context).height;
-    double width = MediaQuery.sizeOf(context).width;
+    final double height = MediaQuery.sizeOf(context).height;
+    final double width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       body: Stack(
@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
           Image.asset("assets/images/home.png",
               height: height, width: width, fit: BoxFit.cover),
           Padding(
-            padding:  EdgeInsets.only(left: width * 0.075),//18,30
+            padding: EdgeInsets.only(left: width * 0.075), //18,30
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -29,19 +29,22 @@ class HomeScreen extends StatelessWidget {
 
                 const Align(
                   alignment: Alignment.centerRight,
+
                   ///TO DISPLAY TEMPRATURE,TEMPCONTAINER() WIDGET CALLED
 
                   child: TempContainer(),
                 ),
+
                 ///MASTERSWITCH() WIDGET
                 const MasterSwitch(),
+
                 ///SELECTROOM() WIDGET
                 const SelectRoom(),
                 //BOTTOM LINE ON SCREEN
                 Center(
                   child: Container(
                     width: width / 2,
-                    height: height*0.005,
+                    height: height * 0.005,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: const Color.fromRGBO(255, 255, 255, 0.58)),

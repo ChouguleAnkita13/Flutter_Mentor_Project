@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_home_app/model/room_model.dart';
+
 ///WIDGET TO DISPLAY BACK BUTTON AND ROOM DETAIL
 class DetailRoom extends StatelessWidget {
-  const DetailRoom({super.key,required this.selectedRoom});
+  const DetailRoom({super.key, required this.selectedRoom});
   final RoomModel selectedRoom;
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.sizeOf(context).height;
-    double width = MediaQuery.sizeOf(context).width;
+    final double height = MediaQuery.sizeOf(context).height;
+    final double width = MediaQuery.sizeOf(context).width;
     return SizedBox(
-       height: height/4.3,
+      height: height / 4.3,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ///BACK BUTTON
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.of(context).pop();
             },
             child: Icon(
@@ -27,6 +28,7 @@ class DetailRoom extends StatelessWidget {
               color: const Color.fromRGBO(255, 255, 255, 1),
             ),
           ),
+
           ///ROOM NAME
           Text(
             selectedRoom.roomName,
@@ -35,6 +37,7 @@ class DetailRoom extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 color: const Color.fromRGBO(255, 255, 255, 1)),
           ),
+
           ///TEXTSPAN FOR ROOM DETAILS
           SizedBox(
               width: width * 0.8,
