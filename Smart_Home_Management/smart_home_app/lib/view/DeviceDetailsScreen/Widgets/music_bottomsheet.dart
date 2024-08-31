@@ -100,8 +100,7 @@ class MusicBottomsheet extends StatelessWidget {
                         fontWeight: FontWeight.w300,
                         color: const Color.fromRGBO(205, 205, 205, 1)),
                   ),
-
-                  ///STACK TO DISPLAY NEXT SONG IMAGES
+                  ///STACK TO DISPLAY NEXT SONG
                   Stack(
                     alignment: Alignment.bottomRight,
                     children: [
