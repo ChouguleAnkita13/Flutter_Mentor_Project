@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,6 +11,8 @@ class Greetings extends StatelessWidget {
   Widget build(BuildContext context) {
     final double height = MediaQuery.sizeOf(context).height;
     final double width = MediaQuery.sizeOf(context).width;
+
+    log("$width");
     return SizedBox(
       height: height / 8,
       child: Column(
@@ -28,7 +32,10 @@ class Greetings extends StatelessWidget {
             Text(
               "Hi Ankita",
               style: GoogleFonts.inter(
-                  fontSize: width * 0.06, //24
+
+                  ///CONDITION CHECKED I.E DEVICE WIDTH GREATER THAN 500
+                  /// TO DISPLAY TEXT WITHOUT OVERFLOW
+                  fontSize: width > 500 ? width * 0.04 : width * 0.06, //14,24
                   fontWeight: FontWeight.w600,
                   color: const Color.fromRGBO(255, 255, 255, 1)),
             ),
@@ -36,7 +43,8 @@ class Greetings extends StatelessWidget {
             Text(
               "Welcome to your smart home",
               style: GoogleFonts.inter(
-                  fontSize: width * 0.045, // 18,
+                  fontSize:
+                      width > 500 ? width * 0.03 : width * 0.045, //12, 18,
                   fontWeight: FontWeight.w500,
                   color: const Color.fromRGBO(255, 255, 255, 1)),
             ),

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,8 +9,6 @@ class TempContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final double height = MediaQuery.sizeOf(context).height;
     final double width = MediaQuery.sizeOf(context).width;
-    log("${width * 0.3}");
-    log("${width * 0.23}");
 
     return Container(
       height: height * 0.092, //84

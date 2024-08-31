@@ -48,12 +48,26 @@ class MasterSwitch extends StatelessWidget {
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
               const Spacer(),
+              ///ICON
               Icon(
                 Icons.bolt_outlined,
                 color: const Color.fromRGBO(255, 255, 255, 1),
                 size: width * 0.06,
               ),
-              // SwitchListTile(value: true, onChanged: (value){})
+
+              ///SWITCH BUTTON
+              SizedBox(
+                height: height*0.035,
+                child: FittedBox(
+                  fit: BoxFit.fill,
+                  child: Switch(
+                      value: true,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      activeColor: const Color.fromRGBO(0, 0, 0, 1),
+                      activeTrackColor: const Color.fromRGBO(255, 255, 255, 1),
+                      onChanged: (val) {}),
+                ),
+              ),
             ],
           ),
         )
