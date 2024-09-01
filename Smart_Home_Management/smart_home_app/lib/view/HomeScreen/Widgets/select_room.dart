@@ -9,8 +9,8 @@ class SelectRoom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
     // log("$width * $height");
 
     return Column(
@@ -20,13 +20,13 @@ class SelectRoom extends StatelessWidget {
         Text(
           "Select Room",
           style: GoogleFonts.inter(
-              fontSize: width * 0.05, //20.6
+              fontSize: deviceWidth * 0.05, //20.6
               fontWeight: FontWeight.w500,
               color: const Color.fromRGBO(255, 255, 255, 1)),
         ),
-        SizedBox(height: height * 0.022),
+        SizedBox(height: deviceHeight * 0.022),
         SizedBox(
-            height: height / 3.5,
+            height: deviceHeight / 3.5,
             child: Consumer<RoomController>(
 
                 /// THE CONSUMER WIDGET LISTENS TO CHANGES IN THE ROOMCONTROLLER
@@ -50,19 +50,19 @@ class SelectRoom extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(roomsList[index].roomImg,
-                                height: height / 3.5,
+                                height: deviceHeight / 3.5,
                                 width: roomController.selectedRoom ==
                                         roomsList[index]
-                                    ? width * 0.3
-                                    : width * 0.23,
+                                    ? deviceWidth * 0.3
+                                    : deviceWidth * 0.23,
                                 fit: BoxFit.cover),
                           ),
 
                           ///THE CONTAINER TO SHOW SELECTED ROOM
                           roomController.selectedRoom == roomsList[index]
                               ? Container(
-                                  height: height / 3.5,
-                                  width: width * 0.3,
+                                  height: deviceHeight / 3.5,
+                                  width: deviceWidth * 0.3,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: const Color.fromRGBO(
@@ -72,14 +72,14 @@ class SelectRoom extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
-                                        SizedBox(height: height * 0.06),
+                                        SizedBox(height: deviceHeight * 0.06),
 
                                         ///ROOM IMAGE
 
                                         Text(
                                           roomsList[index].roomName,
                                           style: GoogleFonts.inter(
-                                              fontSize: width * 0.045,
+                                              fontSize: deviceWidth * 0.045,
                                               fontWeight: FontWeight.w600,
                                               color: const Color.fromRGBO(
                                                   0, 0, 0, 1)),
@@ -92,8 +92,8 @@ class SelectRoom extends StatelessWidget {
                                                 .pushNamed("roomdetails");
                                           },
                                           child: Container(
-                                            height: height * 0.045,
-                                            width: width * 0.25,
+                                            height: deviceHeight * 0.045,
+                                            width: deviceWidth * 0.25,
                                             alignment: Alignment.center,
                                             decoration: BoxDecoration(
                                                 color: const Color.fromRGBO(
@@ -103,8 +103,8 @@ class SelectRoom extends StatelessWidget {
                                             child: Text(
                                               "View",
                                               style: GoogleFonts.inter(
-                                                  fontSize:
-                                                      width * 0.036, //16.06
+                                                  fontSize: deviceWidth *
+                                                      0.036, //16.06
                                                   fontWeight: FontWeight.w700,
                                                   color: const Color.fromRGBO(
                                                       255, 255, 255, 1)),
@@ -122,7 +122,7 @@ class SelectRoom extends StatelessWidget {
                                   child: Text(
                                     roomsList[index].roomName,
                                     style: GoogleFonts.inter(
-                                        fontSize: width * 0.037, //15
+                                        fontSize: deviceWidth * 0.037, //15
                                         fontWeight: FontWeight.w500,
                                         color:
                                             const Color.fromRGBO(0, 0, 0, 1)),
@@ -133,7 +133,7 @@ class SelectRoom extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, idx) => SizedBox(
-                        width: width * 0.03,
+                        width: deviceWidth * 0.03,
                       ));
             }))
       ],

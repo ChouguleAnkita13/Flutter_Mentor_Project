@@ -7,8 +7,8 @@ class MasterSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -16,16 +16,16 @@ class MasterSwitch extends StatelessWidget {
         Text(
           "Master Switch",
           style: GoogleFonts.inter(
-              fontSize: width * 0.036, //16
+              fontSize: deviceWidth * 0.036, //16
               fontWeight: FontWeight.w500,
               color: const Color.fromRGBO(255, 255, 255, 1)),
         ),
 
         ///CONTAINER TO SHOW ACTIVE DEVICES AND
         Container(
-          height: height * 0.067, //60
+          height: deviceHeight * 0.067, //60
           width: MediaQuery.sizeOf(context).width,
-          padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+          padding: EdgeInsets.symmetric(horizontal: deviceWidth * 0.05),
           decoration: const BoxDecoration(
             color: Color.fromRGBO(255, 255, 255, 0.15),
             borderRadius: BorderRadius.only(
@@ -36,28 +36,29 @@ class MasterSwitch extends StatelessWidget {
               Text(
                 "5  ",
                 style: GoogleFonts.inter(
-                    fontSize: width * 0.06, //24,
+                    fontSize: deviceWidth * 0.06, //24,
                     fontWeight: FontWeight.w500,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
               Text(
                 "Active Devices",
                 style: GoogleFonts.inter(
-                    fontSize: width * 0.037, //15.24
+                    fontSize: deviceWidth * 0.037, //15.24
                     fontWeight: FontWeight.w500,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
               const Spacer(),
+
               ///ICON
               Icon(
                 Icons.bolt_outlined,
                 color: const Color.fromRGBO(255, 255, 255, 1),
-                size: width * 0.06,
+                size: deviceWidth * 0.06,
               ),
 
               ///SWITCH BUTTON
               SizedBox(
-                height: height*0.035,
+                height: deviceHeight * 0.035,
                 child: FittedBox(
                   fit: BoxFit.fill,
                   child: Switch(

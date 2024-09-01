@@ -7,22 +7,22 @@ class BottomsheetLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
 
     ///BOTTOMSHEET CONTAINER
     return Container(
-      height: height * 0.23,
-      width: width,
+      height: deviceHeight * 0.23,
+      width: deviceWidth,
       padding: EdgeInsets.only(
-          top: height * 0.009,
-          left: width * 0.07,
-          bottom: height * 0.06,
-          right: width * 0.07),
+          top: deviceHeight * 0.009,
+          left: deviceWidth * 0.07,
+          bottom: deviceHeight * 0.06,
+          right: deviceWidth * 0.07),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(width * 0.06),
-              topRight: Radius.circular(width * 0.06)),
+              topLeft: Radius.circular(deviceWidth * 0.06),
+              topRight: Radius.circular(deviceWidth * 0.06)),
           color: const Color.fromRGBO(0, 0, 0, 0.39)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,8 +31,8 @@ class BottomsheetLayout extends StatelessWidget {
           ///SMALL LINE
           Center(
             child: Container(
-              height: height * 0.006,
-              width: width * 0.15,
+              height: deviceHeight * 0.006,
+              width: deviceWidth * 0.15,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: const Color.fromRGBO(255, 255, 255, 0.37),
@@ -47,7 +47,9 @@ class BottomsheetLayout extends StatelessWidget {
 
                 ///CONDITION CHECKED I.E DEVICE WIDTH GREATER THAN 500
                 /// TO DISPLAY TEXT WITHOUT OVERFLOW
-                fontSize: width > 500 ? width * 0.035 : width * 0.05, //20.6
+                fontSize: deviceWidth > 500
+                    ? deviceWidth * 0.035
+                    : deviceWidth * 0.05, //20.6
                 fontWeight: FontWeight.w500,
                 color: const Color.fromRGBO(255, 255, 255, 1)),
           ),
@@ -58,7 +60,9 @@ class BottomsheetLayout extends StatelessWidget {
               Text(
                 "Total Supply",
                 style: GoogleFonts.inter(
-                    fontSize: width > 500 ? width * 0.03 : width * 0.036, //
+                    fontSize: deviceWidth > 500
+                        ? deviceWidth * 0.03
+                        : deviceWidth * 0.036, //
                     fontWeight: FontWeight.w500,
                     color: const Color.fromRGBO(204, 204, 204, 1)),
               ),
@@ -66,7 +70,9 @@ class BottomsheetLayout extends StatelessWidget {
               Text(
                 "500 W",
                 style: GoogleFonts.inter(
-                    fontSize: width > 500 ? width * 0.03 : width * 0.036, //
+                    fontSize: deviceWidth > 500
+                        ? deviceWidth * 0.03
+                        : deviceWidth * 0.036, //
                     fontWeight: FontWeight.w500,
                     color: const Color.fromRGBO(204, 204, 204, 1)),
               ),
@@ -79,7 +85,9 @@ class BottomsheetLayout extends StatelessWidget {
               Text(
                 "Total Savings",
                 style: GoogleFonts.inter(
-                    fontSize:width > 500 ? width * 0.03 : width * 0.036,//
+                    fontSize: deviceWidth > 500
+                        ? deviceWidth * 0.03
+                        : deviceWidth * 0.036, //
                     fontWeight: FontWeight.w500,
                     color: const Color.fromRGBO(204, 204, 204, 1)),
               ),
@@ -87,7 +95,9 @@ class BottomsheetLayout extends StatelessWidget {
               Text(
                 "19%",
                 style: GoogleFonts.inter(
-                    fontSize:width > 500 ? width * 0.03 : width * 0.036,//
+                    fontSize: deviceWidth > 500
+                        ? deviceWidth * 0.03
+                        : deviceWidth * 0.036, //
                     fontWeight: FontWeight.w500,
                     color: const Color.fromRGBO(204, 204, 204, 1)),
               ),

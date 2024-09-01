@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,12 +7,11 @@ class Greetings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
 
-    log("$width");
     return SizedBox(
-      height: height / 8,
+      height: deviceHeight / 8,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,7 +20,7 @@ class Greetings extends StatelessWidget {
             GestureDetector(
               child: Icon(
                 Icons.notes,
-                size: width * 0.06,
+                size: deviceWidth * 0.06,
                 color: const Color.fromRGBO(255, 255, 255, 1),
               ),
             ),
@@ -35,7 +32,9 @@ class Greetings extends StatelessWidget {
 
                   ///CONDITION CHECKED I.E DEVICE WIDTH GREATER THAN 500
                   /// TO DISPLAY TEXT WITHOUT OVERFLOW
-                  fontSize: width > 500 ? width * 0.04 : width * 0.06, //14,24
+                  fontSize: deviceWidth > 500
+                      ? deviceWidth * 0.04
+                      : deviceWidth * 0.06, //14,24
                   fontWeight: FontWeight.w600,
                   color: const Color.fromRGBO(255, 255, 255, 1)),
             ),
@@ -43,8 +42,9 @@ class Greetings extends StatelessWidget {
             Text(
               "Welcome to your smart home",
               style: GoogleFonts.inter(
-                  fontSize:
-                      width > 500 ? width * 0.03 : width * 0.045, //12, 18,
+                  fontSize: deviceWidth > 500
+                      ? deviceWidth * 0.03
+                      : deviceWidth * 0.045, //12, 18,
                   fontWeight: FontWeight.w500,
                   color: const Color.fromRGBO(255, 255, 255, 1)),
             ),

@@ -7,11 +7,11 @@ class TempContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
 
     return Container(
-      height: height * 0.092, //84
+      height: deviceHeight * 0.092, //84
       width: MediaQuery.sizeOf(context).width / 1.2,
       decoration: const BoxDecoration(
         color: Color.fromRGBO(255, 255, 255, 0.15),
@@ -27,13 +27,13 @@ class TempContainer extends StatelessWidget {
           Text(
             "68°F",
             style: GoogleFonts.inter(
-                fontSize: width * 0.06, //24
+                fontSize: deviceWidth * 0.06, //24
                 fontWeight: FontWeight.w400,
                 color: const Color.fromRGBO(255, 255, 255, 1)),
           ),
           Container(
               width: 2,
-              height: height * 0.044, //40
+              height: deviceHeight * 0.044, //40
               color: const Color.fromRGBO(255, 255, 255, 1)),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,14 +42,14 @@ class TempContainer extends StatelessWidget {
               Text(
                 "69%",
                 style: GoogleFonts.inter(
-                    fontSize: width * 0.05,
+                    fontSize: deviceWidth * 0.05,
                     fontWeight: FontWeight.w400,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
               Text(
                 "Humidity",
                 style: GoogleFonts.inter(
-                    fontSize: width * 0.036, //16
+                    fontSize: deviceWidth * 0.036, //16
                     fontWeight: FontWeight.w400,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),

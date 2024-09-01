@@ -9,10 +9,10 @@ class DetailRoom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
     return SizedBox(
-      height: height / 4.3,
+      height: deviceHeight / 4.3,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,7 +24,7 @@ class DetailRoom extends StatelessWidget {
             },
             child: Icon(
               Icons.arrow_back_ios,
-              size: width * 0.06,
+              size: deviceWidth * 0.06,
               color: const Color.fromRGBO(255, 255, 255, 1),
             ),
           ),
@@ -36,28 +36,32 @@ class DetailRoom extends StatelessWidget {
 
                 ///CONDITION CHECKED I.E DEVICE WIDTH GREATER THAN 500
                 /// TO DISPLAY TEXT WITHOUT OVERFLOW
-                fontSize: width > 500 ? width * 0.04 : width * 0.06, //14,24
+                fontSize: deviceWidth > 500
+                    ? deviceWidth * 0.04
+                    : deviceWidth * 0.06, //14,24
                 fontWeight: FontWeight.w600,
                 color: const Color.fromRGBO(255, 255, 255, 1)),
           ),
 
           ///TEXTSPAN FOR ROOM DETAILS
           SizedBox(
-              width: width * 0.8,
+              width: deviceWidth * 0.8,
               child: Text.rich(TextSpan(children: [
                 TextSpan(
                   text: "Your ${selectedRoom.roomName} has",
                   style: GoogleFonts.inter(
-                      fontSize:
-                          width > 500 ? width * 0.03 : width * 0.045, //12 18,
+                      fontSize: deviceWidth > 500
+                          ? deviceWidth * 0.03
+                          : deviceWidth * 0.045, //12 18,
                       fontWeight: FontWeight.w500,
                       color: const Color.fromRGBO(255, 255, 255, 1)),
                 ),
                 TextSpan(
                   text: " 4 devices ",
                   style: GoogleFonts.inter(
-                      fontSize:
-                          width > 500 ? width * 0.03 : width * 0.045, // 18,
+                      fontSize: deviceWidth > 500
+                          ? deviceWidth * 0.03
+                          : deviceWidth * 0.045, // 18,
                       fontWeight: FontWeight.w600,
                       color: const Color.fromRGBO(0, 0, 0, 1)),
                 ),
@@ -65,8 +69,9 @@ class DetailRoom extends StatelessWidget {
                   text:
                       "connected to the home network. You can configure them by connecting to the home network.",
                   style: GoogleFonts.inter(
-                      fontSize:
-                          width > 500 ? width * 0.03 : width * 0.045, // 18,
+                      fontSize: deviceWidth > 500
+                          ? deviceWidth * 0.03
+                          : deviceWidth * 0.045, // 18,
                       fontWeight: FontWeight.w500,
                       color: const Color.fromRGBO(255, 255, 255, 1)),
                 ),

@@ -9,17 +9,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       body: Stack(
         children: [
           ///SCREEN BACKGROUND IMAGE
           Image.asset("assets/images/home.png",
-              height: height, width: width, fit: BoxFit.cover),
+              height: deviceHeight, width: deviceWidth, fit: BoxFit.cover),
           Padding(
-            padding: EdgeInsets.only(left: width * 0.075), //18,30
+            padding: EdgeInsets.only(left: deviceWidth * 0.075), //18,30
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -43,8 +43,8 @@ class HomeScreen extends StatelessWidget {
                 //BOTTOM LINE ON SCREEN
                 Center(
                   child: Container(
-                    width: width / 2,
-                    height: height * 0.005,
+                    width: deviceWidth / 2,
+                    height: deviceHeight * 0.005,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: const Color.fromRGBO(255, 255, 255, 0.58)),

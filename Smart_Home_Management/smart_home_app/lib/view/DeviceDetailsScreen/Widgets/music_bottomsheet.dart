@@ -9,24 +9,24 @@ class MusicBottomsheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
-    log("${height * 0.018}");
-    log("${width * 0.035}");
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
+    log("${deviceHeight * 0.018}");
+    log("${deviceWidth * 0.035}");
 
     ///BOTTOMSHEET CONTAINER
     return Container(
-      height: height * 0.23,
-      width: width,
+      height: deviceHeight * 0.23,
+      width: deviceWidth,
       padding: EdgeInsets.only(
-          top: height * 0.009,
-          left: width * 0.07,
-          bottom: height * 0.05,
-          right: width * 0.07),
+          top: deviceHeight * 0.009,
+          left: deviceWidth * 0.07,
+          bottom: deviceHeight * 0.05,
+          right: deviceWidth * 0.07),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(width * 0.06),
-              topRight: Radius.circular(width * 0.06)),
+              topLeft: Radius.circular(deviceWidth * 0.06),
+              topRight: Radius.circular(deviceWidth * 0.06)),
           color: const Color.fromRGBO(0, 0, 0, 0.39)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,8 +35,8 @@ class MusicBottomsheet extends StatelessWidget {
           ///SMALL LINE
           Center(
             child: Container(
-              height: height * 0.006,
-              width: width * 0.15,
+              height: deviceHeight * 0.006,
+              width: deviceWidth * 0.15,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: const Color.fromRGBO(255, 255, 255, 0.37),
@@ -50,15 +50,15 @@ class MusicBottomsheet extends StatelessWidget {
             children: [
               ///SONG IMAGE
               ClipRRect(
-                borderRadius: BorderRadius.circular(width * 0.03),
+                borderRadius: BorderRadius.circular(deviceWidth * 0.03),
                 child: Image.asset(
                   "assets/images/starboy.png",
-                  height: height * 0.062, //56
-                  width: width * 0.14, //57
+                  height: deviceHeight * 0.062, //56
+                  width: deviceWidth * 0.14, //57
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(width: width * 0.02),
+              SizedBox(width: deviceWidth * 0.02),
 
               ///SONG NAME
               Column(
@@ -70,17 +70,18 @@ class MusicBottomsheet extends StatelessWidget {
 
                         ///CONDITION CHECKED I.E DEVICE WIDTH GREATER THAN 500
                         /// TO DISPLAY TEXT WITHOUT OVERFLOW
-                        fontSize: width > 500
-                            ? width * 0.03
-                            : width * 0.045, //12, 18,
+                        fontSize: deviceWidth > 500
+                            ? deviceWidth * 0.03
+                            : deviceWidth * 0.045, //12, 18,
                         fontWeight: FontWeight.w600,
                         color: const Color.fromRGBO(255, 255, 255, 1)),
                   ),
                   Text(
                     "The Weeknd",
                     style: GoogleFonts.inter(
-                        fontSize:
-                            width > 500 ? width * 0.02 : width * 0.035, //10,14
+                        fontSize: deviceWidth > 500
+                            ? deviceWidth * 0.02
+                            : deviceWidth * 0.035, //10,14
                         fontWeight: FontWeight.w300,
                         color: const Color.fromRGBO(255, 255, 255, 1)),
                   ),
@@ -95,44 +96,48 @@ class MusicBottomsheet extends StatelessWidget {
                   Text(
                     "Up next...",
                     style: GoogleFonts.inter(
-                        fontSize:
-                            width > 500 ? width * 0.02 : width * 0.03, //10,14
+                        fontSize: deviceWidth > 500
+                            ? deviceWidth * 0.02
+                            : deviceWidth * 0.03, //10,14
                         fontWeight: FontWeight.w300,
                         color: const Color.fromRGBO(205, 205, 205, 1)),
                   ),
+
                   ///STACK TO DISPLAY NEXT SONG
                   Stack(
                     alignment: Alignment.bottomRight,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(width * 0.03),
+                        borderRadius: BorderRadius.circular(deviceWidth * 0.03),
                         child: Image.asset(
                           "assets/images/divide.png",
-                          height: height * 0.058, //56
-                          width: width * 0.14, //57
+                          height: deviceHeight * 0.058, //56
+                          width: deviceWidth * 0.14, //57
                           fit: BoxFit.cover,
                         ),
                       ),
                       Positioned(
-                        right: width * 0.015,
+                        right: deviceWidth * 0.015,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(width * 0.03),
+                          borderRadius:
+                              BorderRadius.circular(deviceWidth * 0.03),
                           child: Image.asset(
                             "assets/images/pilots.png",
-                            height: height * 0.06, //56
-                            width: width * 0.14, //57
+                            height: deviceHeight * 0.06, //56
+                            width: deviceWidth * 0.14, //57
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                       Positioned(
-                        right: width * 0.055,
+                        right: deviceWidth * 0.055,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(width * 0.03),
+                          borderRadius:
+                              BorderRadius.circular(deviceWidth * 0.03),
                           child: Image.asset(
                             "assets/images/finneas.png",
-                            height: height * 0.062, //56
-                            width: width * 0.14, //57
+                            height: deviceHeight * 0.062, //56
+                            width: deviceWidth * 0.14, //57
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -146,7 +151,7 @@ class MusicBottomsheet extends StatelessWidget {
 
           ///PROGRESS INDICATOR
           LinearProgressIndicator(
-              minHeight: height * 0.006,
+              minHeight: deviceHeight * 0.006,
               value: 0.45,
               borderRadius: BorderRadius.circular(5),
               backgroundColor: const Color.fromRGBO(163, 163, 163, 1),
@@ -158,7 +163,9 @@ class MusicBottomsheet extends StatelessWidget {
               Text(
                 "1.56",
                 style: GoogleFonts.inter(
-                    fontSize: width > 500 ? width * 0.02 : width * 0.03, //10,14
+                    fontSize: deviceWidth > 500
+                        ? deviceWidth * 0.02
+                        : deviceWidth * 0.03, //10,14
                     fontWeight: FontWeight.w300,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
@@ -166,7 +173,9 @@ class MusicBottomsheet extends StatelessWidget {
               Text(
                 "3.42",
                 style: GoogleFonts.inter(
-                    fontSize: width > 500 ? width * 0.02 : width * 0.03, //10,14
+                    fontSize: deviceWidth > 500
+                        ? deviceWidth * 0.02
+                        : deviceWidth * 0.03, //10,14
                     fontWeight: FontWeight.w300,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
@@ -181,8 +190,8 @@ class MusicBottomsheet extends StatelessWidget {
               GestureDetector(
                 onTap: () {},
                 child: Image.asset("assets/images/previous.png",
-                    height: height * 0.019, //16
-                    width: width * 0.036, //14
+                    height: deviceHeight * 0.019, //16
+                    width: deviceWidth * 0.036, //14
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
 
@@ -190,15 +199,15 @@ class MusicBottomsheet extends StatelessWidget {
               GestureDetector(
                 onTap: () {},
                 child: Icon(Icons.play_arrow,
-                    size: width * 0.08,
+                    size: deviceWidth * 0.08,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
 
               ///NEXT
               GestureDetector(
                 child: Image.asset("assets/images/next.png",
-                    height: height * 0.019, //16
-                    width: width * 0.036, //14
+                    height: deviceHeight * 0.019, //16
+                    width: deviceWidth * 0.036, //14
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
             ],

@@ -10,22 +10,23 @@ class DetailDevice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ///DEVICE IMAGE
         Transform.translate(
-          offset: Offset(-width * 0.16, 0),
+          offset: Offset(-deviceWidth * 0.16, 0),
+
           ///TEMPORARY CONTIDITIONS HANDLED FOR IMAGE HEIGHT
           child: Image.asset(
             selectedDevice.deviceImg,
             height: selectedDevice.deviceName == "Amazon Echo 2"
-                ? height / 2.5
+                ? deviceHeight / 2.5
                 : (selectedDevice.deviceName == "Amazon Screen"
-                    ? height / 6
-                    : height / 4),
+                    ? deviceHeight / 6
+                    : deviceHeight / 4),
           ),
         ),
         Expanded(
@@ -33,7 +34,7 @@ class DetailDevice extends StatelessWidget {
             children: [
               ///POWERMUTE() WIDGET TO DISPLAY POWER USAGE,MUTE BUTTON AND
               const PowerMute(),
-              SizedBox(height: height * 0.01),
+              SizedBox(height: deviceHeight * 0.01),
 
               ///VOLUMNWIFITIME() WIDGET
               const VolumnWifiTime()

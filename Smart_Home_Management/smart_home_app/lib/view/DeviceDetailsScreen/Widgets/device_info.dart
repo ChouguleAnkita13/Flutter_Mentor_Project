@@ -11,13 +11,15 @@ class DeviceInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
     return Padding(
       padding: EdgeInsets.only(
-          left: width * 0.075, top: height * 0.02, right: width * 0.075),
+          left: deviceWidth * 0.075,
+          top: deviceHeight * 0.02,
+          right: deviceWidth * 0.075),
       child: SizedBox(
-        height: height / 6,
+        height: deviceHeight / 6,
 
         ///CONSUMER2 USED FOR 2 CHANGENOTIFIERPROVIDERS
         ///TO USE DATA FROM 2 CONTROLLERS I.E ROOMCONTROLLER AND DEVICEOPERATOR
@@ -34,7 +36,7 @@ class DeviceInfo extends StatelessWidget {
                 },
                 child: Icon(
                   Icons.arrow_back_ios,
-                  size: width * 0.06,
+                  size: deviceWidth * 0.06,
                   color: const Color.fromRGBO(255, 255, 255, 1),
                 ),
               ),
@@ -50,7 +52,9 @@ class DeviceInfo extends StatelessWidget {
 
                         ///CONDITION CHECKED I.E DEVICE WIDTH GREATER THAN 500
                         /// TO DISPLAY TEXT WITHOUT OVERFLOW
-                        fontSize: width > 500 ? width * 0.04 : width * 0.06,
+                        fontSize: deviceWidth > 500
+                            ? deviceWidth * 0.04
+                            : deviceWidth * 0.06,
                         fontWeight: FontWeight.w600,
                         color: const Color.fromRGBO(255, 255, 255, 1)),
                   ),
@@ -58,7 +62,7 @@ class DeviceInfo extends StatelessWidget {
 
                   ///SWITCH
                   SizedBox(
-                    height: height * 0.035,
+                    height: deviceHeight * 0.035,
                     child: FittedBox(
                       fit: BoxFit.fill,
                       child: Switch(
@@ -78,12 +82,13 @@ class DeviceInfo extends StatelessWidget {
 
               ///
               SizedBox(
-                width: width * 0.8,
+                width: deviceWidth * 0.8,
                 child: Text(
                   "${roomController.selectedDevice!.deviceName} is up and running. Control other devices by commanding ${roomController.selectedDevice!.deviceName}.",
                   style: GoogleFonts.inter(
-                      fontSize:
-                          width > 500 ? width * 0.03 : width * 0.045, //12 18
+                      fontSize: deviceWidth > 500
+                          ? deviceWidth * 0.03
+                          : deviceWidth * 0.045, //12 18
                       fontWeight: FontWeight.w400,
                       color: const Color.fromRGBO(255, 255, 255, 1)),
                 ),

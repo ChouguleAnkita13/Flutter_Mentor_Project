@@ -10,19 +10,19 @@ class Devices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
-    final double width = MediaQuery.sizeOf(context).width;
+    final double deviceHeight = MediaQuery.sizeOf(context).height;
+    final double deviceWidth = MediaQuery.sizeOf(context).width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: width * 0.8,
+          width: deviceWidth * 0.8,
           child: Row(
             children: [
               Text(
                 "Devices",
                 style: GoogleFonts.inter(
-                    fontSize: width * 0.05, //20.6
+                    fontSize: deviceWidth * 0.05, //20.6
                     fontWeight: FontWeight.w500,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
@@ -31,15 +31,15 @@ class Devices extends StatelessWidget {
               ///ADD DEVICES BUTTON
               GestureDetector(
                 child: Icon(Icons.add_circle,
-                    size: width * 0.06,
+                    size: deviceWidth * 0.06,
                     color: const Color.fromRGBO(255, 255, 255, 0.7)),
               )
             ],
           ),
         ),
-        SizedBox(height: height * 0.022),
+        SizedBox(height: deviceHeight * 0.022),
         SizedBox(
-            height: height / 3.5,
+            height: deviceHeight / 3.5,
             child: Consumer<RoomController>(
 
                 /// THE CONSUMER WIDGET LISTENS TO CHANGES IN THE ROOMCONTROLLER
@@ -65,11 +65,11 @@ class Devices extends StatelessWidget {
                             builder: (ctx) => const BottomsheetLayout());
                       },
                       child: Container(
-                          height: height / 3.5,
+                          height: deviceHeight / 3.5,
                           width: roomController.selectedDevice ==
                                   devicesList[index]
-                              ? width * 0.37
-                              : width * 0.3,
+                              ? deviceWidth * 0.37
+                              : deviceWidth * 0.3,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: roomController.selectedDevice ==
@@ -84,27 +84,27 @@ class Devices extends StatelessWidget {
                               ? Stack(
                                   children: [
                                     Positioned(
-                                      right: width * 0.06,
-                                      top: height * 0.03,
-                                      bottom: height * 0.03,
+                                      right: deviceWidth * 0.06,
+                                      top: deviceHeight * 0.03,
+                                      bottom: deviceHeight * 0.03,
                                       // DEVICE IMAGE
                                       child: Image.asset(
                                         devicesList[index].deviceImg,
                                       ),
                                     ),
                                     Positioned(
-                                      bottom: height * 0.001,
-                                      left: width * 0.05,
+                                      bottom: deviceHeight * 0.001,
+                                      left: deviceWidth * 0.05,
                                       child: SizedBox(
-                                        width: width * 0.2,
+                                        width: deviceWidth * 0.2,
 
                                         ///DEVICE NAME
                                         child: Text(
                                           devicesList[index].deviceName,
                                           style: GoogleFonts.inter(
-                                              fontSize: width > 500
-                                                  ? width * 0.03
-                                                  : width * 0.037, //15
+                                              fontSize: deviceWidth > 500
+                                                  ? deviceWidth * 0.03
+                                                  : deviceWidth * 0.037, //15
                                               fontWeight: FontWeight.w600,
                                               color: const Color.fromRGBO(
                                                   0, 0, 0, 1)),
@@ -116,23 +116,23 @@ class Devices extends StatelessWidget {
                               : Stack(
                                   children: [
                                     Positioned(
-                                      right: width * 0.15,
+                                      right: deviceWidth * 0.15,
                                       bottom: 0,
-                                      top: height * 0.005,
+                                      top: deviceHeight * 0.005,
 
                                       ///DEVICE IMAGE
 
                                       child: Image.asset(
                                         devicesList[index].deviceImg,
-                                        height: height * 0.7,
+                                        height: deviceHeight * 0.7,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
                                     Positioned(
-                                      left: width * 0.05,
-                                      right: width * 0.05,
-                                      top: height * 0.16,
-                                      bottom: height * 0.01,
+                                      left: deviceWidth * 0.05,
+                                      right: deviceWidth * 0.05,
+                                      top: deviceHeight * 0.16,
+                                      bottom: deviceHeight * 0.01,
                                       child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -142,9 +142,9 @@ class Devices extends StatelessWidget {
                                             Text(
                                               devicesList[index].deviceName,
                                               style: GoogleFonts.inter(
-                                                  fontSize: width > 500
-                                                      ? width * 0.034
-                                                      : width * 0.045,
+                                                  fontSize: deviceWidth > 500
+                                                      ? deviceWidth * 0.034
+                                                      : deviceWidth * 0.045,
                                                   fontWeight: FontWeight.w600,
                                                   color: const Color.fromRGBO(
                                                       0, 0, 0, 1)),
@@ -157,8 +157,8 @@ class Devices extends StatelessWidget {
                                                     .pushNamed("devicedetails");
                                               },
                                               child: Container(
-                                                height: height * 0.045,
-                                                width: width * 0.25,
+                                                height: deviceHeight * 0.045,
+                                                width: deviceWidth * 0.25,
                                                 alignment: Alignment.center,
                                                 decoration: BoxDecoration(
                                                     color: const Color.fromRGBO(
@@ -169,8 +169,8 @@ class Devices extends StatelessWidget {
                                                 child: Text(
                                                   "View",
                                                   style: GoogleFonts.inter(
-                                                      fontSize:
-                                                          width * 0.036, //16.06
+                                                      fontSize: deviceWidth *
+                                                          0.036, //16.06
                                                       fontWeight:
                                                           FontWeight.w700,
                                                       color:
@@ -189,7 +189,7 @@ class Devices extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, idx) => SizedBox(
-                        width: width * 0.03,
+                        width: deviceWidth * 0.03,
                       ));
             }))
       ],
