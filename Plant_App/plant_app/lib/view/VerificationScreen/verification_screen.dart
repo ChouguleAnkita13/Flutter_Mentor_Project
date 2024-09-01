@@ -16,7 +16,7 @@ class VerificationScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            //For Row with arrow icon and image called CustomToprow()
+            ///For Row with arrow icon and image called CustomToprow()
             const CustomToprow(),
 
             Padding(
@@ -45,9 +45,9 @@ class VerificationScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400)),
                       ),
                     ),
-                    //To display otp textFields called to OTPTextField()
+                    ///To display otp textFields called to OTPTextField()
                     const OTPTextfield(),
-                    //TextSpan
+                    ///TextSpan
                     Text.rich(TextSpan(children: [
                       TextSpan(
                         text: "Don’t receive OTP code! ",
