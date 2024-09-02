@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wallet_app/view/LoginScreen/login_screen.dart';
+import 'package:wallet_app/view/LoginScreen/password_screen.dart';
+import 'package:wallet_app/view/splash_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +13,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return GetMaterialApp(
+      initialRoute: "/",
+      getPages: [GetPage(name: "/", page: () => const SplashScreen()),
+      GetPage(name: "/login", page: ()=>const LoginScreen()),
+      GetPage(name: "/password", page: ()=>const PasswordScreen()),
+
+      ],
+      debugShowCheckedModeBanner: false,
     );
   }
 }
