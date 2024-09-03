@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wallet_app/view/CommonWidgets/common_container.dart';
-import 'package:wallet_app/view/LoginScreen/Widgets/password_textfield.dart';
 import 'package:wallet_app/view/LoginScreen/Widgets/reset_password.dart';
+import 'package:wallet_app/view/Widgets/common_container.dart';
+import 'package:wallet_app/view/LoginScreen/Widgets/password_textfield.dart';
 
 class PasswordWidget extends StatelessWidget {
   const PasswordWidget({super.key});
@@ -11,6 +11,8 @@ class PasswordWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
+    final deviceHeight = Get.height;
+
     return Padding(
       padding: EdgeInsets.only(
           left: deviceWidth * 0.044,
@@ -18,7 +20,7 @@ class PasswordWidget extends StatelessWidget {
           top: deviceWidth * 0.044,
           bottom: deviceWidth * 0.09), //15,37
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -30,18 +32,28 @@ class PasswordWidget extends StatelessWidget {
             ),
           ),
 
+          ///
+          SizedBox(
+            height: deviceHeight * 0.03,
+          ),
+
           ///TEXTFIELD FOR PASSWORD
           const PasswordTextfield(),
+
+          SizedBox(
+            height: deviceHeight * 0.01,
+          ),
 
           ///FORGET PASSWORD BUTTON
           Align(
             alignment: Alignment.bottomRight,
             child: GestureDetector(
-              onTap: (){
-                ///BOTTOMSHEET TO RESET PASSWORD 
-                 showModalBottomSheet(context: context,
-                barrierColor: const Color.fromRGBO(25, 25, 25, 0.7),
-                 builder: (ctx)=>const ResetPassword());
+              onTap: () {
+                ///BOTTOMSHEET TO RESET PASSWORD
+                Get.bottomSheet(
+                  const ResetPassword(),
+                  barrierColor: const Color.fromRGBO(25, 25, 25, 0.7),
+                );
               },
               child: Text(
                 "Forgot password?",
@@ -53,6 +65,9 @@ class PasswordWidget extends StatelessWidget {
               ),
             ),
           ),
+
+          ///
+          const Spacer(),
 
           ///LOGIN BUTTON
           GestureDetector(

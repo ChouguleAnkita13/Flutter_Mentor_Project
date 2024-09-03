@@ -21,14 +21,28 @@ class MobileTextfield extends StatelessWidget {
             color: const Color.fromRGBO(0, 0, 0, 1),
           ),
         ),
+        SizedBox(height: deviceHeight * 0.004),
 
         ///TEXTFIELD
         SizedBox(
           height: deviceHeight * 0.05,
           child: TextFormField(
             keyboardType: TextInputType.phone,
+            cursorColor: const Color.fromRGBO(83, 93, 102, 1),
             decoration: InputDecoration(
+
+                ///ALL BORDER DECORATION FOR TEXTFIELD
                 enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(225, 227, 237, 1),
+                    )),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(225, 227, 237, 1),
+                    )),
+                errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),
                     borderSide: const BorderSide(
                       color: Color.fromRGBO(225, 227, 237, 1),

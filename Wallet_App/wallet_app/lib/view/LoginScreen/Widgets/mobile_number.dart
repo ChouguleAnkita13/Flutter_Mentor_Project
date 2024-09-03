@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wallet_app/view/CommonWidgets/continue_using.dart';
+import 'package:wallet_app/view/Widgets/continue_using.dart';
 import 'package:wallet_app/view/LoginScreen/Widgets/mobile_textfield.dart';
-import 'package:wallet_app/view/CommonWidgets/common_container.dart';
+import 'package:wallet_app/view/Widgets/common_container.dart';
 
 ///WIDGET TO DISPLAY MOBILE NUMBER CONTAINER
 class MobileNumber extends StatelessWidget {

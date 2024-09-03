@@ -97,7 +97,7 @@ class CreateAccount extends StatelessWidget {
 
               ///CREATE AN ACCOUNT BUTTON
               GestureDetector(
-                onTap: () => Get.toNamed("/login"),
+                onTap: () => Get.toNamed("/otpscreen"),
                 child: const CommonContainer(title: "Create a new account"),
               ),
 

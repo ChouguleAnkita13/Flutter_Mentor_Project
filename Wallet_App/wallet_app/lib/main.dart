@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallet_app/view/LoginScreen/create_account_screen.dart';
 import 'package:wallet_app/view/LoginScreen/login_screen.dart';
 import 'package:wallet_app/view/LoginScreen/password_screen.dart';
 import 'package:wallet_app/view/splash_screen.dart';
@@ -15,8 +16,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: "/",
+      home: const CreateAccountScreen(),
       getPages: [GetPage(name: "/", page: () => const SplashScreen()),
       GetPage(name: "/login", page: ()=>const LoginScreen()),
+      GetPage(name: "/createAc", page: ()=>const CreateAccountScreen()),
       GetPage(name: "/password", page: ()=>const PasswordScreen()),
 
       ],
