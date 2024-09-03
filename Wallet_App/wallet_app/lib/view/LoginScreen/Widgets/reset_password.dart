@@ -48,7 +48,7 @@ class ResetPassword extends StatelessWidget {
 
                       ///DONE BUTTON
                       GestureDetector(
-                        onTap: () => Get.back(),
+                        onTap: () => Get.toNamed("/createAc"),
                         child: Text(
                           "Done",
                           style: GoogleFonts.sora(
@@ -68,7 +68,7 @@ class ResetPassword extends StatelessWidget {
 
                   ///SEND RESET LINK
                   GestureDetector(
-                    onTap: () => Get.toNamed("/login"),
+                    onTap: () => Get.toNamed("/otpScreen"),
                     child: const CommonContainer(title: "Send reset link"),
                   ),
 

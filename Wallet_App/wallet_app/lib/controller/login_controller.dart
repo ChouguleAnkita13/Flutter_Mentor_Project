@@ -6,12 +6,14 @@ class LoginController extends GetxController {
   bool _isUseEmail = true;
   bool _isPassVisible = true;
   bool _isChecked = false;
+  bool _isSubmitOtp=false;
 
   ///GETTER FOR TOGGLE EMAILTEXTFIELD , PASSWORD VISIBILITY AND CHECKBOX
 
   get isUseEmail => _isUseEmail;
   get isPassVisible => _isPassVisible;
   get isChecked => _isChecked;
+  get isSubmitOtp=>_isSubmitOtp;
 
   ///METHOD TO TOGGLE EMAIL TO MOBILE
   void selectEmailOrMobile() {
@@ -35,5 +37,13 @@ class LoginController extends GetxController {
     update();
 
     ///UPDATE LISTENERS WHEN THE CHECKBOX STATE CHANGES
+  }
+
+  ///METHOD TO UPDATE OTP STATUS
+   void updateOtpStatus() {
+    _isSubmitOtp=true;
+    update();
+
+    ///UPDATE LISTENERS WHEN THE EMAIL STATE CHANGES
   }
 }

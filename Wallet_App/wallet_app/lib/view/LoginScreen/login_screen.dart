@@ -12,42 +12,51 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
-    log("${deviceWidth*0.9}");
-    log("${deviceHeight*0.9}");
+    log("${deviceWidth * 0.9}");
+    log("${deviceHeight * 0.9}");
 
     return Scaffold(
-        body: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: deviceHeight < 750 && deviceWidth > 600
-              ? deviceHeight * 0.5
-              : deviceHeight * 0.58,
-          width: double.infinity,
-          color: const Color.fromRGBO(247, 244, 255, 1),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ///TAP'NPAY IMAGE
-              Image.asset(
-                "assets/images/login/tapnpay.png",
-              ),
+        backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+        body: SingleChildScrollView(
+          ///HERE SINGLECHILDSCROLLVIEW IS USED TO AVOID THE OVERFLOW ERROR, WHEN WE GOING TO
+          ///TYPE IN TEXTFIELD
+          child: SizedBox(
+            height: deviceHeight,
+            child: Column(
+              children: [
+                Container(
+                  height: deviceHeight < 750 && deviceWidth > 600
+                      ? deviceHeight * 0.5
+                      : deviceHeight * 0.56,
+                  width: double.infinity,
+                  padding: EdgeInsets.only(top: deviceHeight * 0.06),
+                  color: const Color.fromRGBO(247, 244, 255, 1),
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ///TAP'NPAY IMAGE
+                      Image.asset(
+                        "assets/images/login/tapnpay.png",
+                      ),
+                      SizedBox(height: deviceHeight * 0.08),
 
-              ///MOBILE IMAGE
-              Image.asset(
-                "assets/images/login/mobile.png",
-                height: deviceHeight < 750 && deviceWidth > 600
-                    ? deviceHeight * 0.25
-                    : deviceHeight * 0.3,
-                fit: BoxFit.cover,
-              ),
-            ],
+                      ///MOBILE IMAGE
+                      Image.asset(
+                        "assets/images/login/mobile.png",
+                        height: deviceHeight < 750 && deviceWidth > 600
+                            ? deviceHeight * 0.25
+                            : deviceHeight * 0.3,
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  ),
+                ),
+
+                ///TO DISPLAY MOBILE NUMBER CONTAINER,MOBILENUMBER() WIDGET CALLED
+                const Expanded(child: MobileNumber())
+              ],
+            ),
           ),
-        ),
-
-        ///TO DISPLAY MOBILE NUMBER CONTAINER,MOBILENUMBER() WIDGET CALLED
-        const Expanded(child: MobileNumber())
-      ],
-    ));
+        ));
   }
 }

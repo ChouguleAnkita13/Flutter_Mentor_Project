@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 ///WIDGET TO DISPLAY SPLASHSCREEN
@@ -6,7 +8,8 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 1200),()=>Get.toNamed("/login"));
+    Future.delayed(const Duration(milliseconds: 1200),()=>Get.offAndToNamed("/login"));
+    log("hii");
     return Scaffold(
       body: Image.asset(
         "assets/images/splash.png",height: Get.height,width: Get.width,fit: BoxFit.cover,

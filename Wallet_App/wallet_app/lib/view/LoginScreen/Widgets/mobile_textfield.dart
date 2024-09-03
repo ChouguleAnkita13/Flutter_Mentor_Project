@@ -31,6 +31,14 @@ class MobileTextfield extends StatelessWidget {
             cursorColor: const Color.fromRGBO(83, 93, 102, 1),
             decoration: InputDecoration(
 
+                ///HINTTEXT
+                hintText: "+91 9545443144",
+                hintStyle: GoogleFonts.sora(
+                  fontSize: deviceWidth * 0.03, //12
+                  fontWeight: FontWeight.w400,
+                  color: const Color.fromRGBO(186, 194, 199, 1),
+                ),
+
                 ///ALL BORDER DECORATION FOR TEXTFIELD
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4),

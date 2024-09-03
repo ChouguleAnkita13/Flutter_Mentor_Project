@@ -20,7 +20,7 @@ class MobileNumber extends StatelessWidget {
         children: [
           SizedBox(
             width: deviceWidth / 2,
-
+    
             ///TEXT
             child: Text(
               "Enter your mobile number",
@@ -31,18 +31,18 @@ class MobileNumber extends StatelessWidget {
               ),
             ),
           ),
-
+    
           ///TEXTFIELD FOR MOBILE NUMBER
           const MobileTextfield(),
-
+    
           ///CONTINUE BUTTON
           GestureDetector(
             onTap: () =>Get.toNamed("/password"),
             child: const CommonContainer(title: "Continue"),
           ),
-
+    
           ///CONTINUEUSING() WIDGET TO LOGIN CONTINUE WITH FACEBOOK,GOOGLE OR IOS
-
+    
           const ContinueUsing(),
         ],
       ),

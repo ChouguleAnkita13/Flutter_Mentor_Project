@@ -28,6 +28,7 @@ class EmailTextfield extends StatelessWidget {
           height: deviceHeight * 0.05,
           child: TextFormField(
             cursorColor: const Color.fromRGBO(83, 93, 102, 1),
+            keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
 
                 ///HINTTEXT

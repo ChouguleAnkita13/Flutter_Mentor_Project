@@ -71,7 +71,7 @@ class PasswordWidget extends StatelessWidget {
 
           ///LOGIN BUTTON
           GestureDetector(
-            onTap: () => Get.offAll("/home"),
+            onTap: () => Get.offAllNamed("/home"),
             child: const CommonContainer(title: "Login"),
           ),
         ],
