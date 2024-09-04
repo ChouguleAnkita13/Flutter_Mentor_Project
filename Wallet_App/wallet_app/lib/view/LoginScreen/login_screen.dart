@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_app/view/LoginScreen/Widgets/mobile_number.dart';
@@ -12,8 +10,6 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
-    log("${deviceWidth * 0.9}");
-    log("${deviceHeight * 0.9}");
 
     return Scaffold(
         backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
