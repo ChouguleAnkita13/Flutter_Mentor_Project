@@ -96,6 +96,7 @@ class TransactionController extends GetxController {
 
   TransactionDetailsModel? get selectedTransaction => _selectedTransaction;
 
+  ///SET SELECTEDTRANSACTION
   void selectTransaction(TransactionDetailsModel transDetail) {
     _selectedTransaction = transDetail;
   }
