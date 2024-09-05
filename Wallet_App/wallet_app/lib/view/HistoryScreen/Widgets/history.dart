@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wallet_app/controller/transaction_controller.dart';
 import 'package:wallet_app/model/transaction_details_model.dart';
 import 'package:wallet_app/model/transaction_model.dart';
+import 'package:wallet_app/view/HistoryScreen/Widgets/detail_transaction.dart';
 
 ///WIDGET TO DISPLAY HISTORY OF TRANSACTIONS
 class History extends StatelessWidget {
@@ -34,31 +35,40 @@ class History extends StatelessWidget {
                 top: deviceHeight * 0.02),
 
             ///DAYDATE OF TRANSACTION
-            child: GestureDetector(
-              onTap: () {},
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    transList[index1].dayDate,
-                    style: GoogleFonts.sora(
-                      fontSize: deviceWidth < 500
-                          ? deviceWidth * 0.04
-                          : deviceWidth * 0.035, //14,10
-                      fontWeight: FontWeight.w400,
-                      color: const Color.fromRGBO(83, 93, 102, 1),
-                    ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  transList[index1].dayDate,
+                  style: GoogleFonts.sora(
+                    fontSize: deviceWidth < 500
+                        ? deviceWidth * 0.04
+                        : deviceWidth * 0.035, //14,10
+                    fontWeight: FontWeight.w400,
+                    color: const Color.fromRGBO(83, 93, 102, 1),
                   ),
-                  SizedBox(
-                    height: deviceHeight * 0.02,
-                  ),
+                ),
+                SizedBox(
+                  height: deviceHeight * 0.02,
+                ),
 
-                  ///DETAILED TRANSACTION LIST
-                  ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: transDetailList.length,
-                      itemBuilder: (context, index) => Row(
+                ///DETAILED TRANSACTION LIST
+                ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: transDetailList.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            ///SET SELECTED TRANSACTION
+                            transController.selectTransaction(transDetailList[index]);
+                            ///BOTTOMSHEET TO DETAILS OF TRANSACTION
+                            Get.bottomSheet(
+                              const DetailTransaction(),
+                              barrierColor:
+                                  const Color.fromRGBO(25, 25, 25, 0.7),
+                            );
+                          },
+                          child: Row(
                             children: [
                               ///TRANSACTION IMAGE
                               ClipRRect(
@@ -132,16 +142,16 @@ class History extends StatelessWidget {
                               )
                             ],
                           ),
+                        ),
 
-                      ///LISTVIEW SEPERATOR FOR DETAILED TRANSACTION LIST
-                      separatorBuilder: (context, idx) => Container(
-                          margin: EdgeInsets.only(
-                              top: deviceHeight * 0.02,
-                              bottom: deviceHeight * 0.02),
-                          height: deviceHeight * 0.0015,
-                          color: const Color.fromRGBO(237, 239, 246, 1))),
-                ],
-              ),
+                    ///LISTVIEW SEPERATOR FOR DETAILED TRANSACTION LIST
+                    separatorBuilder: (context, idx) => Container(
+                        margin: EdgeInsets.only(
+                            top: deviceHeight * 0.02,
+                            bottom: deviceHeight * 0.02),
+                        height: deviceHeight * 0.0015,
+                        color: const Color.fromRGBO(237, 239, 246, 1))),
+              ],
             ),
           );
         },
