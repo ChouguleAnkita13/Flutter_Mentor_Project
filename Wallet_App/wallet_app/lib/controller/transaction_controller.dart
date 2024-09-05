@@ -88,4 +88,15 @@ class TransactionController extends GetxController {
           date: "Sep 01")
     ])
   ];
+
+  ///CURRENTLY SELECTED TRANSACTION
+  TransactionDetailsModel? _selectedTransaction;
+
+  ///GETTER FOR THE SELECTED TRANSACTION
+
+  TransactionDetailsModel? get selectedTransaction => _selectedTransaction;
+
+  void selectTransaction(TransactionDetailsModel transDetail) {
+    _selectedTransaction = transDetail;
+  }
 }
