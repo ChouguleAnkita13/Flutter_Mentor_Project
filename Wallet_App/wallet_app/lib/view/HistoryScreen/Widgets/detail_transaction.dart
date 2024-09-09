@@ -3,7 +3,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wallet_app/controller/transaction_controller.dart';
 import 'package:wallet_app/model/transaction_details_model.dart';
-                           
+import 'package:wallet_app/view/Widgets/custom_details_container.dart';
+import 'package:wallet_app/view/Widgets/custom_details_row.dart';
+import 'package:wallet_app/view/Widgets/trans_no_container.dart';
+
 ///WIDGET TO SHOW DETAILS OF TRANSACTION WILL CALLED ON BOTTOMSHEET
 class DetailTransaction extends StatelessWidget {
   const DetailTransaction({super.key});
@@ -32,70 +35,12 @@ class DetailTransaction extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ///TRANSACTION IMAGE,TITLE
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(deviceWidth * 0.02), //8
-                ///TRANSACTION IMAGE
-                child: Image.asset(
-                  selectedTransaction!.imgUrl,
-                  height: deviceWidth < 500
-                      ? deviceWidth * 0.14 //56
-                      : deviceWidth * 0.1,
-                  width: deviceWidth < 500
-                      ? deviceWidth * 0.14
-                      : deviceWidth * 0.1,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(width: deviceWidth * 0.02),
+          ///TRANSACTION IMAGE,TITLE,SUBTITLE
 
-              ///TRANSACTION TITLE AND TEXT
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ///TRANSACTION TITLE
-                  Text(
-                    selectedTransaction.transactionTitle,
-                    style: GoogleFonts.sora(
-                      fontSize: deviceWidth * 0.05, //16
-                      fontWeight: FontWeight.w600,
-                      color: const Color.fromRGBO(25, 25, 25, 1),
-                    ),
-                  ),
-
-                  ///TEXT
-                  Text(
-                    "Retailer corporation",
-                    style: GoogleFonts.sora(
-                      fontSize: deviceWidth < 500
-                          ? deviceWidth * 0.037
-                          : deviceWidth * 0.03, //14,12
-                      fontWeight: FontWeight.w400,
-                      color: const Color.fromRGBO(120, 131, 141, 1),
-                    ),
-                  ),
-                ],
-              ),
-
-              const Spacer(),
-
-              ///DONE BUTTON
-              GestureDetector(
-                onTap: () => Get.back(),
-                child: Text(
-                  "Done",
-                  style: GoogleFonts.sora(
-                    fontSize: deviceWidth * 0.035, //14
-                    fontWeight: FontWeight.w600,
-                    color: const Color.fromRGBO(29, 98, 202, 1),
-                  ),
-                ),
-              )
-            ],
-          ),
+          CustomDetailsRow(
+              imgUrl: selectedTransaction!.imgUrl,
+              title: selectedTransaction.transactionTitle,
+              subtitle: "Retailer corporation"),
 
           SizedBox(height: deviceWidth * 0.01),
 
@@ -131,101 +76,15 @@ class DetailTransaction extends StatelessWidget {
           ),
 
           ///TRANSACTION DATE AND TIME CONTAINER
-          Container(
-            ///DECORATION CONTAINER
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(
-              horizontal: deviceWidth * 0.03, //12
-              vertical: deviceWidth * 0.041, //16
-            ),
-            decoration: BoxDecoration(
-                border: Border.all(
-                  color: const Color.fromRGBO(237, 239, 246, 1),
-                ),
-                borderRadius: BorderRadius.circular(deviceWidth * 0.02)),
-
-            ///TRANSACTION DAY, DATE TIME
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              ///Day
-              Text(
-                selectedTransaction.date,
-                style: GoogleFonts.sora(
-                  fontSize: deviceWidth < 500
-                      ? deviceWidth * 0.035
-                      : deviceWidth * 0.025, //14,9
-                  fontWeight: FontWeight.w400,
-                  color: const Color.fromRGBO(120, 131, 141, 1),
-                ),
-              ),
-
-              ///DATE AND TIME
-              Text(
-                "${selectedTransaction.date} - ${selectedTransaction.time}",
-                style: GoogleFonts.sora(
-                  fontSize: deviceWidth < 500
-                      ? deviceWidth * 0.035
-                      : deviceWidth * 0.02, //14,9
-                  fontWeight: FontWeight.w600,
-                  color: const Color.fromRGBO(83, 93, 102, 1),
-                ),
-              ),
-            ]),
-          ),
+          CustomDetailsContainer(
+              title: selectedTransaction.date,
+              content:
+                  "${selectedTransaction.date} - ${selectedTransaction.time}"),
 
           ///TRANSACTION NO CONTAINER
-          Container(
-            ///DECORATION CONTAINER
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(
-              horizontal: deviceWidth * 0.03, //12
-              vertical: deviceWidth * 0.041, //16
-            ),
-            decoration: BoxDecoration(
-                border: Border.all(
-                  color: const Color.fromRGBO(237, 239, 246, 1),
-                ),
-                borderRadius: BorderRadius.circular(deviceWidth * 0.02)),
-
-            ///TEXT AND TRANSCATION NO
-            child: Row(
-              children: [
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  ///TEXT
-                  Text(
-                    "Transaction no.",
-                    style: GoogleFonts.sora(
-                      fontSize: deviceWidth < 500
-                          ? deviceWidth * 0.035
-                          : deviceWidth * 0.025, //14,9
-                      fontWeight: FontWeight.w400,
-                      color: const Color.fromRGBO(120, 131, 141, 1),
-                    ),
-                  ),
-
-                  ///TRANSCATION NO
-                  Text(
-                    "${selectedTransaction.transactionNo}",
-                    style: GoogleFonts.sora(
-                      fontSize: deviceWidth < 500
-                          ? deviceWidth * 0.035
-                          : deviceWidth * 0.02, //14,9
-                      fontWeight: FontWeight.w600,
-                      color: const Color.fromRGBO(83, 93, 102, 1),
-                    ),
-                  ),
-                ]),
-                const Spacer(),
-
-                ///COPY ICON
-                Icon(
-                  Icons.copy_rounded,
-                  color: const Color.fromRGBO(83, 93, 102, 1),
-                  size: deviceHeight * 0.03,
-                ),
-              ],
-            ),
-          ),
+          TransactionNoContainer(
+              title: "Transaction no.",
+              transNo: "${selectedTransaction.transactionNo}"),
 
           ///REPORT A PROBLEM
           GestureDetector(
