@@ -147,7 +147,7 @@ class LatestTransaction extends StatelessWidget {
               separatorBuilder: (context, idx) => Container(
                   margin: EdgeInsets.only(
                       top: deviceHeight * 0.02, bottom: deviceHeight * 0.02),
-                  height:  deviceHeight * 0.0015,
+                  height: deviceHeight * 0.0015,
                   color: const Color.fromRGBO(237, 239, 246, 1))),
         ],
       ),

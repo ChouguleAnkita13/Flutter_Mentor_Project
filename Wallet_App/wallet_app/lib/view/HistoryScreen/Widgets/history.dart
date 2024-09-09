@@ -60,7 +60,9 @@ class History extends StatelessWidget {
                     itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
                             ///SET SELECTED TRANSACTION
-                            transController.selectTransaction(transDetailList[index]);
+                            transController
+                                .selectTransaction(transDetailList[index]);
+
                             ///BOTTOMSHEET TO DETAILS OF TRANSACTION
                             Get.bottomSheet(
                               const DetailTransaction(),
