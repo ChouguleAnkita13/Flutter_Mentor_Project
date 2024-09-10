@@ -24,7 +24,9 @@ class SearchTextfield extends StatelessWidget {
             ///HINTTEXT
             hintText: "Search biller",
             hintStyle: GoogleFonts.sora(
-              fontSize: deviceWidth * 0.035, //14
+              fontSize: deviceWidth < 500
+                  ? deviceWidth * 0.035
+                  : deviceWidth * 0.03, //14,12
               fontWeight: FontWeight.w400,
               color: const Color.fromRGBO(186, 194, 199, 1),
             ),

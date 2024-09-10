@@ -11,14 +11,14 @@ class PaymentStatus extends StatelessWidget {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
     return SizedBox(
-      height: deviceHeight / 4.7,
+      height: deviceHeight>1000?deviceHeight / 4.7:deviceHeight / 4,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ///SUCCESS IMAGE
           Image.asset(
             "assets/images/more/success.png",
-            height: deviceHeight * 0.14, //164
+            height:deviceHeight * 0.14 ,//164
             width: deviceWidth * 0.4, //128
             fit: BoxFit.cover,
           ),

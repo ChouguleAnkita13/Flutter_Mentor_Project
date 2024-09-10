@@ -37,81 +37,82 @@ class SavedBillers extends StatelessWidget {
         SizedBox(height: deviceHeight * 0.01),
 
         ///MORE ITEM LIST
-        ListView.separated(
-            shrinkWrap: true,
-            itemCount: savedBillersList.length,
-            itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    ///SET SELECTED BILL
-                    billController.selectBill(savedBillersList[index]);
-
-                    
-                  savedBillersList[index].payStatus?  
-                  ///NAVIGATE TO SUCCESS SCREEN
-                  Get.toNamed("/paysuccess"):
-                  ///BOTTOMSHEET TO SHOW DETAILS OF BILL
-                  Get.bottomSheet(
-                      const DetailBill(),
-                      barrierColor: const Color.fromRGBO(25, 25, 25, 0.7),
-                    );
-                  },
-                  child: ListTile(
-                    ///ITEM IMAGE
-                    leading: ClipRRect(
-                      borderRadius:
-                          BorderRadius.circular(deviceWidth * 0.02), //8
-                      child: Image.asset(
-                        savedBillersList[index].billImgUrl,
-                        height: deviceWidth < 500
-                            ? deviceWidth * 0.09 //32
-                            : deviceWidth * 0.06,
-                        width: deviceWidth < 500
-                            ? deviceWidth * 0.09
-                            : deviceWidth * 0.06,
-                        fit: BoxFit.cover,
+        Expanded(
+          child: ListView.separated(
+              itemCount: savedBillersList.length,
+              itemBuilder: (context, index) => GestureDetector(
+                    onTap: () {
+                      ///SET SELECTED BILL
+                      billController.selectBill(savedBillersList[index]);
+          
+                      
+                    savedBillersList[index].payStatus?  
+                    ///NAVIGATE TO SUCCESS SCREEN
+                    Get.toNamed("/paysuccess"):
+                    ///BOTTOMSHEET TO SHOW DETAILS OF BILL
+                    Get.bottomSheet(
+                        const DetailBill(),
+                        barrierColor: const Color.fromRGBO(25, 25, 25, 0.7),
+                      );
+                    },
+                    child: ListTile(
+                      ///ITEM IMAGE
+                      leading: ClipRRect(
+                        borderRadius:
+                            BorderRadius.circular(deviceWidth * 0.02), //8
+                        child: Image.asset(
+                          savedBillersList[index].billImgUrl,
+                          height: deviceWidth < 500
+                              ? deviceWidth * 0.09 //32
+                              : deviceWidth * 0.06,
+                          width: deviceWidth < 500
+                              ? deviceWidth * 0.09
+                              : deviceWidth * 0.06,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-
-                    ///MORE TITLE
-                    title: Text(
-                      savedBillersList[index].billTitle,
-                      style: GoogleFonts.sora(
-                        fontSize: deviceWidth < 500
-                            ? deviceWidth * 0.032
-                            : deviceWidth * 0.021, //14,10
-                        fontWeight: FontWeight.w600,
-                        color: const Color.fromRGBO(25, 25, 25, 1),
+          
+                      ///MORE TITLE
+                      title: Text(
+                        savedBillersList[index].billTitle,
+                        style: GoogleFonts.sora(
+                          fontSize: deviceWidth < 500
+                              ? deviceWidth * 0.032
+                              : deviceWidth * 0.021, //14,10
+                          fontWeight: FontWeight.w600,
+                          color: const Color.fromRGBO(25, 25, 25, 1),
+                        ),
                       ),
-                    ),
-
-                    subtitle: Text(
-                      savedBillersList[index].payStatus
-                          ? "All paid"
-                          : "Due: \$${savedBillersList[index].totalBill}",
-                      style: GoogleFonts.sora(
-                        fontSize: deviceWidth < 500
-                            ? deviceWidth * 0.03
-                            : deviceWidth * 0.02, //12,8
-                        fontWeight: FontWeight.w400,
+          
+                      subtitle: Text(
+                        savedBillersList[index].payStatus
+                            ? "All paid"
+                            : "Due: \$${savedBillersList[index].totalBill}",
+                        style: GoogleFonts.sora(
+                          fontSize: deviceWidth < 500
+                              ? deviceWidth * 0.03
+                              : deviceWidth * 0.02, //12,8
+                          fontWeight: FontWeight.w400,
+                          color: const Color.fromRGBO(83, 93, 102, 1),
+                        ),
+                      ),
+          
+                      ///ICON
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_rounded,
                         color: const Color.fromRGBO(83, 93, 102, 1),
+                        size: deviceWidth * 0.025,
                       ),
-                    ),
-
-                    ///ICON
-                    trailing: Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      color: const Color.fromRGBO(83, 93, 102, 1),
-                      size: deviceWidth * 0.025,
                     ),
                   ),
-                ),
-
-            ///LISTVIEW SEPERATOR FOR MORE ITEM LIST
-            separatorBuilder: (context, idx) => Container(
-                margin: EdgeInsets.only(
-                    top: deviceHeight * 0.01, bottom: deviceHeight * 0.01),
-                height: deviceHeight * 0.0015,
-                color: const Color.fromRGBO(237, 239, 246, 1)))
+          
+              ///LISTVIEW SEPERATOR FOR MORE ITEM LIST
+              separatorBuilder: (context, idx) => Container(
+                  margin: EdgeInsets.only(
+                      top: deviceHeight * 0.01, bottom: deviceHeight * 0.01),
+                  height: deviceHeight * 0.0015,
+                  color: const Color.fromRGBO(237, 239, 246, 1))),
+        )
       ],
     );
   }
