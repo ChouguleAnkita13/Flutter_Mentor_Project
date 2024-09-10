@@ -3,7 +3,7 @@ import 'package:wallet_app/model/transferto_contact_model.dart';
 
 class TransferToContactController extends GetxController {
   ///LIST OF CONTACTS
-  List contactList = [
+  List<TransferToContactModel> contactList = [
     const TransferToContactModel(
         contactImg: "assets/images/home/profile.png",
         contactName: "Teja",
@@ -25,4 +25,16 @@ class TransferToContactController extends GetxController {
         contactName: "Suraj",
         phone: "+91 7087545461")
   ].obs;
+
+  ///CURRENTLY SELECTED CONTACT
+  TransferToContactModel? _selectedContact;
+
+  ///GETTER FOR THE SELECTED CONTACT
+
+  TransferToContactModel? get selectedContact => _selectedContact;
+
+  ///SET SELECTEDCONTACT
+  void selectContact(TransferToContactModel contact) {
+    _selectedContact = contact;
+  }
 }
