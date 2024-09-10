@@ -11,6 +11,10 @@ class RecentTransfer extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
+
+    ///GET LIST OF CONTACTS FOR RECENT TRANSFER FROM TRANSFERTOCONTACT GETX CONTROLLER
+    final List contactList =
+        Get.find<TransferToContactController>().contactList;
     return Padding(
       padding: EdgeInsets.only(
           left: deviceWidth * 0.044,
@@ -35,53 +39,50 @@ class RecentTransfer extends StatelessWidget {
           ),
 
           ///TRANSFERTOCONTROLLER
-          GetX<TransferToContactController>(
-            init: TransferToContactController(),
-            builder: (contact) => SizedBox(
-              height: deviceHeight * 0.11,
+          SizedBox(
+            height: deviceHeight * 0.11,
 
-              ///LIST OF RECENTLY TRANSFER CONTACTS
-              child: ListView.separated(
-                  itemCount: contact.contactList.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ///CONTACTS IMAGE
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.asset(
-                              contact.contactList[index].contactImg,
-                              height: deviceWidth < 500
-                                  ? deviceWidth * 0.18
-                                  : deviceWidth * 0.1, //64
-                              width: deviceWidth < 500
-                                  ? deviceWidth * 0.18
-                                  : deviceWidth * 0.1,
-                              fit: BoxFit.cover,
-                            ),
+            ///LIST OF RECENTLY TRANSFER CONTACTS
+            child: ListView.separated(
+                itemCount: contactList.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ///CONTACTS IMAGE
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.asset(
+                            contactList[index].contactImg,
+                            height: deviceWidth < 500
+                                ? deviceWidth * 0.18
+                                : deviceWidth * 0.1, //64
+                            width: deviceWidth < 500
+                                ? deviceWidth * 0.18
+                                : deviceWidth * 0.1,
+                            fit: BoxFit.cover,
                           ),
+                        ),
 
-                          ///CONTACTS NAME
-                          Text(
-                            contact.contactList[index].contactName,
-                            style: GoogleFonts.sora(
-                              fontSize: deviceWidth < 500
-                                  ? deviceWidth * 0.032
-                                  : deviceWidth * 0.021, //14,10
-                              fontWeight: FontWeight.w400,
-                              color: const Color.fromRGBO(25, 25, 25, 1),
-                            ),
-                          )
-                        ],
-                      ),
+                        ///CONTACTS NAME
+                        Text(
+                          contactList[index].contactName,
+                          style: GoogleFonts.sora(
+                            fontSize: deviceWidth < 500
+                                ? deviceWidth * 0.032
+                                : deviceWidth * 0.021, //14,10
+                            fontWeight: FontWeight.w400,
+                            color: const Color.fromRGBO(25, 25, 25, 1),
+                          ),
+                        )
+                      ],
+                    ),
 
-                  ///LISTVIEW SEPERATOR
-                  separatorBuilder: (context, idx) => SizedBox(
-                        width: deviceWidth * 0.05,
-                      )),
-            ),
-          )
+                ///LISTVIEW SEPERATOR
+                separatorBuilder: (context, idx) => SizedBox(
+                      width: deviceWidth * 0.05,
+                    )),
+          ),
         ],
       ),
     );
