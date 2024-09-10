@@ -5,6 +5,7 @@ import 'package:wallet_app/controller/bill_controller.dart';
 import 'package:wallet_app/model/saved_bill_model.dart';
 import 'package:wallet_app/view/Widgets/custom_details_container.dart';
 import 'package:wallet_app/view/Widgets/custom_details_row.dart';
+import 'package:wallet_app/view/Widgets/secure_pay_container.dart';
 
 ///WIDGET TO SHOW DETAILS OF BILL WILL CALLED ON BOTTOMSHEET
 class DetailBill extends StatelessWidget {
@@ -13,7 +14,6 @@ class DetailBill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
-    final deviceHeight = Get.height;
 
     ///GET SELECTED BILL FROM BILLCONTROLLER
     final SavedBillModel? selectedBill =
@@ -86,40 +86,7 @@ class DetailBill extends StatelessWidget {
           ///SECURE PAYMENT
           GestureDetector(
             onTap: () => Get.toNamed("/paysuccess"),
-            child: Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(
-                horizontal: deviceWidth * 0.03, //12
-                vertical: deviceWidth * 0.041, //16
-              ),
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(253, 194, 40, 1),
-                  borderRadius: BorderRadius.circular(deviceWidth * 0.02)),
-              child: SizedBox(
-                width: deviceWidth / 2.5,
-                child: Row(
-                  children: [
-                    /// ICON
-                    Icon(
-                      Icons.pending_actions,
-                      color: const Color.fromRGBO(39, 6, 133, 1),
-                      size: deviceHeight * 0.021,
-                    ),
-
-                    ///TEXT
-                    Text(
-                      "  Secure payment",
-                      style: GoogleFonts.sora(
-                        fontSize: deviceWidth * 0.035, //14
-                        fontWeight: FontWeight.w600,
-                        color: const Color.fromRGBO(39, 6, 133, 1),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+            child:const SecurePayContainer() ),
         ],
       ),
     );

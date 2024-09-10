@@ -45,8 +45,12 @@ class SavedBillers extends StatelessWidget {
                     ///SET SELECTED BILL
                     billController.selectBill(savedBillersList[index]);
 
-                    ///BOTTOMSHEET TO SHOW DETAILS OF BILL
-                    Get.bottomSheet(
+                    
+                  savedBillersList[index].payStatus?  
+                  ///NAVIGATE TO SUCCESS SCREEN
+                  Get.toNamed("/paysuccess"):
+                  ///BOTTOMSHEET TO SHOW DETAILS OF BILL
+                  Get.bottomSheet(
                       const DetailBill(),
                       barrierColor: const Color.fromRGBO(25, 25, 25, 0.7),
                     );
