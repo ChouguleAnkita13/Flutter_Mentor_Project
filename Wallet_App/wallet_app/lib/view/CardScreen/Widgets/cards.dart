@@ -10,24 +10,27 @@ class Cards extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
+
     return Expanded(
-      child: GetBuilder(
+      child: GetBuilder<CardController>(
+        ///CARD CONTROLLER
+        init: CardController(),
+        builder: (card) {
+          return Stack(
+            children: List.generate(card.cardsList.length, (index) {
+              return Positioned(
+                /// POSITION EACH CARD
+                top: deviceHeight * 0.07 * index.toDouble(),  
+                left: 0,
+                right: 0,
+                child: GestureDetector(
+                  onTap: () {
+                    ///SET SELECTED CARD
+                    card.selectCard(card.cardsList[index]);
 
-          ///CARD CONTROLLER
-          init: CardController(),
-          builder: (card) {
-            return ListView.builder(
-              itemCount: card.cardsList.reversed.length,
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () {
-                  ///SET SELECTED CARD
-                  card.selectCard(card.cardsList[index]);
-
-                  ///NAVIGATE TO CARDPAYMENT SCREEN
-                  Get.toNamed("/cardPayScreen");
-                },
-                child: Transform.translate(
-                  offset: Offset(0, -deviceHeight * 0.15 * index.toDouble()),
+                    ///NAVIGATE TO CARDPAY SCREEN
+                    Get.toNamed("/cardPayScreen");
+                  },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(deviceWidth * 0.04),
                     child: Image.asset(
@@ -38,9 +41,11 @@ class Cards extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+          );
+        },
+      ),
     );
   }
 }
