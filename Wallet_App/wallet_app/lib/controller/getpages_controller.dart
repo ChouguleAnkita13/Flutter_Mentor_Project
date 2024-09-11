@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:wallet_app/view/CardScreen/card_pay_screen.dart';
+import 'package:wallet_app/view/CardScreen/card_screen.dart';
 import 'package:wallet_app/view/HistoryScreen/history_screen.dart';
 import 'package:wallet_app/view/HomeScreen/home_screen.dart';
 import 'package:wallet_app/view/LoginScreen/create_account_screen.dart';
@@ -31,6 +33,8 @@ class GetpagesController {
     GetPage(name: "/paysuccess", page: () => const PaySuccessScreen()),
     GetPage(name: "/transfer", page: () => const TransferScreen()),
     GetPage(name: "/amountScreen", page: () => const AmountScreen()),
-    GetPage(name: "/payfailed", page: () => const PayFailedScreen())
+    GetPage(name: "/payfailed", page: () => const PayFailedScreen()),
+    GetPage(name: "/cardScreen", page: () => const CardScreen()),
+    GetPage(name: "/cardPayScreen", page: () => const CardPayScreen()),
   ];
 }
