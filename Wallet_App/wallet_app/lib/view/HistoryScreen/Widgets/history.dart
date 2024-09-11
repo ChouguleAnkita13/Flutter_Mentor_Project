@@ -126,7 +126,7 @@ class History extends StatelessWidget {
                               Text(
                                 transDetailList[index].amount > 0
                                     ? "+\$${transDetailList[index].amount.toStringAsFixed(2)}  "
-                                    : "\$${transDetailList[index].amount.toStringAsFixed(2)}  ",
+                                    : "-\$${transDetailList[index].amount.abs().toStringAsFixed(2)}  ",
                                 style: GoogleFonts.sora(
                                   fontSize: deviceWidth < 500
                                       ? deviceWidth * 0.032

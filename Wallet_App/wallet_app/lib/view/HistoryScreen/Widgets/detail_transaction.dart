@@ -62,7 +62,7 @@ class DetailTransaction extends StatelessWidget {
             child: Text(
               selectedTransaction.amount > 0
                   ? "+\$${selectedTransaction.amount.toStringAsFixed(2)}  "
-                  : "\$${selectedTransaction.amount.toStringAsFixed(2)}  ",
+                  : "-\$${selectedTransaction.amount.abs().toStringAsFixed(2)}  ",
               style: GoogleFonts.sora(
                 fontSize: deviceWidth < 500
                     ? deviceWidth * 0.055
