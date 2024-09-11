@@ -29,7 +29,7 @@ class QRPay extends StatelessWidget {
           ),
           ///TEXT
           Text(
-            "QR Pay",
+            "  QR Pay",
             style: GoogleFonts.sora(
               fontSize: deviceWidth * 0.034,
               fontWeight: FontWeight.w600,
