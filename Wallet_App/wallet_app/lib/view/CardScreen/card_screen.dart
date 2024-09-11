@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_app/view/CardScreen/Widgets/add_card_row.dart';
@@ -13,8 +11,7 @@ class CardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
-    log("${deviceWidth * 0.09}");
-    log("${deviceHeight * 0.275}");
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: Padding(
