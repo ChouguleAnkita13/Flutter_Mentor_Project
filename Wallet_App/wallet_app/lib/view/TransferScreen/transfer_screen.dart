@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_app/view/TransferScreen/Widgets/all_contacts.dart';
@@ -15,8 +13,7 @@ class TransferScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
-    log("${deviceWidth * 0.09}");
-    log("${deviceHeight * 0.14}");
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: Padding(
