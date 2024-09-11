@@ -74,7 +74,7 @@ class PayFailedScreen extends StatelessWidget {
 
                       ///BACK TO WALLET
                       GestureDetector(
-                          onTap: () => Get.toNamed("/transfer"),
+                          onTap: () => Get.toNamed("/bNavigation"),
                           child:
                               const CommonContainer(title: "Back to wallet")),
                     ]),

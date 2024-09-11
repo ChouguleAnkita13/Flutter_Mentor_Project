@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wallet_app/controller/navigation_controller.dart';
 import 'package:wallet_app/controller/transaction_controller.dart';
 import 'package:wallet_app/model/transaction_details_model.dart';
 
@@ -47,7 +48,13 @@ class LatestTransaction extends StatelessWidget {
 
               ///VIEW ALL BUTTON
               GestureDetector(
-                onTap: () => Get.toNamed("/history"),
+                onTap: () {
+                  /// UPDATE THE INDEX TO HISTORY (INDEX 1)
+                  Get.find<NavigationController>().onItemTapped(1);
+
+                  /// NAVIGATE TO THE BOTTOM NAVIGATION SCREEN
+                  Get.toNamed("/bNavigation");
+                },
                 child: Text(
                   "View All",
                   style: GoogleFonts.sora(

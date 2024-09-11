@@ -102,7 +102,7 @@ class PayDetails extends StatelessWidget {
 
         ///BACK TO WALLET
         GestureDetector(
-            onTap: () => Get.toNamed("/paybills"),
+            onTap: () => Get.toNamed("/bNavigation"),
             child: const CommonContainer(title: "Back to wallet")),
       ],
     );

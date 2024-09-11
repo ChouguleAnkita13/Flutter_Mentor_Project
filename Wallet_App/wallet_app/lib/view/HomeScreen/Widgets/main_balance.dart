@@ -129,7 +129,7 @@ class MainBalance extends StatelessWidget {
 
                 ///TRANSFER
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => Get.toNamed("/transfer"),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
