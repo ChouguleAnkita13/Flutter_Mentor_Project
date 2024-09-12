@@ -16,8 +16,11 @@ class CreateAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
+
+    ///GLOBAL KEY FOR FORM VALIDATION
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return SizedBox(
-      height: deviceHeight / 1.5,
+      height: deviceHeight / 1.6,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,14 +35,28 @@ class CreateAccount extends StatelessWidget {
               ),
             ),
 
-            ///NAME TEXTFIELD
-            const NameTextfield(),
+            ///TEXTFIELD WITH VALIDATION
 
-            ///EMAIL TEXTFIELD
-            const EmailTextfield(),
+            SizedBox(
+              height: deviceHeight / 3.5,
+              child: Form(
+                key: formKey,
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ///NAME TEXTFIELD
+                    NameTextfield(),
 
-            ///PASSWORD TEXTFIELD
-            const PasswordTextfield(),
+                    ///EMAIL TEXTFIELD
+                    EmailTextfield(),
+
+                    ///PASSWORD TEXTFIELD
+                    PasswordTextfield(),
+                  ],
+                ),
+              ),
+            ),
 
             ///ROW FOR CHECKBOX AND CONDITION TEXTSPAN
             Row(
@@ -96,7 +113,12 @@ class CreateAccount extends StatelessWidget {
 
             ///CREATE AN ACCOUNT BUTTON
             GestureDetector(
-              onTap: () => Get.toNamed("/otpScreen"),
+              onTap: () {
+                ///VALIDATE THE FORM WHEN THE BUTTON IS PRESSED
+                if (formKey.currentState!.validate()) {
+                  Get.toNamed("/otpScreen");
+                }
+              },
               child: const CommonContainer(title: "Create a new account"),
             ),
 

@@ -33,43 +33,60 @@ class PasswordTextfield extends StatelessWidget {
               cursorColor: const Color.fromRGBO(83, 93, 102, 1),
               obscureText: loginController.isPassVisible,
               decoration: InputDecoration(
+                ///HINTTEXT
+                hintText: "Enter your password",
+                hintStyle: GoogleFonts.sora(
+                  fontSize: deviceWidth * 0.03, //12
+                  fontWeight: FontWeight.w400,
+                  color: const Color.fromRGBO(186, 194, 199, 1),
+                ),
 
-                  ///HINTTEXT
-                  hintText: "Enter your password",
-                  hintStyle: GoogleFonts.sora(
-                    fontSize: deviceWidth * 0.03, //12
-                    fontWeight: FontWeight.w400,
-                    color: const Color.fromRGBO(186, 194, 199, 1),
+                ///VISIBILITY ICON
+                suffixIcon: GestureDetector(
+                  onTap: loginController.selectPasswordVisibility,
+                  child: Icon(
+                    loginController.isPassVisible
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
+                    size: deviceHeight * 0.025,
+                    color: const Color.fromRGBO(83, 93, 102, 1),
                   ),
+                ),
 
-                  ///VISIBILITY ICON
-                  suffixIcon: GestureDetector(
-                    onTap: loginController.selectPasswordVisibility,
-                    child: Icon(
-                      loginController.isPassVisible
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      size: deviceHeight * 0.025,
-                      color: const Color.fromRGBO(83, 93, 102, 1),
-                    ),
+                ///ALL BORDER DECORATION FOR TEXTFIELD
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(225, 227, 237, 1),
+                    )),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(225, 227, 237, 1),
+                    )),
+                errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(225, 227, 237, 1),
+                    )),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(4),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(225, 227, 237, 1),
                   ),
+                ),
+              ),
 
-                  ///ALL BORDER DECORATION FOR TEXTFIELD
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4),
-                      borderSide: const BorderSide(
-                        color: Color.fromRGBO(225, 227, 237, 1),
-                      )),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4),
-                      borderSide: const BorderSide(
-                        color: Color.fromRGBO(225, 227, 237, 1),
-                      )),
-                  errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4),
-                      borderSide: const BorderSide(
-                        color: Color.fromRGBO(225, 227, 237, 1),
-                      ))),
+              /// VALIDATION FUNCTION TO CHECK IF THE INPUT IS A VALID PASSWORD
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter password';
+                }
+                if (value.length < 8) {
+                  return 'Password should be at least 8 charactersa';
+                }
+                return null;
+              },
             ),
           ),
         ),

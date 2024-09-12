@@ -14,6 +14,9 @@ class ResetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
+
+    ///GLOBAL KEY FOR FORM VALIDATION
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return GetBuilder<LoginController>(
         builder: (loginController) => Container(
               ///DECORATION CONTAINER
@@ -62,13 +65,21 @@ class ResetPassword extends StatelessWidget {
                   ),
 
                   ///EMAIL TEXTFIELD OR MOBILE TEXTFIELD
-                  loginController.isUseEmail
-                      ? const EmailTextfield()
-                      : const MobileTextfield(),
+                  Form(
+                    key: formKey,
+                    child: loginController.isUseEmail
+                        ? const EmailTextfield()
+                        : const MobileTextfield(),
+                  ),
 
                   ///SEND RESET LINK
                   GestureDetector(
-                    onTap: () => Get.toNamed("/otpScreen"),
+                    onTap: () {
+                      ///VALIDATE THE FORM WHEN THE BUTTON IS PRESSED
+                      if (formKey.currentState!.validate()) {
+                        Get.toNamed("/otpScreen");
+                      }
+                    },
                     child: const CommonContainer(title: "Send reset link"),
                   ),
 

@@ -91,9 +91,8 @@ class SearchHistory extends StatelessWidget {
                         ),
 
                         ///FILTER ICON
-                        prefixIcon: Icon(Icons.menu_rounded,
-                            size: deviceHeight * 0.021,
-                            color: const Color.fromRGBO(25, 25, 25, 1)),
+                        prefixIcon:
+                            Image.asset("assets/icons/equalizer-line.png"),
 
                         ///ALL BORDER DECORATION FOR TEXTFIELD
                         enabledBorder: OutlineInputBorder(

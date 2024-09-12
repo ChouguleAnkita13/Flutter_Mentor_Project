@@ -13,6 +13,8 @@ class PasswordWidget extends StatelessWidget {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
 
+    ///GLOBAL KEY FOR FORM VALIDATION
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return Padding(
       padding: EdgeInsets.only(
           left: deviceWidth * 0.044,
@@ -38,7 +40,7 @@ class PasswordWidget extends StatelessWidget {
           ),
 
           ///TEXTFIELD FOR PASSWORD
-          const PasswordTextfield(),
+          Form(key: formKey, child: const PasswordTextfield()),
 
           SizedBox(
             height: deviceHeight * 0.01,
@@ -71,7 +73,12 @@ class PasswordWidget extends StatelessWidget {
 
           ///LOGIN BUTTON
           GestureDetector(
-            onTap: () => Get.offAllNamed("/bNavigation"),
+            onTap: () {
+              ///VALIDATE THE FORM WHEN THE BUTTON IS PRESSED
+              if (formKey.currentState!.validate()) {
+                Get.offAllNamed("/bNavigation");
+              }
+            },
             child: const CommonContainer(title: "Login"),
           ),
         ],
