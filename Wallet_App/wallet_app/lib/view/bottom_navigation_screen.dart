@@ -15,7 +15,7 @@ class BottomNavigationScreen extends StatelessWidget {
     final deviceHeight = Get.height;
 
     log("${deviceWidth * 0.09}");
-    log("${deviceHeight * 0.07}");
+    log("${deviceHeight * 0.075}");
 
     /// FINDING THE INSTANCE OF NAVIGATION CONTROLLER USING GETX
     NavigationController navigation = Get.find<NavigationController>();
@@ -26,7 +26,7 @@ class BottomNavigationScreen extends StatelessWidget {
         body: navigation.widgetList.elementAt(navigation.selectedIndex.value),
 
         bottomNavigationBar: SizedBox(
-          height: deviceHeight * 0.07, //64
+          height: deviceHeight * 0.075, //64
 
           /// BOTTOM NAVIGATION BAR
           child: BottomNavigationBar(

@@ -40,7 +40,7 @@ class RecentTransfer extends StatelessWidget {
 
           ///TRANSFERTOCONTROLLER
           SizedBox(
-            height: deviceHeight * 0.11,
+            height: deviceHeight * 0.14,
 
             ///LIST OF RECENTLY TRANSFER CONTACTS
             child: ListView.separated(
