@@ -31,7 +31,7 @@ class CardPayScreen extends StatelessWidget {
             SizedBox(height: deviceHeight * 0.04), //36
 
             SizedBox(
-              height: deviceHeight/1.2,
+              height: deviceHeight/1.215,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
