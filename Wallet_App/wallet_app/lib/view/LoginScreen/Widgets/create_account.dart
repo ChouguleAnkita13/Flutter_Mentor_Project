@@ -8,7 +8,7 @@ import 'package:wallet_app/view/LoginScreen/Widgets/password_textfield.dart';
 import 'package:wallet_app/view/Widgets/common_container.dart';
 import 'package:wallet_app/view/Widgets/continue_using.dart';
 
-/// WIDGET TO DISPLAY CHECKBOX,CREATEACCOUNT BUTTON AND TEXTFIELDS FOR NAME,EMAIL,PASSWORD
+/// WIDGET TO DISPLAY CHECKBOX, CREATEACCOUNT BUTTON, AND TEXTFIELDS FOR NAME, EMAIL, PASSWORD
 class CreateAccount extends StatelessWidget {
   const CreateAccount({super.key});
 
@@ -17,15 +17,16 @@ class CreateAccount extends StatelessWidget {
     final deviceWidth = Get.width;
     final deviceHeight = Get.height;
 
-    ///GLOBAL KEY FOR FORM VALIDATION
+    /// GLOBAL KEY FOR FORM VALIDATION
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
     return SizedBox(
       height: deviceHeight / 1.6,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ///TEXT
+            /// HEADER TEXT: CREATE ACCOUNT
             Text(
               "Create Account",
               style: GoogleFonts.sora(
@@ -35,8 +36,7 @@ class CreateAccount extends StatelessWidget {
               ),
             ),
 
-            ///TEXTFIELD WITH VALIDATION
-
+            /// FORM FIELDS: NAME, EMAIL, PASSWORD
             SizedBox(
               height: deviceHeight / 3.5,
               child: Form(
@@ -45,33 +45,36 @@ class CreateAccount extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ///NAME TEXTFIELD
+                    /// NAME TEXTFIELD WITH VALIDATION
                     NameTextfield(),
 
-                    ///EMAIL TEXTFIELD
+                    /// EMAIL TEXTFIELD WITH VALIDATION
                     EmailTextfield(),
 
-                    ///PASSWORD TEXTFIELD
+                    /// PASSWORD TEXTFIELD WITH VALIDATION
                     PasswordTextfield(),
                   ],
                 ),
               ),
             ),
 
-            ///ROW FOR CHECKBOX AND CONDITION TEXTSPAN
+            /// CHECKBOX AND CONDITIONS TEXT
             Row(
               children: [
-                ///CHECKBOX
+                /// CHECKBOX FOR ACCEPTING TERMS AND CONDITIONS
                 GetBuilder<LoginController>(
                   builder: (loginController) => Checkbox(
-                      value: loginController.isChecked,
-                      side: const BorderSide(
-                          color: Color.fromRGBO(83, 93, 102, 1)),
-                      activeColor: const Color.fromRGBO(29, 98, 202, 1),
-                      onChanged: (val) => {loginController.selectCheckBox()}),
+                    value: loginController.isChecked,
+                    side: const BorderSide(
+                        color: Color.fromRGBO(83, 93, 102, 1)),
+                    activeColor: const Color.fromRGBO(29, 98, 202, 1),
+                    onChanged: (val) => {
+                      loginController.selectCheckBox()
+                    },
+                  ),
                 ),
 
-                ///TEXTSPAN
+                /// TEXT FOR TERMS AND CONDITIONS
                 Expanded(
                   child: Text.rich(TextSpan(children: [
                     TextSpan(
@@ -111,18 +114,29 @@ class CreateAccount extends StatelessWidget {
               ],
             ),
 
-            ///CREATE AN ACCOUNT BUTTON
+            /// CREATE ACCOUNT BUTTON WITH FORM VALIDATION AND CHECKBOX VALIDATION
             GestureDetector(
               onTap: () {
-                ///VALIDATE THE FORM WHEN THE BUTTON IS PRESSED
+                /// CHECK IF FORM FIELDS ARE VALID AND IF CHECKBOX IS CHECKED
                 if (formKey.currentState!.validate()) {
-                  Get.toNamed("/otpScreen");
+                  if (Get.find<LoginController>().isChecked) {
+                    Get.toNamed("/otpScreen");
+                  } else {
+                    /// SHOW ERROR IF CHECKBOX IS NOT SELECTED
+                    Get.snackbar(
+                      "Terms and Conditions",
+                      "Please accept the terms and conditions to proceed.",
+                      snackPosition: SnackPosition.BOTTOM,
+                      backgroundColor: Colors.red,
+                      colorText: Colors.white,
+                    );
+                  }
                 }
               },
               child: const CommonContainer(title: "Create a new account"),
             ),
 
-            ///CONTINUEUSING() WIDGET TO LOGIN CONTINUE WITH FACEBOOK,GOOGLE OR IOS
+            /// CONTINUE USING WIDGET FOR OTHER LOGIN OPTIONS
             const ContinueUsing(),
           ]),
     );
