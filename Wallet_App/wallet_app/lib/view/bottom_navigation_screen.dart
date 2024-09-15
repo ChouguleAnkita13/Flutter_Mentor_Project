@@ -53,9 +53,11 @@ class BottomNavigationScreen extends StatelessWidget {
             unselectedItemColor: const Color.fromRGBO(83, 93, 102, 1),
             backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
             selectedLabelStyle: GoogleFonts.sora(
-                fontWeight: FontWeight.w600, fontSize: deviceWidth * 0.03),
+                fontWeight: FontWeight.w600, 
+                fontSize:deviceWidth<500? deviceWidth * 0.03:deviceWidth * 0.02
+                ),
             unselectedLabelStyle: GoogleFonts.sora(
-              fontWeight: FontWeight.w400, fontSize: deviceWidth * 0.03, //12
+              fontWeight: FontWeight.w400, fontSize: deviceWidth<500? deviceWidth * 0.03:deviceWidth * 0.02, //12
             ),
             type: BottomNavigationBarType.fixed,
 
