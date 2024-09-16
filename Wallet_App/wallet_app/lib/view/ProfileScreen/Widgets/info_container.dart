@@ -23,7 +23,7 @@ class InfoContainer extends StatelessWidget {
               top: deviceHeight * 0.015, bottom: deviceHeight * 0.015),
           decoration: BoxDecoration(
               border: Border(
-                  bottom: BorderSide(
+                  bottom:title == ""?BorderSide.none: BorderSide(
                       color: const Color.fromRGBO(237, 239, 246, 1),
                       width: deviceHeight * 0.0015))),
           child: Row(
