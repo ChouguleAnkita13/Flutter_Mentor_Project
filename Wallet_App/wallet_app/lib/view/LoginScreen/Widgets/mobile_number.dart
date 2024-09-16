@@ -26,13 +26,15 @@ class MobileNumber extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            width: deviceWidth / 3,
+            width: deviceWidth < 500 ? deviceWidth / 2 : deviceWidth / 3,
 
             ///TEXT
             child: Text(
               "Enter your mobile number",
               style: GoogleFonts.sora(
-                fontSize: deviceWidth<500 ? deviceWidth * 0.06: deviceWidth * 0.04, //21
+                fontSize: deviceWidth < 500
+                    ? deviceWidth * 0.06
+                    : deviceWidth * 0.04, //21
                 fontWeight: FontWeight.w600,
                 color: const Color.fromRGBO(25, 25, 25, 1),
               ),
