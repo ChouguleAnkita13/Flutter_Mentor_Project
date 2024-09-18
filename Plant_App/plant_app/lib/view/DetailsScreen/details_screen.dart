@@ -31,7 +31,7 @@ class DetailScreen extends StatelessWidget {
         children: [
           /// BACKWARD ARROW TO NAVIGATE TO THE PREVIOUS SCREEN
           Padding(
-            padding: const EdgeInsets.only(left: 30, top: 30),
+            padding: const EdgeInsets.only(left: 20, top: 30),
             child: GestureDetector(
               onTap: () {
                 Navigator.of(context).pop();
@@ -48,7 +48,7 @@ class DetailScreen extends StatelessWidget {
           PlantImageScroll(selectedPlant: selectedPlant),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

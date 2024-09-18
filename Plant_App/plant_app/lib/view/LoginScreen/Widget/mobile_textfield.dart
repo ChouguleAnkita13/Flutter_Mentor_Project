@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 ///WIDGET TO DISPLAY MOBILE TEXTFIELD
 class MobileTextfield extends StatelessWidget {
   const MobileTextfield({super.key});
@@ -11,12 +12,10 @@ class MobileTextfield extends StatelessWidget {
       margin: const EdgeInsets.only(left: 20, right: 20),
       decoration: const BoxDecoration(
         boxShadow: [
-          BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.06),
-              blurRadius: 20)
+          BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.06), blurRadius: 20)
         ],
       ),
-      child:TextFormField(
+      child: TextFormField(
         keyboardType: TextInputType.phone,
         cursorColor: const Color.fromRGBO(164, 164, 164, 1),
         decoration: InputDecoration(
@@ -29,18 +28,22 @@ class MobileTextfield extends StatelessWidget {
               color: Color.fromRGBO(164, 164, 164, 1),
             ),
           ),
+
           /// ROUNDED CORNERS AND BORDER CUSTOMIZATION
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Color.fromRGBO(204, 211, 196, 1)),
+            borderSide:
+                const BorderSide(color: Color.fromRGBO(204, 211, 196, 1)),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Color.fromRGBO(204, 211, 196, 1)),
+            borderSide:
+                const BorderSide(color: Color.fromRGBO(204, 211, 196, 1)),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Color.fromRGBO(204, 211, 196, 1)),
+            borderSide:
+                const BorderSide(color: Color.fromRGBO(204, 211, 196, 1)),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -49,8 +52,9 @@ class MobileTextfield extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
         ),
+
         ///VALIDATION
-         validator: (value) {
+        validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter your mobile number';
           } else if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) {

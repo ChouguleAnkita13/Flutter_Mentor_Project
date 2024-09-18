@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                     textStyle: const TextStyle(
                         fontSize: 30, fontWeight: FontWeight.w600)),
               ),
-
+              SizedBox(height:deviceHeight*0.02),
               /// FORM FOR VALIDATION
               Form(
                 key: formKey,
@@ -44,6 +44,7 @@ class LoginScreen extends StatelessWidget {
                 ///MOBILE NUMBER TEXTFIELD
                 child: const MobileTextfield(),
               ),
+              SizedBox(height:deviceHeight*0.02),
 
               ///LOG IN BUTTON
               GestureDetector(
@@ -60,11 +61,13 @@ class LoginScreen extends StatelessWidget {
                 ///CALLED CUSTOMCONTAINER FOR COMMON CODE
                 child: const CustomContainer(title: "Log in"),
               ),
-              Image.asset(
-                "assets/images/login.png",
-                height: deviceHeight / 2,
-                width: deviceWidth,
-                fit: BoxFit.cover,
+              Expanded(
+                child: Image.asset(
+                  "assets/images/login.png",
+                  height: deviceHeight / 2,
+                  width: deviceWidth,
+                  fit: BoxFit.cover,
+                ),
               ),
               const SizedBox(height: 30)
             ],

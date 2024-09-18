@@ -15,7 +15,7 @@ class VerificationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(251, 247, 248, 1),
       body: SizedBox(
-        height: deviceHeight / 1.87,
+        height: deviceHeight / 1.85,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

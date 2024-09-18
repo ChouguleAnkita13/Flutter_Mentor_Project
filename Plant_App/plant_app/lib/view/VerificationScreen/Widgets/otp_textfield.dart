@@ -20,11 +20,11 @@ class OTPTextfield extends StatelessWidget {
         shrinkWrap: true,
         itemCount: 4, // NUMBER OF OTP FIELDS
         separatorBuilder: (context, index) => SizedBox(
-          width: deviceWidth / 9.99,
+          width: deviceWidth /9.99,
         ),
         itemBuilder: (context, index) {
           return Container(
-            width: 56,
+            width: 53,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: const Color.fromRGBO(204, 211, 196, 1)),
@@ -42,6 +42,7 @@ class OTPTextfield extends StatelessWidget {
               controller: otpProvider.controllers[index],
               focusNode: otpProvider.focusNodes[index],
               keyboardType: TextInputType.number,
+              cursorColor: const Color.fromRGBO(204, 211, 196, 1),
               textAlign: TextAlign.center,
               maxLength: 1, // ONLY ALLOW 1 CHARACTER PER FIELD
               decoration: const InputDecoration(
