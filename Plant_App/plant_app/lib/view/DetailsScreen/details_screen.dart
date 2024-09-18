@@ -12,8 +12,11 @@ class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.sizeOf(context).width;
+
     /// RETRIEVE THE SELECTED PLANT FROM THE PROVIDER
     final selectedPlant = Provider.of<PlantController>(context).selectedPlant;
+
     /// CHECK IF A PLANT IS SELECTED
     if (selectedPlant == null) {
       return const Scaffold(
@@ -40,6 +43,7 @@ class DetailScreen extends StatelessWidget {
               ),
             ),
           ),
+
           /// PLANT IMAGE CAROUSEL WITH THE SELECTED PLANT'S IMAGES
           PlantImageScroll(selectedPlant: selectedPlant),
           Expanded(
@@ -56,7 +60,7 @@ class DetailScreen extends StatelessWidget {
                             fontSize: 22, fontWeight: FontWeight.w600)),
                   ),
                   SizedBox(
-                    width: MediaQuery.sizeOf(context).width / 1.2,
+                    width: deviceWidth / 1.2,
                     child: Text(
                       "Plansts make your life with minimal and happy love the plants more and enjoy life.",
                       style: GoogleFonts.poppins(
@@ -66,6 +70,7 @@ class DetailScreen extends StatelessWidget {
                               fontWeight: FontWeight.w400)),
                     ),
                   ),
+
                   /// TO DISPLAY ADDITIONAL DETAILS OF PLANT ,PLANTDETAILSCONTAINER() CALLED
                   const PlantDetailsContainer()
                 ],

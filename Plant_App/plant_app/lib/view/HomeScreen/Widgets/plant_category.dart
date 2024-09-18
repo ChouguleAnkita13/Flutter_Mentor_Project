@@ -13,10 +13,12 @@ class PlantCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     log("In PlantCategory build");
+    final deviceHeight = MediaQuery.sizeOf(context).height;
+
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: SizedBox(
-        height: MediaQuery.sizeOf(context).height / 1.7,
+        height: deviceHeight / 1.7,
         child: Consumer<PlantController>(
 
             /// THE CONSUMER WIDGET LISTENS TO CHANGES IN THE PLANTCONTROLLER

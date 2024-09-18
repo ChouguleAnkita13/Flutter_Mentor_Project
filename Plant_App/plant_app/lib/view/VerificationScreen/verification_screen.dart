@@ -9,10 +9,12 @@ class VerificationScreen extends StatelessWidget {
   const VerificationScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.sizeOf(context).height;
+    final deviceWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(251, 247, 248, 1),
       body: SizedBox(
-        height: MediaQuery.sizeOf(context).height / 1.87,
+        height: deviceHeight / 1.87,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -22,7 +24,7 @@ class VerificationScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(
-                height: MediaQuery.sizeOf(context).height / 4,
+                height: deviceHeight / 4,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,9 +35,10 @@ class VerificationScreen extends StatelessWidget {
                           textStyle: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w700)),
                     ),
+
                     ///TEXT
                     SizedBox(
-                      width: MediaQuery.sizeOf(context).width / 1.4,
+                      width: deviceWidth / 1.4,
                       child: Text(
                         "Enter the OTP code from the phone we just sent you.",
                         style: GoogleFonts.poppins(
@@ -45,8 +48,10 @@ class VerificationScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400)),
                       ),
                     ),
+
                     ///TO DISPLAY OTP TEXTFIELDS CALLED TO OTPTEXTFIELD()
                     const OTPTextfield(),
+
                     ///TEXTSPAN
                     Text.rich(TextSpan(children: [
                       TextSpan(
@@ -68,12 +73,14 @@ class VerificationScreen extends StatelessWidget {
                 ),
               ),
             ),
+
             ///BUTTON TO NAVIGATE TO HOMEPAGE
             GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const HomeScreen()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const HomeScreen()));
                 },
+
                 ///CALLED CUSTOMCONTAINER
                 child: const CustomContainer(title: "Submit")),
           ],

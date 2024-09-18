@@ -8,6 +8,7 @@ class OfferRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.sizeOf(context).width;
     return Column(
       children: [
         SizedBox(
@@ -18,8 +19,8 @@ class OfferRow extends StatelessWidget {
               itemCount: 3,
               itemBuilder: (context, index) {
                 return Container(
-                  width: MediaQuery.sizeOf(context).width - 100,
-                  margin: const EdgeInsets.only(left: 20,right: 20),
+                  width: deviceWidth - 100,
+                  margin: const EdgeInsets.only(left: 20, right: 20),
                   padding: const EdgeInsets.only(left: 30, right: 20),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -65,6 +66,7 @@ class OfferRow extends StatelessWidget {
               }),
         ),
         const SizedBox(height: 8),
+
         ///SMOOTHPAGEINDICATOR TO SCROLL THE OFFERS PAGES WITH INDICATOR
         SmoothPageIndicator(
             controller: _controller,

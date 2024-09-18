@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 /// A WIDGET THAT DISPLAYS ADDITIONAL DETAILS OF PLANT.
 class PlantDetailsContainer extends StatelessWidget {
   const PlantDetailsContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.sizeOf(context).height;
+    final deviceWidth = MediaQuery.sizeOf(context).width;
+
     return Container(
-        height: MediaQuery.sizeOf(context).height / 4,
-        width: MediaQuery.sizeOf(context).width,
+        height: deviceHeight / 4,
+        width: deviceWidth,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: const Color.fromRGBO(118, 152, 75, 1)),
@@ -54,6 +58,7 @@ class PlantDetailsContainer extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   ///TEMPERATURE
                   Column(
                     children: [
@@ -86,6 +91,7 @@ class PlantDetailsContainer extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   /// CIRAMIC POT
                   Column(
                     children: [
@@ -118,6 +124,7 @@ class PlantDetailsContainer extends StatelessWidget {
                   )
                 ],
               ),
+
               ///TOTAL PRICE AND ADD TO CARD BUTTON
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,11 +151,12 @@ class PlantDetailsContainer extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   ///ADD TO CART BUTTON
                   GestureDetector(
-                    onTap: (){},
+                    onTap: () {},
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width / 3,
+                      width: deviceWidth / 3,
                       height: 48,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(

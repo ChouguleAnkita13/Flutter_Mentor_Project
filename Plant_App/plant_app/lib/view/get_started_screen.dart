@@ -9,6 +9,8 @@ class GetStarted extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.sizeOf(context).height;
+    final deviceWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(251, 247, 248, 1),
       body: Column(
@@ -17,8 +19,8 @@ class GetStarted extends StatelessWidget {
           Image.asset(
             "assets/images/getstarted.png",
             fit: BoxFit.cover,
-            height: MediaQuery.sizeOf(context).height / 1.5,
-            width: MediaQuery.sizeOf(context).width,
+            height: deviceHeight / 1.5,
+            width: deviceWidth,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

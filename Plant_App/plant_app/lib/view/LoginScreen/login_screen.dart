@@ -8,13 +8,16 @@ class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.sizeOf(context).height;
+    final deviceWidth = MediaQuery.sizeOf(context).width;
+
     ///GLOBALKEY(FORMKEY) FOR VALIDATION
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(251, 247, 248, 1),
       body: SingleChildScrollView(
         child: SizedBox(
-          height: MediaQuery.sizeOf(context).height,
+          height: deviceHeight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -56,8 +59,8 @@ class LoginScreen extends StatelessWidget {
                   child: const CustomContainer(title: "Log in")),
               Image.asset(
                 "assets/images/login.png",
-                height: MediaQuery.sizeOf(context).height / 2,
-                width: MediaQuery.sizeOf(context).width,
+                height: deviceHeight / 2,
+                width: deviceWidth,
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 30)

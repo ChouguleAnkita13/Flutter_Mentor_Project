@@ -5,6 +5,7 @@ class OTPTextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.sizeOf(context).width;
     return SizedBox(
       height: 56,
       child: ListView.separated(
@@ -12,7 +13,7 @@ class OTPTextfield extends StatelessWidget {
         shrinkWrap: true,
         itemCount: 4,
         separatorBuilder: (context, index) => SizedBox(
-          width: MediaQuery.sizeOf(context).width / 9.99,
+          width: deviceWidth / 9.99,
         ),
         itemBuilder: (context, index) {
           return Container(

@@ -7,9 +7,10 @@ class CustomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.sizeOf(context).width;
     return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20,bottom: 30),
-      width: MediaQuery.sizeOf(context).width,
+      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+      width: deviceWidth,
       height: 50,
       alignment: Alignment.center,
       decoration: BoxDecoration(

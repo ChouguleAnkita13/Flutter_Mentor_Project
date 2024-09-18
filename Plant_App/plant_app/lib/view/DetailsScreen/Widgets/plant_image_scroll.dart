@@ -13,10 +13,12 @@ class PlantImageScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.sizeOf(context).height;
+    final deviceWidth = MediaQuery.sizeOf(context).width;
     return Column(
       children: [
         SizedBox(
-          height: MediaQuery.sizeOf(context).height / 2,
+          height: deviceHeight / 2,
           child: PageView.builder(
               controller: _controller,
               scrollDirection: Axis.horizontal,
@@ -24,12 +26,13 @@ class PlantImageScroll extends StatelessWidget {
               itemBuilder: (context, snapshot) {
                 return Image.asset(
                   selectedPlant.plantImg,
-                  height: MediaQuery.sizeOf(context).height / 2,
-                  width: MediaQuery.sizeOf(context).width,
+                  height: deviceHeight / 2,
+                  width: deviceWidth,
                   fit: BoxFit.contain,
                 );
               }),
         ),
+
         ///SMOOTHPAGEINDICATOR TO SCROLL THE PLANT IMAGES WITH INDICATOR
         SmoothPageIndicator(
           controller: _controller,
