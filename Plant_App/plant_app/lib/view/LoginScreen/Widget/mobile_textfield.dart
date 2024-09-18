@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+///WIDGET TO DISPLAY MOBILE TEXTFIELD
 class MobileTextfield extends StatelessWidget {
   const MobileTextfield({super.key});
 
@@ -30,7 +30,7 @@ class MobileTextfield extends StatelessWidget {
             ),
           ),
           /// ROUNDED CORNERS AND BORDER CUSTOMIZATION
-          border: OutlineInputBorder(
+          focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(color: Color.fromRGBO(204, 211, 196, 1)),
           ),
