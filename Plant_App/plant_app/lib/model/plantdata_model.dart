@@ -1,9 +1,9 @@
-/// Model representing a single plant data item.
+/// MODEL REPRESENTING A SINGLE PLANT DATA ITEM.
 class PlantdataModel {
-  final int id;             // Unique identifier for the plant
-  final String plantImg;    // URL or asset path to the plant image
-  final String plantName;   // Name of the plant
-  final double price;       // Price of the plant
+  final int id;             // UNIQUE IDENTIFIER FOR THE PLANT
+  final String plantImg;    // URL OR ASSET PATH TO THE PLANT IMAGE
+  final String plantName;   // NAME OF THE PLANT
+  final double price;       // PRICE OF THE PLANT
 
   const PlantdataModel({
     required this.id,

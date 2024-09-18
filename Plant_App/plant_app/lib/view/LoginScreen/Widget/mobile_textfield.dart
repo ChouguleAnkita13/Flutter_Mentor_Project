@@ -7,7 +7,7 @@ class MobileTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // Container for box shadow
+      /// CONTAINER FOR BOX SHADOW
       margin: const EdgeInsets.only(left: 20, right: 20),
       decoration: const BoxDecoration(
         boxShadow: [
@@ -29,7 +29,7 @@ class MobileTextfield extends StatelessWidget {
               color: Color.fromRGBO(164, 164, 164, 1),
             ),
           ),
-          // Rounded corners and border customization
+          /// ROUNDED CORNERS AND BORDER CUSTOMIZATION
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(color: Color.fromRGBO(204, 211, 196, 1)),
@@ -49,7 +49,7 @@ class MobileTextfield extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
         ),
-        //Validation
+        ///VALIDATION
          validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter your mobile number';

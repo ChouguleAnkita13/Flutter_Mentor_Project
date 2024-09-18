@@ -21,37 +21,37 @@ class GetStarted extends StatelessWidget {
             width: MediaQuery.sizeOf(context).width,
           ),
           Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Enjoy your",
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Enjoy your",
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                        fontSize: 34, fontWeight: FontWeight.w400)),
+              ),
+              Text.rich(TextSpan(children: [
+                TextSpan(
+                  text: "life with ",
                   style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                           fontSize: 34, fontWeight: FontWeight.w400)),
                 ),
-                Text.rich(TextSpan(children: [
-                  TextSpan(
-                    text: "life with ",
-                    style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                            fontSize: 34, fontWeight: FontWeight.w400)),
-                  ),
-                  TextSpan(
-                    text: "Plants",
-                    style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                            fontSize: 34, fontWeight: FontWeight.w600)),
-                  ),
-                ])),
-              ],
-            ),
-          
+                TextSpan(
+                  text: "Plants",
+                  style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                          fontSize: 34, fontWeight: FontWeight.w600)),
+                ),
+              ])),
+            ],
+          ),
           GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const LoginScreen()));
               },
-              // Called CustomContainer 
+
+              /// CALLED CUSTOMCONTAINER
               child: const CustomContainer(
                 title: "Get Started",
               )),

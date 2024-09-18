@@ -5,16 +5,16 @@ import 'package:plant_app/view/DetailsScreen/Widgets/plant_image_scroll.dart';
 import 'package:plant_app/controller/plant_controller.dart';
 import 'package:provider/provider.dart';
 
-/// A screen that displays detailed information about a selected plant.
+/// A SCREEN THAT DISPLAYS DETAILED INFORMATION ABOUT A SELECTED PLANT.
 ///
-/// It includes a scrolling image carousel and detailed plant information.
+/// IT INCLUDES A SCROLLING IMAGE CAROUSEL AND DETAILED PLANT INFORMATION.
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    // Retrieve the selected plant from the provider
+    /// RETRIEVE THE SELECTED PLANT FROM THE PROVIDER
     final selectedPlant = Provider.of<PlantController>(context).selectedPlant;
-    // Check if a plant is selected
+    /// CHECK IF A PLANT IS SELECTED
     if (selectedPlant == null) {
       return const Scaffold(
         body: Center(child: Text('No plant selected')),
@@ -26,7 +26,7 @@ class DetailScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Backward arrow to navigate to the previous screen
+          /// BACKWARD ARROW TO NAVIGATE TO THE PREVIOUS SCREEN
           Padding(
             padding: const EdgeInsets.only(left: 30, top: 30),
             child: GestureDetector(
@@ -40,7 +40,7 @@ class DetailScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Plant image carousel with the selected plant's images
+          /// PLANT IMAGE CAROUSEL WITH THE SELECTED PLANT'S IMAGES
           PlantImageScroll(selectedPlant: selectedPlant),
           Expanded(
             child: Padding(
@@ -66,7 +66,7 @@ class DetailScreen extends StatelessWidget {
                               fontWeight: FontWeight.w400)),
                     ),
                   ),
-                  // To Display additional details of plant ,PlantDetailsContainer() called
+                  /// TO DISPLAY ADDITIONAL DETAILS OF PLANT ,PLANTDETAILSCONTAINER() CALLED
                   const PlantDetailsContainer()
                 ],
               ),

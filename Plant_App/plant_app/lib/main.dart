@@ -14,7 +14,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create:(context)=>PlantController(),// Provide PlantController to the widget tree.
+      create: (context) => PlantController(),
+
+      /// PROVIDE PLANTCONTROLLER TO THE WIDGET TREE.
       child: const MaterialApp(
         home: GetStarted(),
         debugShowCheckedModeBanner: false,

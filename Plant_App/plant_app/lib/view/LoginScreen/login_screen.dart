@@ -3,13 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/view/LoginScreen/widget/mobile_textfield.dart';
 import 'package:plant_app/view/custom_container.dart';
 import 'package:plant_app/view/VerificationScreen/verification_screen.dart';
-// import 'package:plantapp/verification.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    //GlobalKey(formKey) for validation
+    ///GLOBALKEY(FORMKEY) FOR VALIDATION
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(251, 247, 248, 1),
@@ -32,13 +31,16 @@ class LoginScreen extends StatelessWidget {
                     textStyle: const TextStyle(
                         fontSize: 30, fontWeight: FontWeight.w600)),
               ),
-              // Form for validation
+
+              /// FORM FOR VALIDATION
               Form(
                 key: formKey,
-                      //Mobile Number TextField
+
+                ///MOBILE NUMBER TEXTFIELD
                 child: const MobileTextfield(),
               ),
-              //Log in Button
+
+              ///LOG IN BUTTON
               GestureDetector(
                   onTap: () {
                     if (formKey.currentState!.validate()) {
@@ -49,7 +51,8 @@ class LoginScreen extends StatelessWidget {
                       );
                     }
                   },
-                  //Called CustomContainer for common code
+
+                  ///CALLED CUSTOMCONTAINER FOR COMMON CODE
                   child: const CustomContainer(title: "Log in")),
               Image.asset(
                 "assets/images/login.png",

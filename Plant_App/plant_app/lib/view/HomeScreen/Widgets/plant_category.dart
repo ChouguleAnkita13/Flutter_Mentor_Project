@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../DetailsScreen/details_screen.dart';
 
-/// List view displaying a list of plants.
+/// LIST VIEW DISPLAYING A LIST OF PLANTS.
 class PlantCategory extends StatelessWidget {
   const PlantCategory({super.key});
   @override
@@ -18,7 +18,8 @@ class PlantCategory extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.sizeOf(context).height / 1.7,
         child: Consumer<PlantController>(
-            // The Consumer widget listens to changes in the PlantController
+
+            /// THE CONSUMER WIDGET LISTENS TO CHANGES IN THE PLANTCONTROLLER
 
             builder: (context, plantController, snapshot) {
           final List plantList = plantController.plantList;
@@ -30,7 +31,7 @@ class PlantCategory extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //Plant type
+                  ///PLANT TYPE
                   Text(
                     plantList[index].type,
                     style: GoogleFonts.poppins(
@@ -39,7 +40,8 @@ class PlantCategory extends StatelessWidget {
                             fontSize: 20,
                             fontWeight: FontWeight.w500)),
                   ),
-                  //to display list of plantdata
+
+                  ///TO DISPLAY LIST OF PLANTDATA
                   SizedBox(
                     height: 200,
                     child: ListView.builder(
@@ -66,10 +68,10 @@ class PlantCategory extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                //Plant Image
+                                ///PLANT IMAGE
                                 GestureDetector(
                                   onTap: () {
-                                    // Set the selected plant and navigate to the details screen
+                                    /// SET THE SELECTED PLANT AND NAVIGATE TO THE DETAILS SCREEN
 
                                     plantController.selectPlant(
                                         plantList[index].plantData[idx]);
@@ -87,7 +89,8 @@ class PlantCategory extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                //Plant Name
+
+                                ///PLANT NAME
                                 Text(
                                   plantList[index].plantData[idx].plantName,
                                   style: GoogleFonts.dmSans(
@@ -96,7 +99,8 @@ class PlantCategory extends StatelessWidget {
                                           fontSize: 13.16,
                                           fontWeight: FontWeight.w400)),
                                 ),
-                                //Plant Price and button
+
+                                ///PLANT PRICE AND BUTTON
                                 Row(
                                   children: [
                                     Text(
@@ -133,7 +137,8 @@ class PlantCategory extends StatelessWidget {
                 ],
               );
             }),
-            //seperator line
+
+            ///SEPERATOR LINE
             separatorBuilder: ((context, index) {
               return Container(
                 margin: const EdgeInsets.only(right: 10, bottom: 10),

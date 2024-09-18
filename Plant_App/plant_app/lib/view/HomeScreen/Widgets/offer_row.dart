@@ -65,7 +65,7 @@ class OfferRow extends StatelessWidget {
               }),
         ),
         const SizedBox(height: 8),
-        //SmoothPageIndicator to scroll the offers pages with indicator
+        ///SMOOTHPAGEINDICATOR TO SCROLL THE OFFERS PAGES WITH INDICATOR
         SmoothPageIndicator(
             controller: _controller,
             count: 3,

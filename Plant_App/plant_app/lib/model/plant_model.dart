@@ -1,9 +1,9 @@
 import 'package:plant_app/model/plantdata_model.dart';
 
-/// Model representing a category of plants.
+/// MODEL REPRESENTING A CATEGORY OF PLANTS.
 class PlantModel {
-  final String type;                 // Type of plants, e.g., "Indoor" or "Outdoor"
-  final List<PlantdataModel> plantData;  // List of plants under this category
+  final String type; /// TYPE OF PLANTS, E.G., "INDOOR" OR "OUTDOOR"
+  final List<PlantdataModel> plantData; /// LIST OF PLANTS UNDER THIS CATEGORY
 
   const PlantModel({
     required this.type,

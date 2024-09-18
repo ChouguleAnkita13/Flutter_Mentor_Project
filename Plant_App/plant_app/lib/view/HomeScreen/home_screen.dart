@@ -18,11 +18,11 @@ class HomeScreen extends StatelessWidget {
                 offset: const Offset(0.0, -30.0),
                 child: Image.asset("assets/images/Group3.png")),
           ),
-          //Find plants Row
+          ///FIND PLANTS ROW
           const FindPlantsRow(),
-          //to display list of offers called OfferRow()
+          ///TO DISPLAY LIST OF OFFERS CALLED OFFERROW()
           OfferRow(),
-          //to display List  of plants with category called PlantCategory()
+          ///TO DISPLAY LIST  OF PLANTS WITH CATEGORY CALLED PLANTCATEGORY()
           const PlantCategory()
         ],
       ),

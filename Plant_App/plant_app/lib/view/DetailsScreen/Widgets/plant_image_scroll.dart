@@ -3,9 +3,9 @@ import 'package:plant_app/model/plantdata_model.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-/// A widget that displays a scrollable carousel of plant images.
+/// A WIDGET THAT DISPLAYS A SCROLLABLE CAROUSEL OF PLANT IMAGES.
 ///
-/// It includes a page indicator that allows users to navigate through the images.
+/// IT INCLUDES A PAGE INDICATOR THAT ALLOWS USERS TO NAVIGATE THROUGH THE IMAGES.
 class PlantImageScroll extends StatelessWidget {
   PlantImageScroll({super.key, required this.selectedPlant});
   final PlantdataModel selectedPlant;
@@ -30,7 +30,7 @@ class PlantImageScroll extends StatelessWidget {
                 );
               }),
         ),
-        //SmoothPageIndicator to scroll the plant images with indicator
+        ///SMOOTHPAGEINDICATOR TO SCROLL THE PLANT IMAGES WITH INDICATOR
         SmoothPageIndicator(
           controller: _controller,
           count: 3,

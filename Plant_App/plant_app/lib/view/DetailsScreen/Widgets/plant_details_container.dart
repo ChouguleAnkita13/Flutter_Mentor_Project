@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-/// A widget that displays additional details of plant.
+/// A WIDGET THAT DISPLAYS ADDITIONAL DETAILS OF PLANT.
 class PlantDetailsContainer extends StatelessWidget {
   const PlantDetailsContainer({super.key});
 
@@ -18,11 +18,11 @@ class PlantDetailsContainer extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Plant height,Temprature,Ciramic Pot
+              /// PLANT HEIGHT,TEMPRATURE,CIRAMIC POT
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  //Plant height
+                  ///PLANT HEIGHT
                   Column(
                     children: [
                       Image.asset(
@@ -54,7 +54,7 @@ class PlantDetailsContainer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  //Temperature
+                  ///TEMPERATURE
                   Column(
                     children: [
                       Image.asset(
@@ -86,7 +86,7 @@ class PlantDetailsContainer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // Ciramic Pot
+                  /// CIRAMIC POT
                   Column(
                     children: [
                       Image.asset(
@@ -118,11 +118,11 @@ class PlantDetailsContainer extends StatelessWidget {
                   )
                 ],
               ),
-              //Total Price and Add to card button
+              ///TOTAL PRICE AND ADD TO CARD BUTTON
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  //Total Price
+                  ///TOTAL PRICE
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -144,7 +144,7 @@ class PlantDetailsContainer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  //Add to cart Button
+                  ///ADD TO CART BUTTON
                   GestureDetector(
                     onTap: (){},
                     child: Container(

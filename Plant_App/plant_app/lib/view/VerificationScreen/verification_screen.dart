@@ -16,7 +16,7 @@ class VerificationScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ///For Row with arrow icon and image called CustomToprow()
+            ///FOR ROW WITH ARROW ICON AND IMAGE CALLED CUSTOMTOPROW()
             const CustomToprow(),
 
             Padding(
@@ -33,7 +33,7 @@ class VerificationScreen extends StatelessWidget {
                           textStyle: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w700)),
                     ),
-                    //Text
+                    ///TEXT
                     SizedBox(
                       width: MediaQuery.sizeOf(context).width / 1.4,
                       child: Text(
@@ -45,9 +45,9 @@ class VerificationScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400)),
                       ),
                     ),
-                    ///To display otp textFields called to OTPTextField()
+                    ///TO DISPLAY OTP TEXTFIELDS CALLED TO OTPTEXTFIELD()
                     const OTPTextfield(),
-                    ///TextSpan
+                    ///TEXTSPAN
                     Text.rich(TextSpan(children: [
                       TextSpan(
                         text: "Don’t receive OTP code! ",
@@ -68,13 +68,13 @@ class VerificationScreen extends StatelessWidget {
                 ),
               ),
             ),
-            //Button to navigate to homepage
+            ///BUTTON TO NAVIGATE TO HOMEPAGE
             GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => const HomeScreen()));
                 },
-                //Called CustomContainer
+                ///CALLED CUSTOMCONTAINER
                 child: const CustomContainer(title: "Submit")),
           ],
         ),
