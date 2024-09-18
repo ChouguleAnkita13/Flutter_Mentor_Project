@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:plant_app/controller/otp_controller.dart';
+import 'package:provider/provider.dart';
 
-///WIDGET TO DISPLAY OTP TEXTFIELDS
+/// WIDGET TO DISPLAY OTP TEXTFIELDS
 class OTPTextfield extends StatelessWidget {
   const OTPTextfield({super.key});
 
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.sizeOf(context).width;
+
+    // ACCESS THE OTPCONTROLLER TO HANDLE TEXTFIELDS AND FOCUS NODES
+    final otpProvider = Provider.of<OTPController>(context);
+
     return SizedBox(
       height: 56,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: 4, // NUMBER OF OTP FIELDS
         separatorBuilder: (context, index) => SizedBox(
           width: deviceWidth / 9.99,
         ),
@@ -24,16 +30,26 @@ class OTPTextfield extends StatelessWidget {
               border: Border.all(color: const Color.fromRGBO(204, 211, 196, 1)),
               boxShadow: const [
                 BoxShadow(
-                    color: Color.fromRGBO(0, 0, 0, 0.06),
-                    offset: Offset(0, 8),
-                    blurRadius: 20)
+                  color: Color.fromRGBO(0, 0, 0, 0.06),
+                  offset: Offset(0, 8),
+                  blurRadius: 20,
+                )
               ],
               color: Colors.white,
             ),
-            child: const TextField(
-              decoration: InputDecoration(border: InputBorder.none),
+            child: TextField(
+              // CONTROLLER AND FOCUS NODE MANAGED BY OTPCONTROLLER
+              controller: otpProvider.controllers[index],
+              focusNode: otpProvider.focusNodes[index],
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
+              maxLength: 1, // ONLY ALLOW 1 CHARACTER PER FIELD
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                counterText: '',
+              ),
+              // HANDLE USER INPUT AND SHIFT FOCUS ACCORDINGLY
+              onChanged: (value) => otpProvider.handleInput(value, index),
             ),
           );
         },
