@@ -5,6 +5,7 @@ import 'package:plant_app/view/VerificationScreen/Widgets/custom_toprow.dart';
 import 'package:plant_app/view/VerificationScreen/Widgets/otp_textfield.dart';
 import 'package:plant_app/view/custom_container.dart';
 
+///WIDGET TO DISPLAY VERIFICATION SCREEN WITH OTP
 class VerificationScreen extends StatelessWidget {
   const VerificationScreen({super.key});
   @override
@@ -18,9 +19,8 @@ class VerificationScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ///FOR ROW WITH ARROW ICON AND IMAGE CALLED CUSTOMTOPROW()
+            ///FOR ROW WITH BACK ARROW ICON AND IMAGE CALLED CUSTOMTOPROW()
             const CustomToprow(),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(
@@ -29,6 +29,7 @@ class VerificationScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    ///VERIFICATION TEXT
                     Text(
                       "Verification",
                       style: GoogleFonts.poppins(
@@ -62,6 +63,8 @@ class VerificationScreen extends StatelessWidget {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500)),
                       ),
+
+                      ///RESEND
                       TextSpan(
                         text: "Resend",
                         style: GoogleFonts.poppins(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+///WIDGET TO DISPLAY OFFERS OF PLANTS  WITH PAGEBUILDER AND SMOOTHPAGEINDICATOR
 class OfferRow extends StatelessWidget {
   OfferRow({super.key});
   final PageController _controller = PageController();
@@ -31,6 +32,7 @@ class OfferRow extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          ///DISCOUNT
                           Text(
                             "30% OFF",
                             style: GoogleFonts.poppins(
@@ -42,6 +44,8 @@ class OfferRow extends StatelessWidget {
                           const SizedBox(
                             height: 2,
                           ),
+
+                          ///DATE
                           Text(
                             "02-23 April",
                             style: GoogleFonts.poppins(
@@ -55,6 +59,8 @@ class OfferRow extends StatelessWidget {
                       const Spacer(),
                       SizedBox(
                         width: 120,
+
+                        ///IMAGE OF PLANT
                         child: Image.asset(
                           "assets/images/spiderPlant.png",
                           fit: BoxFit.cover,

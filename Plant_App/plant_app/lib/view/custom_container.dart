@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+///WIDGET TO DISPLAY COMMON CONTAINER FOR BUTTONS DECORATION
 class CustomContainer extends StatelessWidget {
   const CustomContainer({super.key, required this.title});
   final String title;

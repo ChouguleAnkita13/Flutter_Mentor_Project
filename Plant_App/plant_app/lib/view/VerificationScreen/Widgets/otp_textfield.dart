@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///WIDGET TO DISPLAY OTP TEXTFIELDS
 class OTPTextfield extends StatelessWidget {
   const OTPTextfield({super.key});
 

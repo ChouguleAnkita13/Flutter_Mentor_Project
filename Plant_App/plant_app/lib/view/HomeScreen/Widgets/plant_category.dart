@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../DetailsScreen/details_screen.dart';
 
-/// LIST VIEW DISPLAYING A LIST OF PLANTS.
+///WIDGET TO DISPLAY LIST OF PLANTES WITH CATEGORIES
 class PlantCategory extends StatelessWidget {
   const PlantCategory({super.key});
   @override
@@ -27,6 +27,7 @@ class PlantCategory extends StatelessWidget {
           final List plantList = plantController.plantList;
           log("In Consumer PlantController");
 
+          /// LIST VIEW DISPLAYING A LIST OF PLANTS.
           return ListView.separated(
             itemCount: plantList.length,
             itemBuilder: ((context, index) {

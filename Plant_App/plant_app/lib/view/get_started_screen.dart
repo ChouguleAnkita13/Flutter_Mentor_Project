@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/view/custom_container.dart';
 import 'package:plant_app/view/LoginScreen/login_screen.dart';
-
+///WIDGET TO DISPLAY GET STARTED SCREEN
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
 
@@ -16,6 +15,7 @@ class GetStarted extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          ///IMAGE
           Image.asset(
             "assets/images/getstarted.png",
             fit: BoxFit.cover,
@@ -25,6 +25,7 @@ class GetStarted extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ///TEXT
               Text(
                 "Enjoy your",
                 style: GoogleFonts.poppins(
@@ -47,6 +48,7 @@ class GetStarted extends StatelessWidget {
               ])),
             ],
           ),
+          ///BUTTON TO NAVIGATE LOGIN SCREEN
           GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(

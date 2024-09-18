@@ -4,6 +4,7 @@ import 'package:plant_app/view/LoginScreen/widget/mobile_textfield.dart';
 import 'package:plant_app/view/custom_container.dart';
 import 'package:plant_app/view/VerificationScreen/verification_screen.dart';
 
+///WIDGET TO DISPLAY LOGIN SCREEN 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
   @override
@@ -28,6 +29,7 @@ class LoginScreen extends StatelessWidget {
                     child: Image.asset("assets/images/Group1.png")),
               ),
 
+              ///TEXT
               Text(
                 "Log in",
                 style: GoogleFonts.poppins(
@@ -45,18 +47,19 @@ class LoginScreen extends StatelessWidget {
 
               ///LOG IN BUTTON
               GestureDetector(
-                  onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const VerificationScreen(),
-                        ),
-                      );
-                    }
-                  },
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const VerificationScreen(),
+                      ),
+                    );
+                  }
+                },
 
-                  ///CALLED CUSTOMCONTAINER FOR COMMON CODE
-                  child: const CustomContainer(title: "Log in")),
+                ///CALLED CUSTOMCONTAINER FOR COMMON CODE
+                child: const CustomContainer(title: "Log in"),
+              ),
               Image.asset(
                 "assets/images/login.png",
                 height: deviceHeight / 2,
