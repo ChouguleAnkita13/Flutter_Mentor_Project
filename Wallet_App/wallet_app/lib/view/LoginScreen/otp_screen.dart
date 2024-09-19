@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wallet_app/controller/login_controller.dart';
 import 'package:wallet_app/view/Widgets/common_backrow.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+
 ///WIDGET TO DISPLAY OTP AND REQUIRED TEXTS
 class OTPScreen extends StatelessWidget {
   const OTPScreen({super.key});
@@ -18,7 +19,7 @@ class OTPScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: deviceWidth * 0.044, vertical: deviceHeight * 0.06),
         child: SizedBox(
-          height: deviceHeight / 2.5,
+          height: deviceHeight / 2.8,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -51,25 +52,60 @@ class OTPScreen extends StatelessWidget {
               ),
 
               ///OTPTEXTFIELD()
-              GetBuilder<LoginController>(
-                builder: (loginController) => OtpTextField(
-                  numberOfFields: 6,
-                  enabledBorderColor: !loginController.isSubmitOtp
-                      ? const Color.fromRGBO(87, 50, 191, 1)
-                      : const Color.fromRGBO(77, 166, 107, 1),
-                  margin: const EdgeInsets.only(right: 0),
-                  textStyle: GoogleFonts.sora(
-                    fontSize: deviceWidth * 0.075, //36
-                    fontWeight: FontWeight.w400,
-                    color: const Color.fromRGBO(25, 25, 25, 1),
-                  ),
 
-                  ///RUNS WHEN EVERY TEXTFIELD IS FILLED
-                  onSubmit: (String verificationCode) {
-                    loginController.updateOtpStatus();
-                    ///ONCE OTP SUBMITTED NAVIGATE TO LOGIN SCREEN AFTER GIVEN TIME
-                    Future.delayed(const Duration(seconds:3),()=>Get.toNamed("/login"));
-                  },
+              GetBuilder<LoginController>(
+                builder: (loginController) => Container(
+                  width: deviceWidth / 1.55,
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                              color: !loginController.isSubmitOtp
+                                  ? const Color.fromRGBO(87, 50, 191, 1)
+                                  : const Color.fromRGBO(77, 166, 107, 1),
+                              width: 2))),
+                  child: Row(
+                    children: [
+                      OtpTextField(
+                        numberOfFields: 6,
+                        margin: const EdgeInsets.only(right: 0, left: 0),
+                        textStyle: GoogleFonts.sora(
+                          fontSize: deviceWidth * 0.065,
+                          fontWeight: FontWeight.w400,
+                          color: const Color.fromRGBO(25, 25, 25, 1),
+                        ),
+                        alignment: Alignment.center,
+                        hasCustomInputDecoration: true,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          counterText: '',
+                          hintText: "X",
+                          hintStyle: GoogleFonts.sora(
+                            fontSize: deviceWidth * 0.065,
+                            fontWeight: FontWeight.w400,
+                            color: const Color.fromRGBO(120, 131, 141, 1),
+                          ),
+                        ),
+
+                        ///RUNS WHEN EVERY TEXTFIELD IS FILLED
+                        onSubmit: (String verificationCode) {
+                          loginController.updateOtpStatus();
+
+                          ///ONCE OTP SUBMITTED NAVIGATE TO LOGIN SCREEN AFTER GIVEN TIME
+                          Future.delayed(const Duration(seconds: 5),
+                              () => Get.toNamed("/login"));
+                        },
+                      ),
+
+                      ///IF OTP SUBMITTED CHECK ICON WILL DISPLAY
+                      loginController.isSubmitOtp
+                          ? Icon(
+                              Icons.check_circle_outline,
+                              size: deviceWidth * 0.055,
+                              color: const Color.fromRGBO(77, 166, 107, 1),
+                            )
+                          : const SizedBox(),
+                    ],
+                  ),
                 ),
               ),
 
