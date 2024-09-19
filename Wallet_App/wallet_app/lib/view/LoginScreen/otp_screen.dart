@@ -55,7 +55,7 @@ class OTPScreen extends StatelessWidget {
 
               GetBuilder<LoginController>(
                 builder: (loginController) => Container(
-                  width: deviceWidth / 1.55,
+                  width: deviceWidth / 1.35,
                   decoration: BoxDecoration(
                       border: Border(
                           bottom: BorderSide(
@@ -64,6 +64,7 @@ class OTPScreen extends StatelessWidget {
                                   : const Color.fromRGBO(77, 166, 107, 1),
                               width: 2))),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       OtpTextField(
                         numberOfFields: 6,
