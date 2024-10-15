@@ -5,6 +5,7 @@ import 'package:smart_home_app/view/RoomDetailsScreen/Widgets/devices.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home_app/controller/room_controller.dart';
 import 'package:smart_home_app/model/room_model.dart';
+import 'package:blur/blur.dart';
 
 ///WIDGET TO DISPLAY THE DETAILS OF ROOM WITH DEVICES
 class RoomDetailsScreen extends StatelessWidget {
@@ -61,27 +62,25 @@ class RoomDetailsScreen extends StatelessWidget {
         children: [
           ///ROOM IMAGE
           Image.asset(selectedRoom.roomImg,
-              height: deviceHeight, width: deviceWidth, fit: BoxFit.cover),
-          Container(
-              height: double.infinity,
-              width: double.infinity,
-              color: const Color.fromRGBO(255, 255, 255, 0.30),
-              child: Padding(
-                padding: EdgeInsets.only(
-                    left: deviceWidth * 0.075, top: deviceHeight * 0.02),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ///DETAILSROOM() WIDGET,TO SHOW BACK BUTTON,ROOM NAME AND DETAIL
-                      DetailRoom(selectedRoom: selectedRoom),
-                      SizedBox(
-                        height: deviceHeight * 0.06,
-                      ),
+                  height: deviceHeight, width: deviceWidth, fit: BoxFit.cover)
+              .blurred(
+            colorOpacity: 0.1,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+                left: deviceWidth * 0.075, top: deviceHeight * 0.02),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              ///DETAILSROOM() WIDGET,TO SHOW BACK BUTTON,ROOM NAME AND DETAIL
+              DetailRoom(selectedRoom: selectedRoom),
+              SizedBox(
+                height: deviceHeight * 0.06,
+              ),
 
-                      ///DEVICES() WIDGET,TO SHOW ALL DEVICES
-                      const Devices()
-                    ]),
-              ))
+              ///DEVICES() WIDGET,TO SHOW ALL DEVICES
+              const Devices()
+            ]),
+          )
         ],
       ),
     );
