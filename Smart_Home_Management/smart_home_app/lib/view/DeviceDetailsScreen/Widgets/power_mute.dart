@@ -16,7 +16,9 @@ class PowerMute extends StatelessWidget {
     return Container(
       height: deviceHeight * 0.18,
       padding: EdgeInsets.only(
-          top: deviceHeight * 0.015, bottom: deviceHeight * 0.015, left: deviceWidth * 0.04),
+          top: deviceHeight * 0.015,
+          bottom: deviceHeight * 0.015,
+          left: deviceWidth * 0.04),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(255, 255, 255, 0.41),
         borderRadius: BorderRadius.only(
@@ -130,8 +132,9 @@ class PowerMute extends StatelessWidget {
                   child: Text(
                     "Power Usage",
                     style: GoogleFonts.inter(
-                        fontSize:
-                           deviceWidth > 500 ? deviceWidth * 0.016 : deviceWidth * 0.026, //12
+                        fontSize: deviceWidth > 500
+                            ? deviceWidth * 0.016
+                            : deviceWidth * 0.026, //12
                         fontWeight: FontWeight.w500,
                         color: const Color.fromRGBO(90, 90, 90, 1)),
                   ),
@@ -159,16 +162,18 @@ class PowerMute extends StatelessWidget {
 
                           ///CONDITION CHECKED I.E DEVICE WIDTH GREATER THAN 500
                           /// TO DISPLAY TEXT WITHOUT OVERFLOW
-                          fontSize:
-                              deviceWidth > 500 ? deviceWidth * 0.016 : deviceWidth * 0.026, //12
+                          fontSize: deviceWidth > 500
+                              ? deviceWidth * 0.016
+                              : deviceWidth * 0.026, //12
                           fontWeight: FontWeight.w500,
                           color: const Color.fromRGBO(90, 90, 90, 1)),
                     ),
                     Text(
                       "93 kWh",
                       style: GoogleFonts.inter(
-                          fontSize:
-                             deviceWidth > 500 ? deviceWidth * 0.021 : deviceWidth * 0.032, //14
+                          fontSize: deviceWidth > 500
+                              ? deviceWidth * 0.021
+                              : deviceWidth * 0.032, //14
                           fontWeight: FontWeight.w500,
                           color: const Color.fromRGBO(0, 0, 0, 1)),
                     ),
