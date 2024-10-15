@@ -70,7 +70,7 @@ class PowerMute extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   ///BOTTOMSHEET
-                  showBottomSheet(
+                  showModalBottomSheet(
                       context: context,
                       builder: (ctx) => const MusicBottomsheet());
                 },

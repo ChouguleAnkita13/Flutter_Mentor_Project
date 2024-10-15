@@ -58,7 +58,7 @@ class Devices extends StatelessWidget {
                         roomController.selectDevice(devicesList[index]);
 
                         ///BOTTOMSHEET
-                        showBottomSheet(
+                        showModalBottomSheet(
                             context: context,
 
                             ///CALLED CUSTOM BOTTOMSHEETLAYPUT() WIDGET
