@@ -166,7 +166,7 @@ class PowerMute extends StatelessWidget {
                           /// TO DISPLAY TEXT WITHOUT OVERFLOW
                           fontSize: deviceWidth > 500
                               ? deviceWidth * 0.016
-                              : deviceWidth * 0.026, //12
+                              : deviceWidth * 0.024, //12
                           fontWeight: FontWeight.w500,
                           color: const Color.fromRGBO(90, 90, 90, 1)),
                     ),
@@ -175,7 +175,7 @@ class PowerMute extends StatelessWidget {
                       style: GoogleFonts.inter(
                           fontSize: deviceWidth > 500
                               ? deviceWidth * 0.021
-                              : deviceWidth * 0.032, //14
+                              : deviceWidth * 0.03, //14
                           fontWeight: FontWeight.w500,
                           color: const Color.fromRGBO(0, 0, 0, 1)),
                     ),

@@ -15,11 +15,11 @@ class DeviceInfo extends StatelessWidget {
     final double deviceWidth = MediaQuery.sizeOf(context).width;
     return Padding(
       padding: EdgeInsets.only(
-          left: deviceWidth * 0.075,
-          top: deviceHeight * 0.02,
-          right: deviceWidth * 0.075),
+          left: deviceWidth * 0.07,
+          top: deviceHeight * 0.03,
+          right: deviceWidth * 0.07),
       child: SizedBox(
-        height: deviceHeight / 6,
+        height: deviceHeight / 5.5,
 
         ///CONSUMER2 USED FOR 2 CHANGENOTIFIERPROVIDERS
         ///TO USE DATA FROM 2 CONTROLLERS I.E ROOMCONTROLLER AND DEVICEOPERATOR

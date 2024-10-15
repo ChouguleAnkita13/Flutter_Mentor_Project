@@ -70,7 +70,7 @@ class RoomDetailsScreen extends StatelessWidget {
             color: const Color.fromRGBO(40, 22, 0, 0.25),
             child: Padding(
               padding: EdgeInsets.only(
-                  left: deviceWidth * 0.075, top: deviceHeight * 0.02),
+                  left: deviceWidth * 0.07, top: deviceHeight * 0.03),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
