@@ -60,6 +60,9 @@ class Devices extends StatelessWidget {
                         ///BOTTOMSHEET
                         showModalBottomSheet(
                             context: context,
+                            backgroundColor:
+                                const Color.fromRGBO(0, 0, 0, 0.39),
+                            barrierColor: Colors.transparent,
 
                             ///CALLED CUSTOM BOTTOMSHEETLAYPUT() WIDGET
                             builder: (ctx) => const BottomsheetLayout());

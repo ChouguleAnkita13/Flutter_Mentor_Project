@@ -24,10 +24,10 @@ class MusicBottomsheet extends StatelessWidget {
           bottom: deviceHeight * 0.05,
           right: deviceWidth * 0.07),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(deviceWidth * 0.06),
-              topRight: Radius.circular(deviceWidth * 0.06)),
-          color: const Color.fromRGBO(0, 0, 0, 0.39)),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(deviceWidth * 0.06),
+            topRight: Radius.circular(deviceWidth * 0.06)),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

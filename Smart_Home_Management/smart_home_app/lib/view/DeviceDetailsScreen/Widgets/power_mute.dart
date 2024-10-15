@@ -72,6 +72,8 @@ class PowerMute extends StatelessWidget {
                   ///BOTTOMSHEET
                   showModalBottomSheet(
                       context: context,
+                      backgroundColor: const Color.fromRGBO(0, 0, 0, 0.39),
+                      barrierColor: Colors.transparent,
                       builder: (ctx) => const MusicBottomsheet());
                 },
                 child: Container(

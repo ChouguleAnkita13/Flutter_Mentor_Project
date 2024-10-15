@@ -71,16 +71,20 @@ class DeviceDetailsScreen extends StatelessWidget {
             child: Image.asset(selectedRoom!.roomImg,
                 height: deviceHeight, width: deviceWidth, fit: BoxFit.cover),
           ),
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            ///DEVICEINFO() WIDGET,TO SHOW BACK BUTTON,DEVICE NAME AND DETAIL
-            const DeviceInfo(),
-            SizedBox(
-              height: deviceHeight * 0.045,
-            ),
+          Container(
+            color: const Color.fromRGBO(40, 22, 0, 0.25),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              ///DEVICEINFO() WIDGET,TO SHOW BACK BUTTON,DEVICE NAME AND DETAIL
+              const DeviceInfo(),
+              SizedBox(
+                height: deviceHeight * 0.045,
+              ),
 
-            ///DETAILDEVICES() WIDGET,TO SHOW ALL DETAILS OF DEVICE
-            DetailDevice(selectedDevice: selectedDevice),
-          ])
+              ///DETAILDEVICES() WIDGET,TO SHOW ALL DETAILS OF DEVICE
+              DetailDevice(selectedDevice: selectedDevice),
+            ]),
+          )
         ],
       ),
     );

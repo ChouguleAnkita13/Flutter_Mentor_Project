@@ -66,20 +66,24 @@ class RoomDetailsScreen extends StatelessWidget {
               .blurred(
             colorOpacity: 0.1,
           ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: deviceWidth * 0.075, top: deviceHeight * 0.02),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              ///DETAILSROOM() WIDGET,TO SHOW BACK BUTTON,ROOM NAME AND DETAIL
-              DetailRoom(selectedRoom: selectedRoom),
-              SizedBox(
-                height: deviceHeight * 0.06,
-              ),
+          Container(
+            color: const Color.fromRGBO(40, 22, 0, 0.25),
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: deviceWidth * 0.075, top: deviceHeight * 0.02),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ///DETAILSROOM() WIDGET,TO SHOW BACK BUTTON,ROOM NAME AND DETAIL
+                    DetailRoom(selectedRoom: selectedRoom),
+                    SizedBox(
+                      height: deviceHeight * 0.06,
+                    ),
 
-              ///DEVICES() WIDGET,TO SHOW ALL DEVICES
-              const Devices()
-            ]),
+                    ///DEVICES() WIDGET,TO SHOW ALL DEVICES
+                    const Devices()
+                  ]),
+            ),
           )
         ],
       ),
