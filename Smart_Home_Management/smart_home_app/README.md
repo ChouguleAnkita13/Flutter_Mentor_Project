@@ -3,8 +3,16 @@
  The Smart Home Management App is a beautifully designed mobile application built using Flutter and powered by Provider for state management. The app offers a clean, intuitive interface, allowing users to manage and control smart home devices effortlessly. It features a fully responsive layout, providing a seamless experience across multiple devices.
 
 ## Screenshots
+<div style="display: flex;;">
+    <img src="https://github.com/user-attachments/assets/dde51082-4eaa-47c1-b68a-349f2bbc9e9d" alt="splash" style="margin-right: 10px;" width="300" height="600">
+    <img src="https://github.com/user-attachments/assets/41188b05-9716-47d3-b862-7d622d3ff8e3" alt="Bookmark 2" style="margin-right: 10px;" width="300" height="600">
+ <img src="https://github.com/user-attachments/assets/52651a7e-c5e7-44f4-89c8-404ac395ffed" alt="Bookmark 2" style="margin-right: 10px;" width="300" height="600">
+ <br> <br><br><br>
+ <img src="https://github.com/user-attachments/assets/4b718ce5-ed82-4b37-b7fb-8a0113582bae" alt="Bookmark 2" style="margin-right: 10px;" width="300" height="600">
+ <img src="https://github.com/user-attachments/assets/5a79a5de-2959-4c61-9bd4-1e303fee7817" alt="Bookmark 2" style="margin-right: 10px;" width="300" height="600">
+ <img src="https://github.com/user-attachments/assets/aefe3210-d2c5-4f09-bfdb-e58137d725e8" alt="Bookmark 2" style="margin-right: 10px;" width="300" height="600">
+</div>
 
-## Key Features
  #### Clean and Modern UI: 
  The app boasts a sleek and intuitive user interface that enhances the overall user experience. The design is visually appealing, making smart home management more enjoyable and user-friendly.
 
