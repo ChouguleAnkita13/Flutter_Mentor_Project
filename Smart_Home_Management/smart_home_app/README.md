@@ -29,7 +29,7 @@
  The project follows the MVC (Model-View-Controller) architecture for better organization, scalability, and maintainability. The structure separates the application's logic, data, and presentation layers.
 ```bash
 
-  lib/
+lib/
 ├── controller/
 │   ├── device_operator.dart          # Manages operations related to smart devices
 │   └── room_controller.dart           # Handles logic for room management
