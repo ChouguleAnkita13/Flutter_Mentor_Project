@@ -6,16 +6,16 @@
 
 ## Key Features
  #### Clean and Modern UI: 
-    The app boasts a sleek and intuitive user interface that enhances the overall user experience. The design is visually appealing, making smart home management more enjoyable and user-friendly.
+ The app boasts a sleek and intuitive user interface that enhances the overall user experience. The design is visually appealing, making smart home management more enjoyable and user-friendly.
 
  #### Provider State Management: 
-    The app uses the Provider package for efficient state management, ensuring smooth performance, scalable architecture, and easy-to-maintain code. It handles state transitions effectively, providing fast and responsive interactions.
+ The app uses the Provider package for efficient state management, ensuring smooth performance, scalable architecture, and easy-to-maintain code. It handles state transitions effectively, providing fast and responsive interactions.
 
  #### Responsive Design: 
-    The app is fully responsive, meaning it adapts to different screen sizes, ensuring a consistent and optimized experience whether on a smartphone, tablet, or other devices.
+ The app is fully responsive, meaning it adapts to different screen sizes, ensuring a consistent and optimized experience whether on a smartphone, tablet, or other devices.
 
  #### Device Control: 
-    Users can interact with and control a variety of smart home devices through intuitive control screens. They can easily switch between devices and manage their functionalities via a smooth and clean interface.
+ Users can interact with and control a variety of smart home devices through intuitive control screens. They can easily switch between devices and manage their functionalities via a smooth and clean interface.
 
 ## Project Structure
  The project follows the MVC (Model-View-Controller) architecture for better organization, scalability, and maintainability. The structure separates the application's logic, data, and presentation layers.
