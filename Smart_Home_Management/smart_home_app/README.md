@@ -13,6 +13,7 @@
  <img src="https://github.com/user-attachments/assets/aefe3210-d2c5-4f09-bfdb-e58137d725e8" alt="Bookmark 2" style="margin-right: 10px;" width="300" height="600">
 </div>
 
+ ## Key Features
  #### Clean and Modern UI: 
  The app boasts a sleek and intuitive user interface that enhances the overall user experience. The design is visually appealing, making smart home management more enjoyable and user-friendly.
 
