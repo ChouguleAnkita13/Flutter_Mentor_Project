@@ -30,6 +30,7 @@ class RoomDetailsScreen extends StatelessWidget {
               style: GoogleFonts.inter(
                   fontSize: deviceWidth * 0.07,
                   fontWeight: FontWeight.w600,
+                  decoration: TextDecoration.none,
                   color: const Color.fromRGBO(0, 0, 0, 1))),
 
           ///BUTTON TO NAVIGATE TO HOMESCREEN()
@@ -50,6 +51,7 @@ class RoomDetailsScreen extends StatelessWidget {
                 style: GoogleFonts.inter(
                     fontSize: deviceWidth * 0.036, //16.06
                     fontWeight: FontWeight.w700,
+                    decoration: TextDecoration.none,
                     color: const Color.fromRGBO(255, 255, 255, 1)),
               ),
             ),
