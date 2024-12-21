@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:grocery_bloc_app/view/HomeScreen/home_screen.dart';
+// import 'package:grocery_bloc_app/view/HomeScreen/home_screen.dart';
+import 'package:grocery_bloc_app/view/LoginRegister/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomeScreen(),
+      home: LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
