@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_bloc.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_state.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 import 'package:grocery_bloc_app/view/CartScreen/cart_screen.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/product_tile_widget.dart';
 import 'package:grocery_bloc_app/view/WishlistScreen/wishlist_screen.dart';
@@ -57,7 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.teal,
-                title: const Text('Grocery App'),
+                toolbarHeight: 100,
+                title:
+                    Text('Hi ${SessionData.username},\nWelcome to Grocery App'),
                 actions: [
                   IconButton(
                       onPressed: () {
