@@ -1,5 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_bloc.dart';
+import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_event.dart';
+import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_state.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/home_screen.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/Widget/bottom_line_button.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/Widget/custom_textfield.dart';
@@ -16,11 +22,31 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  final loginRegisterBloc = LoginRegisterBloc();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+
+        ///BLOC LISTERNER USED TO ONLY LISTEN THE STATE I.E PERFORM SOME ACTION HERE THE NAVIGATION
+        body: BlocListener(
+      bloc: loginRegisterBloc,
+      listener: (context, state) {
+        ///NAVIGATE TO HOMESCREEN
+        if (state is LoginWithDataButtonNavigateState) {
+          log("In LoginWithData to home");
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
+        }
+
+        ///NAVIGATE TO REGISTERSCREEN
+        else if (state is RegisterButtonNavigateState) {
+          log("In Login to Register");
+
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const RegisterScreen()));
+        }
+      },
+      child: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.sizeOf(context).height,
           child: Padding(
@@ -55,25 +81,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           CustomTextfield(
                             title: "Email",
-                            controller: _emailController,
+                            textcontroller: _emailController,
                           ),
                           const SizedBox(
                             height: 20,
                           ),
                           CustomTextfield(
                             title: "Password",
-                            controller: _passwordController,
+                            textcontroller: _passwordController,
                           ),
                           const SizedBox(
                             height: 25,
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const HomeScreen()));
+                              ///ADDING LoginWithDataButtonNavigateEvent TO LOGINREGISTERBLOC
+
+                              loginRegisterBloc.add(
+                                  LoginWithDataButtonNavigateEvent(
+                                      userCredential: {
+                                    "email": _emailController.text,
+                                    "password": _passwordController.text,
+                                  }));
                             },
                             child: const ButtonContainer(title: "Sign In"),
                           )
@@ -86,10 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegisterScreen()));
+                    ///ADDING RegisterButtonNavigateEvent TO LOGINREGISTERBLOC
+                    loginRegisterBloc.add(RegisterButtonNavigateEvent());
                   },
                   child: const BottomLineButton(
                       content: "Don’t have an account? ", title: "Sign up"),
@@ -99,6 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

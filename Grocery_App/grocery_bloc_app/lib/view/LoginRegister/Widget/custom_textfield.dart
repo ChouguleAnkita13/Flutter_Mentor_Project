@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextfield extends StatelessWidget {
   const CustomTextfield(
-      {super.key, required this.title, required this.controller});
+      {super.key, required this.title, required this.textcontroller});
   final String title;
-  final TextEditingController controller;
+  final TextEditingController textcontroller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CustomTextfield extends StatelessWidget {
         ],
       ),
       child: TextFormField(
-        controller: controller,
+        controller: textcontroller,
         decoration: InputDecoration(
             label: Text(
               title,
