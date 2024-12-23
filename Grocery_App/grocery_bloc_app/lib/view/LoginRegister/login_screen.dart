@@ -53,9 +53,14 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.all(40),
             child: Column(
               children: [
-                // Image.asset(
-                //   "assets/images/logo.png",
-                // ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.asset(
+                    "assets/images/image.png",
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
                 const SizedBox(
                   height: 40,
                 ),

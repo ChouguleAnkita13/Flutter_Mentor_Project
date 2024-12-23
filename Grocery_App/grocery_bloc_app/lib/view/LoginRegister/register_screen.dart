@@ -46,9 +46,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Image.asset(
-                      //   "assets/images/logo.png",
-                      // ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset(
+                          "assets/images/image.png",
+                          height: 150,
+                          width: 150,
+                        ),
+                      ),
                       const SizedBox(
                         height: 40,
                       ),
