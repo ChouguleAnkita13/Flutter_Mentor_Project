@@ -3,11 +3,10 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 
-import 'package:grocery_bloc_app/controller/Data/grocery_data.dart';
 import 'package:grocery_bloc_app/controller/Data/items_list.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_data.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_state.dart';
-import 'package:grocery_bloc_app/model/product_data_model.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
@@ -23,15 +22,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       HomeInitialEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
     await Future.delayed(const Duration(seconds: 3));
-    emit(HomeLoadedSuccessState(
-        products: GroceryData.groceryProducts
-            .map((e) => ProductDataModel(
-                id: e['id'],
-                name: e['name'],
-                description: e['description'],
-                price: e['price'],
-                imageUrl: e['imageUrl']))
-            .toList()));
+
+    ///
+    await FirebaseData.getGroceryDataFromFirebase();
+    emit(HomeLoadedSuccessState(products: FirebaseData.groceryProduct));
   }
 
   FutureOr<void> homeProductWishlistButtonClickedEvent(
