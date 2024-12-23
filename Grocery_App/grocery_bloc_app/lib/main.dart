@@ -1,7 +1,7 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-// import 'package:grocery_bloc_app/view/HomeScreen/home_screen.dart';
-import 'package:grocery_bloc_app/view/LoginRegister/login_screen.dart';
+import 'package:grocery_bloc_app/view/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +13,9 @@ void main() async {
         projectId: "grocery-app-e2c5d"),
   );
   runApp(const MainApp());
+  // for (var data in GroceryData.groceryProducts) {
+  //   await FirebaseFirestore.instance.collection("Grocery").add(data);
+  // }
 }
 
 class MainApp extends StatelessWidget {
@@ -21,7 +24,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: LoginScreen(),
+      home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
