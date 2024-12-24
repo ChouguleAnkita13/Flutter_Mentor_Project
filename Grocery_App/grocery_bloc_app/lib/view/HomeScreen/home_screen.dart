@@ -8,7 +8,7 @@ import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_state.dart';
 import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 import 'package:grocery_bloc_app/view/CartScreen/cart_screen.dart';
-import 'package:grocery_bloc_app/view/HomeScreen/product_tile_widget.dart';
+import 'package:grocery_bloc_app/view/HomeScreen/Widget/product_tile_widget.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/Widget/custom_textfield.dart';
 import 'package:grocery_bloc_app/view/WishlistScreen/wishlist_screen.dart';
 
