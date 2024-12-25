@@ -12,42 +12,42 @@ class WishlistTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
       padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.black)),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 200,
-            width: double.maxFinite,
+            width: 70,
+            height: 70,
             decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(productDataModel.imageUrl))),
           ),
-          const SizedBox(height: 20),
-          Text(productDataModel.name,
-              style:
-                  const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          Text(productDataModel.description),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          const SizedBox(width: 15),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("\$${productDataModel.price}",
+              Text(productDataModel.name,
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold)),
-              IconButton(
-                  onPressed: () {
-                    wishlistBloc.add(WishlistRemoveItemFromWishlistEvent(
-                        product: productDataModel));
-                  },
-                  icon: const Icon(Icons.cancel_outlined)),
+              const SizedBox(height: 5),
+              Text(productDataModel.description),
             ],
           ),
+          const Spacer(),
+          Text("\$${productDataModel.price}",
+              style:
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+          const SizedBox(width: 10),
+          GestureDetector(
+              onTap: () {
+                wishlistBloc.add(WishlistRemoveItemFromWishlistEvent(
+                    product: productDataModel));
+              },
+              child: const Icon(Icons.cancel_outlined)),
         ],
       ),
     );
