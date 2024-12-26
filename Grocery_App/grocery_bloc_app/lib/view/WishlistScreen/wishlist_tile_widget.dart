@@ -12,7 +12,6 @@ class WishlistTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
       padding: const EdgeInsets.all(10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,15 +26,20 @@ class WishlistTileWidget extends StatelessWidget {
                     image: NetworkImage(productDataModel.imageUrl))),
           ),
           const SizedBox(width: 15),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(productDataModel.name,
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 5),
-              Text(productDataModel.description),
-            ],
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 210,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(productDataModel.name,
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 5),
+                Text("\$${productDataModel.price} Price:",
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.w400)),
+              ],
+            ),
           ),
           const Spacer(),
           Text("\$${productDataModel.price}",

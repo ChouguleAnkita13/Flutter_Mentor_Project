@@ -6,6 +6,7 @@ import 'package:grocery_bloc_app/controller/CartBloc/cart_bloc.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_event.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_state.dart';
 import 'package:grocery_bloc_app/view/CartScreen/cart_tile_widget.dart';
+import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -42,10 +43,8 @@ class _CartScreenState extends State<CartScreen> {
 
               final successState = state as CartLoadedSuccessState;
               return Scaffold(
-                appBar: AppBar(
-                  backgroundColor: Colors.teal,
-                  title: const Text('Cart'),
-                ),
+                appBar: CustomAppbar.customAppbar("My Cart"),
+                backgroundColor: Colors.white,
                 body: successState.products.isEmpty
                     ? const Center(child: Text("No Items In Cart"))
                     : ListView.builder(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_bloc.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_event.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_state.dart';
+import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
+import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
 import 'package:grocery_bloc_app/view/WishlistScreen/wishlist_tile_widget.dart';
 
 class WishlistScreen extends StatefulWidget {
@@ -38,36 +39,41 @@ class _WishlistScreenState extends State<WishlistScreen> {
             case const (WishlistSuccessState):
               final successState = state as WishlistSuccessState;
               return Scaffold(
-                  appBar: AppBar(
-                      title: Text("Favorites",
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              color: Color.fromRGBO(0, 0, 0, 1),
-                              fontSize: 21,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          )),
-                      centerTitle: true,
-                      shape:
-                          Border(bottom: BorderSide(color: Colors.grey[300]!))
-                      // backgroundColor: Colors.teal,
-                      ),
+                  backgroundColor: Colors.white,
+                  appBar: CustomAppbar.customAppbar("Favorites"),
                   body: successState.products.isEmpty
                       ? const Center(
                           child: Text("No Item added in WishList"),
                         )
-                      : ListView.separated(
-                          itemCount: successState.products.length,
-                          itemBuilder: (context, index) {
-                            return WishlistTileWidget(
-                              wishlistBloc: wishListBloc,
-                              productDataModel: successState.products[index],
-                            );
-                          },
-                          separatorBuilder: (context, idx) => Divider(
-                            color: Colors.grey[300],
-                            indent: 10,
-                            endIndent: 10,
+                      : Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 15),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height - 170,
+                                child: ListView.separated(
+                                  itemCount: successState.products.length,
+                                  itemBuilder: (context, index) {
+                                    return WishlistTileWidget(
+                                      wishlistBloc: wishListBloc,
+                                      productDataModel:
+                                          successState.products[index],
+                                    );
+                                  },
+                                  separatorBuilder: (context, idx) => Divider(
+                                    color: Colors.grey[300],
+                                  ),
+                                ),
+                              ),
+                              const Spacer(),
+                              GestureDetector(
+                                onTap: () {},
+                                child: const ButtonContainer(
+                                    title: "Add All To cart"),
+                              )
+                            ],
                           ),
                         ));
             default:
