@@ -56,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           case const (HomeLoadedSuccessState):
             final successState = state as HomeLoadedSuccessState;
             return Scaffold(
+              backgroundColor: Colors.white,
               appBar: HomeAppbar.appBar(homeBloc),
               body: ListView.builder(
                   itemCount: successState.products.length,

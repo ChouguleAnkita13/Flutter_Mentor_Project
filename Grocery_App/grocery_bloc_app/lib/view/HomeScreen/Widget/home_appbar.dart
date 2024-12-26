@@ -58,7 +58,7 @@ class HomeAppbar {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.asset(
-              "assets/images/veggie.png",
+              "assets/images/veggie2.png",
               height: 100,
               width: 350,
               fit: BoxFit.cover,
