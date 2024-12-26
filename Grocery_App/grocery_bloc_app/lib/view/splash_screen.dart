@@ -7,8 +7,8 @@ import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_blo
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_event.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_state.dart';
 import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
-import 'package:grocery_bloc_app/view/HomeScreen/home_screen.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/login_screen.dart';
+import 'package:grocery_bloc_app/view/navbar_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ///IF YES NAVIGATE TO HOMESCREEN ELSE LOGINSCREEN
                   if (SessionData.isLogin!) {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
+                        builder: (context) => const NavbarScreen()));
                   } else {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const LoginScreen()));

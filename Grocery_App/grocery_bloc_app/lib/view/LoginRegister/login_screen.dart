@@ -6,11 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_bloc.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_event.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_state.dart';
-import 'package:grocery_bloc_app/view/HomeScreen/home_screen.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/Widget/bottom_line_button.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/Widget/custom_textfield.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/register_screen.dart';
 import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
+import 'package:grocery_bloc_app/view/navbar_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is LoginWithDataButtonNavigateState) {
           log("In LoginWithData to home");
           Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const HomeScreen()));
+              MaterialPageRoute(builder: (context) => const NavbarScreen()));
         }
 
         ///NAVIGATE TO REGISTERSCREEN
