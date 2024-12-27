@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_bloc.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
@@ -12,7 +13,7 @@ class ProductTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.only(left: 10, right: 10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -21,41 +22,58 @@ class ProductTileWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 200,
-            width: double.maxFinite,
+            height: 150,
+            width: 200,
+            alignment: Alignment.topRight,
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(productDataModel.imageUrl))),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(productDataModel.imageUrl),
+              ),
+            ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Text(productDataModel.name,
-              style:
-                  const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              style: GoogleFonts.poppins(
+                  fontSize: 18, fontWeight: FontWeight.bold)),
           Text(productDataModel.description),
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("\$${productDataModel.price}",
-                  style: const TextStyle(
+                  style: GoogleFonts.poppins(
                       fontSize: 18, fontWeight: FontWeight.bold)),
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        homeBloc.add(HomeProductWishlistButtonClickedEvent(
-                            clickedProduct: productDataModel));
-                      },
-                      icon: const Icon(Icons.favorite_border)),
-                  IconButton(
-                      onPressed: () {
-                        homeBloc.add(HomeProductCartButtonClickedEvent(
-                            clickedProduct: productDataModel));
-                      },
-                      icon: const Icon(Icons.shopping_bag_outlined)),
-                ],
+              const SizedBox(width: 110),
+              GestureDetector(
+                onTap: () {
+                  homeBloc.add(HomeProductWishlistButtonClickedEvent(
+                      clickedProduct: productDataModel));
+                },
+                child: Container(
+                    height: 35,
+                    width: 35,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: const Color.fromRGBO(14, 161, 125, 1),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 25,
+                    )),
               )
+
+              // IconButton(
+              //     onPressed: () {
+              //       homeBloc.add(HomeProductCartButtonClickedEvent(
+              //           clickedProduct: productDataModel));
+              //     },
+              // icon: const Icon(
+              //   Icons.shopping_cart_rounded,
+              //   color: Color.fromRGBO(14, 161, 125, 1),
+              //   size: 30,
+              // )
+              // )
             ],
           ),
         ],
