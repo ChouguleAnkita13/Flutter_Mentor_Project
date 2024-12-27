@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_bloc.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_state.dart';
-import 'package:grocery_bloc_app/view/CartScreen/cart_screen.dart';
+import 'package:grocery_bloc_app/view/HomeScreen/Widget/custom_row.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/Widget/home_appbar.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/Widget/product_tile_widget.dart';
-import 'package:grocery_bloc_app/view/WishlistScreen/wishlist_screen.dart';
+import 'package:grocery_bloc_app/view/notification_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,12 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
       listenWhen: (previous, current) => current is HomeActionState,
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
-        if (state is HomeNavigateToCartPageActionState) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const CartScreen()));
-        } else if (state is HomeNavigateToWishlistPageActionState) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const WishlistScreen()));
+        if (state is HomeNavigateToNotificationPageActionState) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const NotificationScreen()));
         } else if (state is HomeProductItemCartedActionState) {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text('Item Carted')));
@@ -58,13 +57,39 @@ class _HomeScreenState extends State<HomeScreen> {
             return Scaffold(
               backgroundColor: Colors.white,
               appBar: HomeAppbar.appBar(homeBloc),
-              body: ListView.builder(
-                  itemCount: successState.products.length,
-                  itemBuilder: (context, index) {
-                    return ProductTileWidget(
-                        homeBloc: homeBloc,
-                        productDataModel: successState.products[index]);
-                  }),
+              body: SingleChildScrollView(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height / 1.2,
+                  child: Column(
+                    children: [
+                      const CustomRow(title: "Exclusive Offers"),
+                      Expanded(
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: successState.products.length,
+                            itemBuilder: (context, index) {
+                              return ProductTileWidget(
+                                  homeBloc: homeBloc,
+                                  productDataModel:
+                                      successState.products[index]);
+                            }),
+                      ),
+                      const CustomRow(title: "Best Selling"),
+                      Expanded(
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: successState.products.length,
+                            itemBuilder: (context, index) {
+                              return ProductTileWidget(
+                                  homeBloc: homeBloc,
+                                  productDataModel:
+                                      successState.products[index]);
+                            }),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             );
 
           case const (HomeErrorState):
