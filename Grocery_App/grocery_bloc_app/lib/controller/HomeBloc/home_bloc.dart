@@ -14,8 +14,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeProductWishlistButtonClickedEvent>(
         homeProductWishlistButtonClickedEvent);
     on<HomeProductCartButtonClickedEvent>(homeProductCartButtonClickedEvent);
-    on<HomeWishlistButtonNavigateEvent>(homeWishlistButtonNavigateEvent);
-    on<HomeCartButtonNavigateEvent>(homeCartButtonNavigateEvent);
+    on<HomeNotificationButtonNavigateEvent>(
+        homeNotificationButtonNavigateEvent);
   }
 
   FutureOr<void> homeInitialEvent(
@@ -42,15 +42,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(HomeProductItemCartedActionState());
   }
 
-  FutureOr<void> homeWishlistButtonNavigateEvent(
-      HomeWishlistButtonNavigateEvent event, Emitter<HomeState> emit) {
-    log('Wishlist Navigate clicked');
-    emit(HomeNavigateToWishlistPageActionState());
-  }
-
-  FutureOr<void> homeCartButtonNavigateEvent(
-      HomeCartButtonNavigateEvent event, Emitter<HomeState> emit) {
-    log('Cart Navigate clicked');
-    emit(HomeNavigateToCartPageActionState());
+  FutureOr<void> homeNotificationButtonNavigateEvent(
+      HomeNotificationButtonNavigateEvent event, Emitter<HomeState> emit) {
+    log('Notification Navigate clicked');
+    emit(HomeNavigateToNotificationPageActionState());
   }
 }
