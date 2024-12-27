@@ -67,16 +67,18 @@ class HomeAppbar {
         ),
       ),
       actions: [
-        IconButton(
-            onPressed: () {
-              homeBloc.add(HomeWishlistButtonNavigateEvent());
-            },
-            icon: const Icon(Icons.favorite_border)),
-        IconButton(
-            onPressed: () {
-              homeBloc.add(HomeCartButtonNavigateEvent());
-            },
-            icon: const Icon(Icons.shopping_bag_outlined)),
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: GestureDetector(
+              onTap: () {
+                homeBloc.add(HomeNotificationButtonNavigateEvent());
+              },
+              child: const Icon(
+                Icons.notifications_none,
+                color: Colors.white,
+                size: 30,
+              )),
+        ),
       ],
     );
   }
