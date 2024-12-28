@@ -7,7 +7,8 @@ import 'package:grocery_bloc_app/model/product_data_model.dart';
 
 class FirebaseData {
   static FirebaseFirestore firebaseInstance = FirebaseFirestore.instance;
-  static List<ProductDataModel> groceryProduct = [];
+  static List<ProductModel> groceryProduct = [];
+  static List<ProductDataModel> itemList = [];
 
   ///
   static Future<void> createUserAccount(
@@ -62,13 +63,34 @@ class FirebaseData {
     QuerySnapshot response = await firebaseInstance.collection("Grocery").get();
 
     /// GET GROCERY DATA
+
     for (var e in response.docs) {
-      groceryProduct.add(ProductDataModel(
-          id: e['id'],
-          name: e['name'],
-          description: e['description'],
-          price: e['price'],
-          imageUrl: e['imageUrl']));
+      QuerySnapshot res = await firebaseInstance
+          .collection("Grocery")
+          .doc(e.id)
+          .collection("itemList")
+          .get();
+
+      for (var d in res.docs) {
+        // log(e.id);
+        itemList.add(ProductDataModel(
+            id: d.id,
+            category: e.id,
+            name: d['name'],
+            description: d['description'],
+            price: d['price'],
+            quantity: d['quantity'],
+            imageUrl: d['imageUrl']));
+      }
+
+      groceryProduct
+          .add(ProductModel(category: e.id, itemList: itemList.toList()));
+      itemList.clear();
     }
+    // log(groceryProduct[0].itemList.length.toString());
+    // log(groceryProduct[1].itemList.length.toString());
+    // log(groceryProduct[2].itemList.length.toString());
+    // log(groceryProduct[3].itemList.length.toString());
+    // log(groceryProduct[4].itemList.length.toString());
   }
 }
