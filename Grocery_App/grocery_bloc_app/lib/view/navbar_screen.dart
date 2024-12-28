@@ -46,7 +46,7 @@ class NavbarView extends StatelessWidget {
               selectedItemColor: const Color.fromRGBO(14, 161, 125, 1),
               unselectedItemColor: Colors.black,
               unselectedLabelStyle: const TextStyle(
-                fontSize: 1,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
               items: const [
@@ -54,10 +54,10 @@ class NavbarView extends StatelessWidget {
                   icon: Icon(Icons.home_outlined),
                   label: "Home",
                 ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.fastfood),
-                //   label: "Orders",
-                // ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.auto_awesome_mosaic_outlined),
+                  label: "Explore",
+                ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart_outlined),
                   label: "Cart",
@@ -66,10 +66,10 @@ class NavbarView extends StatelessWidget {
                   icon: Icon(Icons.favorite_outline),
                   label: "Favourite",
                 ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.person),
-                //   label: "Profile",
-                // ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person_outline),
+                  label: "Profile",
+                ),
               ],
             ),
           );
