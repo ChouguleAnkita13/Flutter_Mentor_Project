@@ -16,6 +16,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeProductCartButtonClickedEvent>(homeProductCartButtonClickedEvent);
     on<HomeNotificationButtonNavigateEvent>(
         homeNotificationButtonNavigateEvent);
+    on<HomeSeeAllButtonNavigateEvent>(homeSeeAllButtonNavigateEvent);
+    on<HomeExploreProductButtonClickedEvent>(
+        homeExploreProductButtonClickedEvent);
+    on<HomeProductDetailsClickedEvent>(homeProductDetailsClickedEvent);
   }
 
   FutureOr<void> homeInitialEvent(
@@ -46,5 +50,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       HomeNotificationButtonNavigateEvent event, Emitter<HomeState> emit) {
     log('Notification Navigate clicked');
     emit(HomeNavigateToNotificationPageActionState());
+  }
+
+  FutureOr<void> homeSeeAllButtonNavigateEvent(
+      HomeSeeAllButtonNavigateEvent event, Emitter<HomeState> emit) {
+    log('See Navigate clicked');
+    emit(HomeNavigateToExploreSeeAllActionState());
+  }
+
+  FutureOr<void> homeExploreProductButtonClickedEvent(
+      HomeExploreProductButtonClickedEvent event, Emitter<HomeState> emit) {
+    emit(HomeNavigateToExploreProductsActionState(
+        products: event.clickedProduct, category: event.category));
+  }
+
+  FutureOr<void> homeProductDetailsClickedEvent(
+      HomeProductDetailsClickedEvent event, Emitter<HomeState> emit) {
+    emit(
+        HomeNavigateToProductDetailsActionState(product: event.clickedProduct));
   }
 }

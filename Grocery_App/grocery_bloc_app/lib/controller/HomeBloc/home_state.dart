@@ -18,9 +18,27 @@ class HomeLoadedSuccessState extends HomeState {
   });
 }
 
+class HomeNavigateToExploreProductsActionState extends HomeActionState {
+  final List<ProductDataModel> products;
+  final String category;
+  HomeNavigateToExploreProductsActionState({
+    required this.products,
+    required this.category,
+  });
+}
+
+class HomeNavigateToProductDetailsActionState extends HomeActionState {
+  final ProductDataModel product;
+  HomeNavigateToProductDetailsActionState({
+    required this.product,
+  });
+}
+
 class HomeErrorState extends HomeState {}
 
 class HomeNavigateToNotificationPageActionState extends HomeActionState {}
+
+class HomeNavigateToExploreSeeAllActionState extends HomeActionState {}
 
 class HomeProductItemWishlistedActionState extends HomeActionState {}
 
