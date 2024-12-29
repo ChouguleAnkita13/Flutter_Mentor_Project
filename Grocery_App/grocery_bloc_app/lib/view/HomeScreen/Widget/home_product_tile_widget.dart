@@ -4,10 +4,10 @@ import 'package:grocery_bloc_app/controller/HomeBloc/home_bloc.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
 
-class ProductTileWidget extends StatelessWidget {
+class HomeProductTileWidget extends StatelessWidget {
   final ProductDataModel productDataModel;
   final HomeBloc homeBloc;
-  const ProductTileWidget(
+  const HomeProductTileWidget(
       {super.key, required this.productDataModel, required this.homeBloc});
 
   @override
@@ -36,9 +36,14 @@ class ProductTileWidget extends StatelessWidget {
           Text(productDataModel.name,
               style: GoogleFonts.poppins(
                   fontSize: 18, fontWeight: FontWeight.bold)),
-          Text(productDataModel.description),
+          Text("${productDataModel.quantity} ,price",
+              style: GoogleFonts.poppins(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey[500])),
           const SizedBox(height: 5),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("\$${productDataModel.price}",
                   style: GoogleFonts.poppins(
@@ -61,7 +66,7 @@ class ProductTileWidget extends StatelessWidget {
                       color: Colors.white,
                       size: 25,
                     )),
-              )
+              ),
 
               // IconButton(
               //     onPressed: () {

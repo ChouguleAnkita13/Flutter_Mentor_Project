@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grocery_bloc_app/controller/HomeBloc/home_bloc.dart';
+import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 
 class CustomRow extends StatelessWidget {
-  const CustomRow({super.key, required this.title});
+  const CustomRow({super.key, required this.title, required this.homeBloc});
+  final HomeBloc homeBloc;
   final String title;
 
   @override
@@ -18,6 +21,9 @@ class CustomRow extends StatelessWidget {
                 GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w700),
           ),
           GestureDetector(
+            onTap: () {
+              homeBloc.add(HomeSeeAllButtonNavigateEvent());
+            },
             child: Text("See all",
                 style: GoogleFonts.poppins(
                   fontSize: 18,
