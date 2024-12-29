@@ -6,11 +6,12 @@ class CustomAppbar {
     return AppBar(
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
+        toolbarHeight: 65,
         title: Text(title,
             style: GoogleFonts.poppins(
               textStyle: const TextStyle(
                 color: Color.fromRGBO(0, 0, 0, 1),
-                fontSize: 21,
+                fontSize: 22,
                 fontWeight: FontWeight.w700,
               ),
             )),
