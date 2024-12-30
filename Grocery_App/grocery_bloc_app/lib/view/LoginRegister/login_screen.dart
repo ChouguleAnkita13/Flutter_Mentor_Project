@@ -10,6 +10,7 @@ import 'package:grocery_bloc_app/view/LoginRegister/Widget/bottom_line_button.da
 import 'package:grocery_bloc_app/view/LoginRegister/Widget/custom_textfield.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/register_screen.dart';
 import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
+import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 import 'package:grocery_bloc_app/view/navbar_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -45,8 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const RegisterScreen()));
         } else if (state is LoginRegisterWithDataButtonErrorState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(state.error)));
+          CustomSnackbar.customSnackbar(context, state.error);
         }
       },
       child: SingleChildScrollView(

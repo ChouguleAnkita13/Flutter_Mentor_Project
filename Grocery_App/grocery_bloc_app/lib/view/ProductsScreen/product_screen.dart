@@ -7,6 +7,7 @@ import 'package:grocery_bloc_app/controller/HomeBloc/home_state.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
 import 'package:grocery_bloc_app/view/ProductsScreen/product_tile.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
+import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 import 'package:grocery_bloc_app/view/detail_product.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -28,8 +29,7 @@ class ProductScreen extends StatelessWidget {
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
         if (state is HomeProductItemWishlistedActionState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Item Wishlisted')));
+          CustomSnackbar.customSnackbar(context, 'Item Wishlisted');
         } else if (state is HomeNavigateToProductDetailsActionState) {
           Navigator.push(
               context,
@@ -37,8 +37,7 @@ class ProductScreen extends StatelessWidget {
                   builder: (context) =>
                       ProductDetailsScreen(product: state.product)));
         } else if (state is HomeProductItemCartedActionState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Item Carted')));
+          CustomSnackbar.customSnackbar(context, 'Item Carted');
         }
       },
       builder: (context, state) {

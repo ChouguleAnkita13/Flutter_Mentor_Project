@@ -6,6 +6,7 @@ import 'package:grocery_bloc_app/controller/HomeBloc/home_state.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/Widget/custom_row.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/Widget/home_appbar.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/Widget/home_product_tile_widget.dart';
+import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 import 'package:grocery_bloc_app/view/detail_product.dart';
 import 'package:grocery_bloc_app/view/navbar_screen.dart';
 import 'package:grocery_bloc_app/view/notification_screen.dart';
@@ -44,12 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (context) => const NavbarScreen(
                         selectedIndex: 1,
                       )));
-        } else if (state is HomeProductItemCartedActionState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Item Carted')));
         } else if (state is HomeProductItemWishlistedActionState) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Item Wishlisted')));
+          CustomSnackbar.customSnackbar(context, "Item WishListed");
         } else if (state is HomeNavigateToProductDetailsActionState) {
           Navigator.push(
               context,

@@ -67,18 +67,6 @@ class HomeProductTileWidget extends StatelessWidget {
                       size: 25,
                     )),
               ),
-
-              // IconButton(
-              //     onPressed: () {
-              //       homeBloc.add(HomeProductCartButtonClickedEvent(
-              //           clickedProduct: productDataModel));
-              //     },
-              // icon: const Icon(
-              //   Icons.shopping_cart_rounded,
-              //   color: Color.fromRGBO(14, 161, 125, 1),
-              //   size: 30,
-              // )
-              // )
             ],
           ),
         ],
