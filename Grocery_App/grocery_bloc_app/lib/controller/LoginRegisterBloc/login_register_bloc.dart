@@ -27,14 +27,22 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
   FutureOr<void> loginWithDataButtonNavigateEvent(
       LoginWithDataButtonNavigateEvent event,
       Emitter<LoginRegisterState> emit) async {
-    await FirebaseData.signUserAccount(event.userCredential);
-    emit(LoginWithDataButtonNavigateState());
+    String res = await FirebaseData.signUserAccount(event.userCredential);
+    if (res == "true") {
+      emit(LoginWithDataButtonNavigateState());
+    } else {
+      emit(LoginRegisterWithDataButtonErrorState(error: res));
+    }
   }
 
   FutureOr<void> registerWithDataButtonNavigateEvent(
       RegisterWithDataButtonNavigateEvent event,
       Emitter<LoginRegisterState> emit) async {
-    await FirebaseData.createUserAccount(event.userCredential);
-    emit(LoginButtonNavigateState());
+    String res = await FirebaseData.createUserAccount(event.userCredential);
+    if (res == "true") {
+      emit(LoginButtonNavigateState());
+    } else {
+      emit(LoginRegisterWithDataButtonErrorState(error: res));
+    }
   }
 }
