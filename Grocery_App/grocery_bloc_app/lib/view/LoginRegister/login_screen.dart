@@ -44,6 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
           Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const RegisterScreen()));
+        } else if (state is LoginRegisterWithDataButtonErrorState) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.error)));
         }
       },
       child: SingleChildScrollView(

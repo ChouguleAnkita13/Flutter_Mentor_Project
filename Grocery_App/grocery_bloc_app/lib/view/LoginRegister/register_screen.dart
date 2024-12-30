@@ -8,7 +8,6 @@ import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_eve
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_state.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/Widget/bottom_line_button.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/Widget/custom_textfield.dart';
-import 'package:grocery_bloc_app/view/LoginRegister/login_screen.dart';
 import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -34,8 +33,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ///NAVIGATE TO LOGIN SCREEN
               if (state is LoginButtonNavigateState) {
                 log("In Register to login");
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const LoginScreen()));
+                Navigator.of(context).pop();
+              } else if (state is LoginRegisterWithDataButtonErrorState) {
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(state.error)));
               }
             },
             child: SingleChildScrollView(
@@ -44,7 +45,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(40),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100),
@@ -104,7 +104,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             "email": _emailController.text,
                                             "password":
                                                 _passwordController.text,
-                                            "username": _usernameController.text
+                                            "username":
+                                                _usernameController.text,
+                                            "fevList": [],
+                                            'cartList': [],
+                                            'ordersList': []
                                           }));
                                     },
                                     child:
