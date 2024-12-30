@@ -11,7 +11,7 @@ class FirebaseData {
   static List<ProductDataModel> itemList = [];
 
   ///
-  static Future<void> createUserAccount(
+  static Future<String> createUserAccount(
       Map<String, dynamic> userCredential) async {
     try {
       ///FIREBASE AUTHENTICATION FOR CREATE USER/SIGN UP WITH USER AND PASSWORD
@@ -22,16 +22,18 @@ class FirebaseData {
               password: userCredential["password"]);
 
       ///ADDING USERS DATA TO FIRESTORE DATABASE
-      await firebaseInstance.collection("Users").add(userCredential);
+      await firebaseInstance.collection("Users").doc(userCredential["email"]).set(userCredential);
 
       log("$userCredentials");
+      return "true";
     } on FirebaseAuthException catch (e) {
       log(e.code);
+      return e.code;
     }
   }
 
   ///
-  static Future<void> signUserAccount(Map userCredential) async {
+  static Future<String> signUserAccount(Map userCredential) async {
     try {
       ///FIREBASE AUTHENTICATION FOR SIGN IN WITH USER AND PASSWORD
       UserCredential userCredentials = await FirebaseAuth.instance
@@ -53,8 +55,11 @@ class FirebaseData {
       }
 
       log("$userCredentials");
+      return "true";
     } on FirebaseAuthException catch (e) {
       log(e.code);
+
+      return e.code;
     }
   }
 
