@@ -23,12 +23,20 @@ class ProductTile extends StatelessWidget {
           Container(
             height: 150,
             width: 200,
-            alignment: Alignment.topRight,
+            alignment: Alignment.topLeft,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(productDataModel.imageUrl),
               ),
+            ),
+            child: GestureDetector(
+              onTap: () {
+                homeBloc.add(HomeProductCartButtonClickedEvent(
+                    clickedProduct: productDataModel));
+              },
+              child: const Icon(Icons.shopping_cart_outlined,
+                  color: Color.fromRGBO(14, 161, 125, 1), size: 28),
             ),
           ),
           const SizedBox(height: 10),

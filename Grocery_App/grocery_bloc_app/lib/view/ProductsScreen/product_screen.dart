@@ -36,6 +36,9 @@ class ProductScreen extends StatelessWidget {
               MaterialPageRoute(
                   builder: (context) =>
                       ProductDetailsScreen(product: state.product)));
+        } else if (state is HomeProductItemCartedActionState) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text('Item Carted')));
         }
       },
       builder: (context, state) {
