@@ -8,7 +8,7 @@ import 'package:grocery_bloc_app/model/product_data_model.dart';
 import 'package:grocery_bloc_app/view/ProductsScreen/product_tile.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
-import 'package:grocery_bloc_app/view/detail_product.dart';
+import 'package:grocery_bloc_app/view/DetailsScreen/detail_product_screen.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({

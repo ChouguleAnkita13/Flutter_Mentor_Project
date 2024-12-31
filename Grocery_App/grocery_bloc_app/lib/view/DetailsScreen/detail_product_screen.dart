@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
+import 'package:grocery_bloc_app/view/DetailsScreen/nutrition_card.dart';
 import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -118,13 +119,13 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildNutritionCard('Cal', "46"),
-                      _buildNutritionCard('Fat', "0.5 g"),
-                      _buildNutritionCard('Carb', "10 g"),
-                      _buildNutritionCard('Prot', "1.5 g"),
+                      NutritionCard(label: 'Cal', value: "46"),
+                      NutritionCard(label: "Fat", value: "0.5 g"),
+                      NutritionCard(label: "Carb", value: "10 g"),
+                      NutritionCard(label: "Prot", value: "1.5 g"),
                     ],
                   ),
                   const SizedBox(height: 30),
@@ -143,37 +144,4 @@ class ProductDetailsScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-// Nutrition card widget
-Widget _buildNutritionCard(String label, String value) {
-  return Container(
-    padding: const EdgeInsets.all(10.0),
-    width: 80,
-    decoration: BoxDecoration(
-      color: const Color.fromRGBO(14, 161, 125, 0.08),
-      borderRadius: BorderRadius.circular(7),
-    ),
-    child: Column(
-      children: [
-        Text(
-          label,
-          style: GoogleFonts.poppins(
-            fontSize: 14,
-            color: const Color.fromRGBO(14, 161, 125, 1),
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          value,
-          style: GoogleFonts.poppins(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-      ],
-    ),
-  );
 }

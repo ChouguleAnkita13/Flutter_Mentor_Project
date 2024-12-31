@@ -7,7 +7,7 @@ import 'package:grocery_bloc_app/view/HomeScreen/Widget/custom_row.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/Widget/home_appbar.dart';
 import 'package:grocery_bloc_app/view/HomeScreen/Widget/home_product_tile_widget.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
-import 'package:grocery_bloc_app/view/detail_product.dart';
+import 'package:grocery_bloc_app/view/DetailsScreen/detail_product_screen.dart';
 import 'package:grocery_bloc_app/view/navbar_screen.dart';
 import 'package:grocery_bloc_app/view/notification_screen.dart';
 
