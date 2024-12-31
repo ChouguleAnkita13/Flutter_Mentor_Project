@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_bloc_app/controller/Data/items_list.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_bloc.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_event.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_state.dart';
 import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
+import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 import 'package:grocery_bloc_app/view/WishlistScreen/wishlist_tile_widget.dart';
 
 class WishlistScreen extends StatefulWidget {
@@ -52,7 +54,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                             children: [
                               SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height - 170,
+                                    MediaQuery.of(context).size.height - 205,
                                 child: ListView.separated(
                                   itemCount: successState.products.length,
                                   itemBuilder: (context, index) {
@@ -69,7 +71,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
                               ),
                               const Spacer(),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  cartItems.addAll(wishlistItems);
+                                },
                                 child: const ButtonContainer(
                                     title: "Add All To cart"),
                               )
@@ -82,8 +86,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
         },
         listener: (context, state) {
           if (state is WishlistRemoveItemFromWishlistActionState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Item Removed from wishlist")));
+            CustomSnackbar.customSnackbar(
+                context, "Item Removed from wishlist");
           }
         });
   }

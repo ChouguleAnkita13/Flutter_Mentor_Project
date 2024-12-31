@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_bloc.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_event.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
@@ -32,26 +33,28 @@ class WishlistTileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(productDataModel.name,
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 5),
-                Text("\$${productDataModel.price} Price:",
-                    style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.w400)),
+                Text("\$${productDataModel.price} Price",
+                    style: GoogleFonts.poppins(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey[500])),
               ],
             ),
           ),
           const Spacer(),
           Text("\$${productDataModel.price}",
-              style:
-                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+              style: GoogleFonts.poppins(
+                  fontSize: 16, fontWeight: FontWeight.w600)),
           const SizedBox(width: 10),
           GestureDetector(
               onTap: () {
                 wishlistBloc.add(WishlistRemoveItemFromWishlistEvent(
                     product: productDataModel));
               },
-              child: const Icon(Icons.cancel_outlined)),
+              child: Icon(Icons.cancel_outlined, color: Colors.grey[500])),
         ],
       ),
     );
