@@ -7,6 +7,7 @@ import 'package:grocery_bloc_app/controller/CartBloc/cart_event.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_state.dart';
 import 'package:grocery_bloc_app/view/CartScreen/cart_tile_widget.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
+import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -47,13 +48,21 @@ class _CartScreenState extends State<CartScreen> {
                 backgroundColor: Colors.white,
                 body: successState.products.isEmpty
                     ? const Center(child: Text("No Items In Cart"))
-                    : ListView.builder(
-                        itemCount: successState.products.length,
-                        itemBuilder: (context, index) {
-                          return CartTileWidget(
-                              cartBloc: cartBloc,
-                              productDataModel: successState.products[index]);
-                        }),
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 15),
+                        child: ListView.separated(
+                          itemCount: successState.products.length,
+                          itemBuilder: (context, index) {
+                            return CartTileWidget(
+                                cartBloc: cartBloc,
+                                productDataModel: successState.products[index]);
+                          },
+                          separatorBuilder: (context, idx) => Divider(
+                            color: Colors.grey[300],
+                          ),
+                        ),
+                      ),
               );
             default:
               return const SizedBox();
@@ -64,9 +73,7 @@ class _CartScreenState extends State<CartScreen> {
 
           if (state is CartRemoveProductFromCartActionState) {
             log("------In Snackbar RemoveCartActionState");
-
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Item Removed From')));
+            CustomSnackbar.customSnackbar(context, 'Item Removed From Cart');
           }
         });
   }
