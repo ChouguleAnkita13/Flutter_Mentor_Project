@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_addtocart_data.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_wishlist_data.dart';
 import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
 
@@ -22,7 +24,10 @@ class FirebaseData {
               password: userCredential["password"]);
 
       ///ADDING USERS DATA TO FIRESTORE DATABASE
-      await firebaseInstance.collection("Users").doc(userCredential["email"]).set(userCredential);
+      await firebaseInstance
+          .collection("Users")
+          .doc(userCredential["email"])
+          .set(userCredential);
 
       log("$userCredentials");
       return "true";
@@ -67,6 +72,12 @@ class FirebaseData {
   static Future<void> getGroceryDataFromFirebase() async {
     QuerySnapshot response = await firebaseInstance.collection("Grocery").get();
 
+    /// GET FEVIDLIST
+    await FirebaseWishlistData.getFevIdListFromFirebase();
+
+    ///GET ADDTOCARTIDLIST
+    await FirebaseAddtocartData.getCartIdListFromFirebase();
+
     /// GET GROCERY DATA
 
     for (var e in response.docs) {
@@ -81,6 +92,8 @@ class FirebaseData {
         itemList.add(ProductDataModel(
             id: d.id,
             category: e.id,
+            isFev: FirebaseWishlistData.fevIdList.contains(d.id),
+            isAddToCart: FirebaseAddtocartData.addToCartIdList.contains(d.id),
             name: d['name'],
             description: d['description'],
             price: d['price'],

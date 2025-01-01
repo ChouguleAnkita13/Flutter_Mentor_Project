@@ -16,9 +16,14 @@ class ProductDataModel {
   final double price;
   final String imageUrl;
   final String quantity;
-  const ProductDataModel(
+  bool isFev;
+  bool isAddToCart;
+
+  ProductDataModel(
       {required this.id,
       required this.name,
+      required this.isFev,
+      required this.isAddToCart,
       required this.category,
       required this.description,
       required this.price,
