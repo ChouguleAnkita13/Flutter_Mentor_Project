@@ -3,8 +3,9 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 
-import 'package:grocery_bloc_app/controller/Data/items_list.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_addtocart_data.dart';
 import 'package:grocery_bloc_app/controller/Firebase/firebase_data.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_wishlist_data.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_state.dart';
 
@@ -33,17 +34,41 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> homeProductWishlistButtonClickedEvent(
-      HomeProductWishlistButtonClickedEvent event, Emitter<HomeState> emit) {
-    log('Wishlist Product Clicked');
-    wishlistItems.add(event.clickedProduct);
-    emit(HomeProductItemWishlistedActionState());
+      HomeProductWishlistButtonClickedEvent event,
+      Emitter<HomeState> emit) async {
+    final bool response =
+        await FirebaseWishlistData.addAndRemoveProductToFirebaseWishList(
+            event.clickedProduct);
+
+    if (response) {
+      ///This state is emitted bcz once we remove or add item form wishlist, we get updated list again
+      emit(HomeLoadedSuccessState(products: FirebaseData.groceryProduct));
+      emit(HomeProductItemWishlistedActionState(
+          message: "${event.clickedProduct.name} added in wishlist"));
+    } else {
+      ///This state is emitted bcz once we remove or add item form wishlist, we get updated list again
+
+      emit(HomeLoadedSuccessState(products: FirebaseData.groceryProduct));
+
+      emit(HomeProductRemovedFromWishlistActionState(
+          message: "${event.clickedProduct.name} removed from wishlist"));
+    }
   }
 
+  ///
   FutureOr<void> homeProductCartButtonClickedEvent(
-      HomeProductCartButtonClickedEvent event, Emitter<HomeState> emit) {
+      HomeProductCartButtonClickedEvent event, Emitter<HomeState> emit) async {
     log('Cart Product clicked');
-    cartItems.add(event.clickedProduct);
-    emit(HomeProductItemCartedActionState());
+    final response =
+        await FirebaseAddtocartData.addAndRemoveProductToFirebaseCartList(
+            event.clickedProduct);
+    if (response) {
+      emit(HomeProductItemCartedActionState(
+          message: "${event.clickedProduct.name} added to cart"));
+    } else {
+      emit(HomeProductRemoveFromCartActionState(
+          message: "${event.clickedProduct.name} removed from cart"));
+    }
   }
 
   FutureOr<void> homeNotificationButtonNavigateEvent(
