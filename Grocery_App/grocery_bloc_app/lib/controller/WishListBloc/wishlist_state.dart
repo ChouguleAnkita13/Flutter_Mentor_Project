@@ -18,8 +18,9 @@ class WishlistSuccessState extends WishlistState {
   WishlistSuccessState({required this.products});
 }
 
-/// A state representing to remove item from wishList.
-class WishlistRemoveItemFromWishlistState extends WishlistState {}
-
 ///This Action state is for showing some Action after item removing from list/server/backend
-class WishlistRemoveItemFromWishlistActionState extends WishlistActionState {}
+class WishlistRemoveItemFromWishlistActionState extends WishlistActionState {
+  final String message;
+
+  WishlistRemoveItemFromWishlistActionState({required this.message});
+}

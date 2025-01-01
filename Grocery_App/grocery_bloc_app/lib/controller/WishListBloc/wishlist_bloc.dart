@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:grocery_bloc_app/controller/Data/items_list.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_wishlist_data.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_event.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_state.dart';
 
@@ -23,22 +23,26 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   FutureOr<void> wishlistInitialEvent(
       WishlistInitialEvent event, Emitter<WishlistState> emit) async {
     emit(WishlistLoadingState());
-    await Future.delayed(const Duration(seconds: 3));
-    emit(WishlistSuccessState(products: wishlistItems));
+    await FirebaseWishlistData.getWishlistFromFirebase();
+    emit(WishlistSuccessState(products: FirebaseWishlistData.wishlistItems));
   }
 
   ///Event Handler for WishlistRemoveItemFromWishlistEvent
   FutureOr<void> wishlistRemoveItemFromWishlistEvent(
-      WishlistRemoveItemFromWishlistEvent event, Emitter<WishlistState> emit) {
-    wishlistItems.remove(event.product);
+      WishlistRemoveItemFromWishlistEvent event,
+      Emitter<WishlistState> emit) async {
+    final bool response =
+        await FirebaseWishlistData.removeDataFromFirebaseWishList(
+            event.product);
 
-    ///This state is emitted/sent to remove item form wishlist
-    emit(WishlistRemoveItemFromWishlistState());
+    if (response) {
+      ///This state is emitted bcz once we remove item form wishlist, we get updated list again
+      ///
+      emit(WishlistSuccessState(products: FirebaseWishlistData.wishlistItems));
 
-    ///This state is emitted bcz once we remove item form wishlist, we get updated list again
-    emit(WishlistSuccessState(products: wishlistItems));
-
-    ///This state is emitted to show some action after item removed from wishlist
-    emit(WishlistRemoveItemFromWishlistActionState());
+      ///This state is emitted to show some action after item removed from wishlist
+      emit(WishlistRemoveItemFromWishlistActionState(
+          message: "${event.product.name} removed from wishlist"));
+    }
   }
 }
