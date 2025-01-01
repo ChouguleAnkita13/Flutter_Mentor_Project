@@ -40,6 +40,26 @@ class HomeNavigateToNotificationPageActionState extends HomeActionState {}
 
 class HomeNavigateToExploreSeeAllActionState extends HomeActionState {}
 
-class HomeProductItemWishlistedActionState extends HomeActionState {}
+class HomeProductItemWishlistedActionState extends HomeActionState {
+  final String message;
 
-class HomeProductItemCartedActionState extends HomeActionState {}
+  HomeProductItemWishlistedActionState({required this.message});
+}
+
+class HomeProductRemovedFromWishlistActionState extends HomeActionState {
+  final String message;
+
+  HomeProductRemovedFromWishlistActionState({required this.message});
+}
+
+class HomeProductItemCartedActionState extends HomeActionState {
+  final String message;
+
+  HomeProductItemCartedActionState({required this.message});
+}
+
+class HomeProductRemoveFromCartActionState extends HomeActionState {
+  final String message;
+
+  HomeProductRemoveFromCartActionState({required this.message});
+}
