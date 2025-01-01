@@ -29,13 +29,15 @@ class ProductScreen extends StatelessWidget {
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
         if (state is HomeProductItemWishlistedActionState) {
-          CustomSnackbar.customSnackbar(context, 'Item Wishlisted');
+          CustomSnackbar.customSnackbar(context, state.message);
+        } else if (state is HomeProductRemovedFromWishlistActionState) {
+          CustomSnackbar.customSnackbar(context, state.message);
         } else if (state is HomeNavigateToProductDetailsActionState) {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      ProductDetailsScreen(product: state.product)));
+                      ProductDetailsScreen(productDataModel: state.product)));
         } else if (state is HomeProductItemCartedActionState) {
           CustomSnackbar.customSnackbar(context, 'Item Carted');
         }

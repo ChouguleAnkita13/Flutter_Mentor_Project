@@ -46,13 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         selectedIndex: 1,
                       )));
         } else if (state is HomeProductItemWishlistedActionState) {
-          CustomSnackbar.customSnackbar(context, "Item WishListed");
+          CustomSnackbar.customSnackbar(context, state.message);
+        } else if (state is HomeProductRemovedFromWishlistActionState) {
+          CustomSnackbar.customSnackbar(context, state.message);
         } else if (state is HomeNavigateToProductDetailsActionState) {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      ProductDetailsScreen(product: state.product)));
+                      ProductDetailsScreen(productDataModel: state.product)));
         }
       },
       builder: (context, state) {

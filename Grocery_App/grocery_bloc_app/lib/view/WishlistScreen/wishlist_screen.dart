@@ -86,8 +86,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
         },
         listener: (context, state) {
           if (state is WishlistRemoveItemFromWishlistActionState) {
-            CustomSnackbar.customSnackbar(
-                context, "Item Removed from wishlist");
+            CustomSnackbar.customSnackbar(context, state.message);
           }
         });
   }

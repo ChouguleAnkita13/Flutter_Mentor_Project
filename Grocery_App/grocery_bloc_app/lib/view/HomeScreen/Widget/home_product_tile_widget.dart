@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_wishlist_data.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_bloc.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
@@ -61,8 +62,11 @@ class HomeProductTileWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: const Color.fromRGBO(14, 161, 125, 1),
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(
-                      Icons.add,
+                    child: Icon(
+                      FirebaseWishlistData.fevIdList
+                              .contains(productDataModel.id)
+                          ? Icons.remove
+                          : Icons.add,
                       color: Colors.white,
                       size: 25,
                     )),
