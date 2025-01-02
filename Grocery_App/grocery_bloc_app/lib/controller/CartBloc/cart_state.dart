@@ -15,6 +15,8 @@ class CartLoadedSuccessState extends CartState {
   });
 }
 
-class CartRemoveProductFromCartState extends CartState {}
+class CartRemoveProductFromCartActionState extends CartActionState {
+  final String message;
 
-class CartRemoveProductFromCartActionState extends CartActionState {}
+  CartRemoveProductFromCartActionState({required this.message});
+}

@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_event.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_state.dart';
-import 'package:grocery_bloc_app/controller/Data/items_list.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_addtocart_data.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitialState()) {
@@ -18,25 +18,24 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     emit(CartLoadingState());
     log('pause');
 
-    await Future.delayed(
-      const Duration(seconds: 5),
-    );
+    await FirebaseAddtocartData.getCartListFromFirebase();
     log('Emit CartLoadedSuccessState');
 
-    emit(CartLoadedSuccessState(products: cartItems));
+    emit(CartLoadedSuccessState(products: FirebaseAddtocartData.cartItems));
   }
 
   FutureOr<void> cartRemoveProductFromCartEvent(
-      CartRemoveProductFromCartEvent event, Emitter<CartState> emit) {
+      CartRemoveProductFromCartEvent event, Emitter<CartState> emit) async {
     log('Remove Product from cart');
 
-    cartItems.remove(event.product);
+    final response = await FirebaseAddtocartData.removeDataFromFirebaseCartList(
+        event.product);
+    if (response) {
+      ///To show List after removing items from cart
+      emit(CartLoadedSuccessState(products: FirebaseAddtocartData.cartItems));
 
-    emit(CartRemoveProductFromCartState());
-
-    ///To show List after removing items from cart
-    emit(CartLoadedSuccessState(products: cartItems));
-
-    emit(CartRemoveProductFromCartActionState());
+      emit(CartRemoveProductFromCartActionState(
+          message: "${event.product.name} removed from Cart"));
+    }
   }
 }
