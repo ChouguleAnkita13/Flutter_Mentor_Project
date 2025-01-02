@@ -39,7 +39,9 @@ class ProductScreen extends StatelessWidget {
                   builder: (context) =>
                       ProductDetailsScreen(productDataModel: state.product)));
         } else if (state is HomeProductItemCartedActionState) {
-          CustomSnackbar.customSnackbar(context, 'Item Carted');
+          CustomSnackbar.customSnackbar(context, state.message);
+        } else if (state is HomeProductRemoveFromCartActionState) {
+          CustomSnackbar.customSnackbar(context, state.message);
         }
       },
       builder: (context, state) {

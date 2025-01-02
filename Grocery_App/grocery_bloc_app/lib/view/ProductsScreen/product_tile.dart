@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_addtocart_data.dart';
 import 'package:grocery_bloc_app/controller/Firebase/firebase_wishlist_data.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_bloc.dart';
 import 'package:grocery_bloc_app/controller/HomeBloc/home_event.dart';
@@ -36,8 +37,13 @@ class ProductTile extends StatelessWidget {
                 homeBloc.add(HomeProductCartButtonClickedEvent(
                     clickedProduct: productDataModel));
               },
-              child: const Icon(Icons.shopping_cart_outlined,
-                  color: Color.fromRGBO(14, 161, 125, 1), size: 28),
+              child: Icon(
+                  FirebaseAddtocartData.addToCartIdList
+                          .contains(productDataModel.id)
+                      ? Icons.shopping_cart
+                      : Icons.shopping_cart_outlined,
+                  color: const Color.fromRGBO(14, 161, 125, 1),
+                  size: 28),
             ),
           ),
           const SizedBox(height: 10),
