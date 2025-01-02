@@ -47,7 +47,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           message: "${event.clickedProduct.name} added in wishlist"));
     } else {
       ///This state is emitted bcz once we remove or add item form wishlist, we get updated list again
-
       emit(HomeLoadedSuccessState(products: FirebaseData.groceryProduct));
 
       emit(HomeProductRemovedFromWishlistActionState(
@@ -63,9 +62,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         await FirebaseAddtocartData.addAndRemoveProductToFirebaseCartList(
             event.clickedProduct);
     if (response) {
+      ///This state is emitted bcz once we remove or add item form wishlist, we get updated list again
+      emit(HomeLoadedSuccessState(products: FirebaseData.groceryProduct));
       emit(HomeProductItemCartedActionState(
           message: "${event.clickedProduct.name} added to cart"));
     } else {
+      ///This state is emitted bcz once we remove or add item form wishlist, we get updated list again
+      emit(HomeLoadedSuccessState(products: FirebaseData.groceryProduct));
       emit(HomeProductRemoveFromCartActionState(
           message: "${event.clickedProduct.name} removed from cart"));
     }
