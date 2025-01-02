@@ -41,7 +41,7 @@ class CartTileWidget extends StatelessWidget {
                         Text(productDataModel.name,
                             style: GoogleFonts.poppins(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
-                        Text("\$${productDataModel.price} Price",
+                        Text("${productDataModel.quantity}, Price",
                             style: GoogleFonts.poppins(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
@@ -54,8 +54,8 @@ class CartTileWidget extends StatelessWidget {
                         cartBloc.add(CartRemoveProductFromCartEvent(
                             product: productDataModel));
                       },
-                      child:
-                          Icon(Icons.cancel_outlined, color: Colors.grey[500])),
+                      child: const Icon(Icons.cancel_outlined,
+                          color: Color.fromRGBO(14, 161, 125, 1))),
                 ],
               ),
               const SizedBox(height: 15),
@@ -92,7 +92,7 @@ class CartTileWidget extends StatelessWidget {
                         color: Color.fromRGBO(14, 161, 125, 1),
                         size: 21,
                       )),
-                  const SizedBox(width: 40),
+                  const SizedBox(width: 120),
                   Text("\$${productDataModel.price}",
                       style: GoogleFonts.poppins(
                           fontSize: 16, fontWeight: FontWeight.w600)),

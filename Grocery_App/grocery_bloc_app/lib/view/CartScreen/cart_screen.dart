@@ -27,54 +27,55 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer(
-        bloc: cartBloc,
-        listenWhen: (previous, current) => current is CartActionState,
-        buildWhen: (previous, current) => current is! CartActionState,
-        builder: (context, state) {
-          log("------In builder");
+      bloc: cartBloc,
+      listenWhen: (previous, current) => current is CartActionState,
+      buildWhen: (previous, current) => current is! CartActionState,
+      listener: (context, state) {
+        log("------In listener");
 
-          switch (state.runtimeType) {
-            case const (CartLoadingState):
-              log("------In Case LoadingState");
-              return const Scaffold(
-                body: Center(child: CircularProgressIndicator()),
-              );
-            case const (CartLoadedSuccessState):
-              log("------In Case SuccessState");
+        if (state is CartRemoveProductFromCartActionState) {
+          log("------In Snackbar RemoveCartActionState");
+          CustomSnackbar.customSnackbar(context, state.message);
+        }
+      },
+      builder: (context, state) {
+        log("------In builder");
 
-              final successState = state as CartLoadedSuccessState;
-              return Scaffold(
-                appBar: CustomAppbar.customAppbar("My Cart"),
-                backgroundColor: Colors.white,
-                body: successState.products.isEmpty
-                    ? const Center(child: Text("No Items In Cart"))
-                    : Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 15),
-                        child: ListView.separated(
-                          itemCount: successState.products.length,
-                          itemBuilder: (context, index) {
-                            return CartTileWidget(
-                                cartBloc: cartBloc,
-                                productDataModel: successState.products[index]);
-                          },
-                          separatorBuilder: (context, idx) => Divider(
-                            color: Colors.grey[300],
-                          ),
+        switch (state.runtimeType) {
+          case const (CartLoadingState):
+            log("------In Case LoadingState");
+            return const Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            );
+          case const (CartLoadedSuccessState):
+            log("------In Case SuccessState");
+
+            final successState = state as CartLoadedSuccessState;
+            return Scaffold(
+              appBar: CustomAppbar.customAppbar("My Cart"),
+              backgroundColor: Colors.white,
+              body: successState.products.isEmpty
+                  ? const Center(child: Text("No Items In Cart"))
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 15),
+                      child: ListView.separated(
+                        itemCount: successState.products.length,
+                        itemBuilder: (context, index) {
+                          return CartTileWidget(
+                              cartBloc: cartBloc,
+                              productDataModel: successState.products[index]);
+                        },
+                        separatorBuilder: (context, idx) => Divider(
+                          color: Colors.grey[300],
                         ),
                       ),
-              );
-            default:
-              return const SizedBox();
-          }
-        },
-        listener: (context, state) {
-          log("------In listener");
-
-          if (state is CartRemoveProductFromCartActionState) {
-            log("------In Snackbar RemoveCartActionState");
-            CustomSnackbar.customSnackbar(context, 'Item Removed From Cart');
-          }
-        });
+                    ),
+            );
+          default:
+            return const SizedBox();
+        }
+      },
+    );
   }
 }
