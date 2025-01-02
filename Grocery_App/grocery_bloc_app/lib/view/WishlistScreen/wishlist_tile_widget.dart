@@ -36,7 +36,7 @@ class WishlistTileWidget extends StatelessWidget {
                     style: GoogleFonts.poppins(
                         fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 5),
-                Text("\$${productDataModel.price} Price",
+                Text("${productDataModel.quantity}, Price",
                     style: GoogleFonts.poppins(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -54,7 +54,8 @@ class WishlistTileWidget extends StatelessWidget {
                 wishlistBloc.add(WishlistRemoveItemFromWishlistEvent(
                     product: productDataModel));
               },
-              child: Icon(Icons.cancel_outlined, color: Colors.grey[500])),
+              child: const Icon(Icons.cancel_outlined,
+                  color: Color.fromRGBO(14, 161, 125, 1))),
         ],
       ),
     );
