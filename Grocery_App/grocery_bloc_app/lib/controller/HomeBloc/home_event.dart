@@ -21,6 +21,13 @@ class HomeProductCartButtonClickedEvent extends HomeEvent {
   });
 }
 
+class HomeAddToCartButtonClickedEvent extends HomeEvent {
+  final ProductDataModel clickedProduct;
+  HomeAddToCartButtonClickedEvent({
+    required this.clickedProduct,
+  });
+}
+
 class HomeExploreProductButtonClickedEvent extends HomeEvent {
   final List<ProductDataModel> clickedProduct;
   final String category;
