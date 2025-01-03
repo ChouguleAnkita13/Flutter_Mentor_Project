@@ -35,7 +35,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     builder: (context) =>
                         ProductDetailsScreen(productDataModel: state.product)));
           } else if (state is HomeProductItemCartedActionState) {
-            CustomSnackbar.customSnackbar(context, 'Item Carted');
+            CustomSnackbar.customSnackbar(context, state.message);
           }
         },
         builder: (context, state) {
@@ -173,10 +173,16 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: ButtonContainer(
-                      title: "Add To Cart",
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        homeBloc.add(HomeAddToCartButtonClickedEvent(
+                            clickedProduct: productDataModel));
+                      },
+                      child: const ButtonContainer(
+                        title: "Add To Cart",
+                      ),
                     ),
                   )
                 ],
