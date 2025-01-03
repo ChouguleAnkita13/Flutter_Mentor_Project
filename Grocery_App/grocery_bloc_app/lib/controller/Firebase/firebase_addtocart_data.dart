@@ -75,13 +75,14 @@ class FirebaseAddtocartData {
     }
   }
 
-  ///REMOVE ITEM FROM FIREBASE WISHLIST
+  ///REMOVE ITEM FROM FIREBASE CARTLIST
   static Future<bool> removeDataFromFirebaseCartList(
       ProductDataModel product) async {
     final docInstance =
         firebaseInstance.collection("Users").doc(SessionData.email);
 
-    /// GET FEVIDLIST
+    /// GET CARTIDLIST
+
     await getCartIdListFromFirebase();
 
     ///IF THE CARTIDLIST CONTAINS THE PRODUCT ID WHICH WE WANT TO REMOVE
@@ -92,6 +93,29 @@ class FirebaseAddtocartData {
     if (addToCartIdList.contains(product.id)) {
       addToCartIdList.remove(product.id);
       cartItems.remove(product);
+      docInstance.update({'cartList': addToCartIdList});
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  ///Add ITEM FROM FIREBASE
+
+  static Future<bool> addDataToFirebaseCartList(
+      ProductDataModel product) async {
+    final docInstance =
+        firebaseInstance.collection("Users").doc(SessionData.email);
+
+    /// GET CARTIDLIST
+    await getCartIdListFromFirebase();
+
+    ///IF THE CARTIDLIST NOT CONTAINS THE PRODUCT ID WHICH WE WANT TO ADD
+    ///THEN ONLY IT WILL ADD THE ID IN CARTIDLIST AND UPDATE THE CARTIDLIST OF USER DOCUMENT
+    ///
+
+    if (!addToCartIdList.contains(product.id)) {
+      addToCartIdList.add(product.id);
       docInstance.update({'cartList': addToCartIdList});
       return true;
     } else {
