@@ -100,7 +100,7 @@ class FirebaseAddtocartData {
     }
   }
 
-  ///Add ITEM FROM FIREBASE
+  ///Add ITEM TO FIREBASE
 
   static Future<bool> addDataToFirebaseCartList(
       ProductDataModel product) async {
@@ -116,6 +116,32 @@ class FirebaseAddtocartData {
 
     if (!addToCartIdList.contains(product.id)) {
       addToCartIdList.add(product.id);
+      docInstance.update({'cartList': addToCartIdList});
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  ///ADD ALL WISHLIST ITEMS ID TO CARTLIST
+  ///IF ALL ARE ALREADY PRESENT IT WILL NOT ADDED THE ID IN CARTLIST
+  ///IF MORE THAN 0 OF THE IDS ARE NOT PRESENT THEN IT WILL ADD IN CARTLIST
+  static Future<bool> addWishListToFirebaseCartList(
+      List<ProductDataModel> wishlistItems) async {
+    final docInstance =
+        firebaseInstance.collection("Users").doc(SessionData.email);
+    List idList = [];
+
+    /// GET CARTIDLIST
+    await getCartIdListFromFirebase();
+
+    for (var item in wishlistItems) {
+      if (!addToCartIdList.contains(item.id)) {
+        idList.add(item.id);
+      }
+    }
+    if (idList.isNotEmpty) {
+      addToCartIdList = addToCartIdList + idList;
       docInstance.update({'cartList': addToCartIdList});
       return true;
     } else {
