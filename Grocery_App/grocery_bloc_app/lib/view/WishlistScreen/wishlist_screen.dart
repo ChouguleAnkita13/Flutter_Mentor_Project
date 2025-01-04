@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:grocery_bloc_app/controller/Data/items_list.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_bloc.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_event.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_state.dart';
@@ -72,7 +71,10 @@ class _WishlistScreenState extends State<WishlistScreen> {
                               const Spacer(),
                               GestureDetector(
                                 onTap: () {
-                                  cartItems.addAll(wishlistItems);
+                                  wishListBloc.add(
+                                      WishlistAddAllToCartButtonClickedEvent(
+                                          wishlistItems:
+                                              successState.products));
                                 },
                                 child: const ButtonContainer(
                                     title: "Add All To cart"),
@@ -86,6 +88,8 @@ class _WishlistScreenState extends State<WishlistScreen> {
         },
         listener: (context, state) {
           if (state is WishlistRemoveItemFromWishlistActionState) {
+            CustomSnackbar.customSnackbar(context, state.message);
+          } else if (state is WishlistAllAddToCartActionState) {
             CustomSnackbar.customSnackbar(context, state.message);
           }
         });
