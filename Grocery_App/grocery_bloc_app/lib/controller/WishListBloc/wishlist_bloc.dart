@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:grocery_bloc_app/controller/Firebase/firebase_addtocart_data.dart';
 import 'package:grocery_bloc_app/controller/Firebase/firebase_wishlist_data.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_event.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_state.dart';
@@ -17,6 +18,8 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     on<WishlistInitialEvent>(wishlistInitialEvent);
     on<WishlistRemoveItemFromWishlistEvent>(
         wishlistRemoveItemFromWishlistEvent);
+    on<WishlistAddAllToCartButtonClickedEvent>(
+        wishlistAddAllToCartButtonClickedEvent);
   }
 
   ///Event Handler for WishlistInitialEvent
@@ -43,6 +46,23 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
       ///This state is emitted to show some action after item removed from wishlist
       emit(WishlistRemoveItemFromWishlistActionState(
           message: "${event.product.name} removed from wishlist"));
+    }
+  }
+
+  FutureOr<void> wishlistAddAllToCartButtonClickedEvent(
+      WishlistAddAllToCartButtonClickedEvent event,
+      Emitter<WishlistState> emit) async {
+    final bool response =
+        await FirebaseAddtocartData.addWishListToFirebaseCartList(
+            event.wishlistItems);
+
+    if (response) {
+      ///This state is emitted to show some action after items add to cart
+      emit(WishlistAllAddToCartActionState(message: "All Items Added in cart"));
+    } else {
+      ///This state is emitted to show some action after item add to cart
+      emit(WishlistAllAddToCartActionState(
+          message: "All Items Already Added in cart"));
     }
   }
 }

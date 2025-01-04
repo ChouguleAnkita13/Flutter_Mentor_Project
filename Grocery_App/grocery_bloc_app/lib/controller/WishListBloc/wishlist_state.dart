@@ -24,3 +24,11 @@ class WishlistRemoveItemFromWishlistActionState extends WishlistActionState {
 
   WishlistRemoveItemFromWishlistActionState({required this.message});
 }
+
+///This Action state is for showing some Action after item adding to list/server/backend
+
+class WishlistAllAddToCartActionState extends WishlistActionState {
+  final String message;
+
+  WishlistAllAddToCartActionState({required this.message});
+}

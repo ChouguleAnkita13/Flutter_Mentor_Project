@@ -11,3 +11,12 @@ class WishlistRemoveItemFromWishlistEvent extends WishlistEvent {
   final ProductDataModel product;
   WishlistRemoveItemFromWishlistEvent({required this.product});
 }
+
+/// A class representing the event of adding item from cartlist.
+
+class WishlistAddAllToCartButtonClickedEvent extends WishlistEvent {
+  final List<ProductDataModel> wishlistItems;
+  WishlistAddAllToCartButtonClickedEvent({
+    required this.wishlistItems,
+  });
+}
