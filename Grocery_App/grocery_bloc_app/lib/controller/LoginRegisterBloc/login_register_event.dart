@@ -13,3 +13,7 @@ class RegisterWithDataButtonNavigateEvent extends LoginRegisterEvent {
   final Map<String, dynamic> userCredential;
   RegisterWithDataButtonNavigateEvent({required this.userCredential});
 }
+
+class LogoutButtonNavigateEvent extends LoginRegisterEvent {}
+
+class NotificationButtonNavigateEvent extends LoginRegisterEvent {}

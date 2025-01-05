@@ -12,3 +12,7 @@ class LoginRegisterWithDataButtonErrorState extends LoginRegisterState {
   final String error;
   LoginRegisterWithDataButtonErrorState({required this.error});
 }
+
+class LogoutButtonNavigateState extends LoginRegisterState {}
+
+class NavigateToNotificationPageState extends LoginRegisterState {}

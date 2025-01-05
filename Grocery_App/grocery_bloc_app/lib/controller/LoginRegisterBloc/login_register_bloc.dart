@@ -12,6 +12,8 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
     on<LoginWithDataButtonNavigateEvent>(loginWithDataButtonNavigateEvent);
     on<RegisterWithDataButtonNavigateEvent>(
         registerWithDataButtonNavigateEvent);
+    on<LogoutButtonNavigateEvent>(logoutButtonNavigateEvent);
+    on<NotificationButtonNavigateEvent>(notificationButtonNavigateEvent);
   }
 
   FutureOr<void> loginButtonNavigateEvent(
@@ -44,5 +46,16 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
     } else {
       emit(LoginRegisterWithDataButtonErrorState(error: res));
     }
+  }
+
+  FutureOr<void> logoutButtonNavigateEvent(
+      LogoutButtonNavigateEvent event, Emitter<LoginRegisterState> emit) async {
+    await FirebaseData.logoutFromFirebase();
+    emit(LogoutButtonNavigateState());
+  }
+
+  FutureOr<void> notificationButtonNavigateEvent(
+      NotificationButtonNavigateEvent event, Emitter<LoginRegisterState> emit) {
+    emit(NavigateToNotificationPageState());
   }
 }
