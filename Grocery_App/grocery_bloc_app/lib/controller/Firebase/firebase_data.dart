@@ -68,6 +68,12 @@ class FirebaseData {
     }
   }
 
+  ///Logout
+  static Future<void> logoutFromFirebase() async {
+    await FirebaseAuth.instance.signOut();
+    SessionData.storeSessiondata(isLogin: false, email: "", username: "");
+  }
+
   ///FETCHING GROCERYS FROM FIREBASE
   static Future<void> getGroceryDataFromFirebase() async {
     QuerySnapshot response = await firebaseInstance.collection("Grocery").get();
