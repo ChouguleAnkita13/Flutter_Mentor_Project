@@ -19,7 +19,7 @@ class GroceryData {
               'Crisp and juicy red apples picked at peak ripeness. Ideal for snacking, baking pies, or adding a refreshing crunch to salads. High in fiber and antioxidants.',
           'price': 2.99,
           'imageUrl':
-              'https://cdn.shopify.com/s/files/1/0258/4307/3103/products/asset_2_800x.jpg?v=1571839043',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjyvewZeCW0-OwrHOhenFL8sQuMxZ71tuSGQ&s'
         },
         {
           'name': 'Oranges',
@@ -28,7 +28,7 @@ class GroceryData {
               'Bright and tangy oranges packed with Vitamin C. Perfect for fresh juices, zesting for recipes, or eating as a refreshing snack.',
           'price': 1.99,
           'imageUrl':
-              'https://cdn.shopify.com/s/files/1/0258/4307/3103/products/asset_2_800x.jpg?v=1571839043',
+              'https://t4.ftcdn.net/jpg/08/87/16/77/360_F_887167700_CwRKgb3Wm3TW79meKUNj9ANlEc5XXH44.jpg'
         },
         {
           'name': 'Strawberries',
@@ -37,7 +37,7 @@ class GroceryData {
               'Luscious, red strawberries with a sweet and slightly tart flavor. Great for desserts, breakfast bowls, or dipping in chocolate.',
           'price': 3.49,
           'imageUrl':
-              'https://cdn.shopify.com/s/files/1/0258/4307/3103/products/asset_2_800x.jpg?v=1571839043',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxqud0SfqVoxBOaOj0QaDN3hHSnOWlrUTOVw&s'
         },
         {
           'name': 'Pineapple',
@@ -46,7 +46,7 @@ class GroceryData {
               'Golden tropical pineapple with a juicy, sweet flavor. Perfect for grilling, blending into smoothies, or adding a tropical twist to salads.',
           'price': 1.99,
           'imageUrl':
-              'https://cdn.shopify.com/s/files/1/0258/4307/3103/products/asset_2_800x.jpg?v=1571839043',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXyvpZPQbRxD7BdjgcyZ5xTK7pjCE_u0JMcw&s'
         },
         {
           'name': 'Grapes',
@@ -55,7 +55,7 @@ class GroceryData {
               'Seedless, plump green grapes bursting with sweetness. A healthy snack, great for fruit platters or adding to lunch boxes.',
           'price': 2.49,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtSge7AGpb8Iq8SLhhreoOX1IfK55nH-n3Hg&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQW3gbeAoMeCNCpYKM33gv3_YGXq5D8tXlFw&s'
         },
       ]
     },
@@ -87,7 +87,7 @@ class GroceryData {
               'Leafy green spinach with tender leaves and a slightly earthy flavor. Rich in iron and vitamins, perfect for salads, stir-fries, or soups.',
           'price': 1.29,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXElcirV03FJwU1EONSuYOXl9VyNuHQDzwmw&s',
+              'https://t3.ftcdn.net/jpg/10/67/69/58/360_F_1067695866_g9U5dhCAA5sV5ADOVbcc9lt5LvTW8LzF.jpg'
         },
         {
           'name': 'Potatoes',
@@ -96,7 +96,7 @@ class GroceryData {
               'Versatile and starchy potatoes, ideal for roasting, mashing, or frying. A pantry essential for a variety of recipes.',
           'price': 0.79,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXElcirV03FJwU1EONSuYOXl9VyNuHQDzwmw&s',
+              'https://cdn.pixabay.com/photo/2015/08/14/16/26/potatoes-888585_640.jpg'
         },
         {
           'name': 'Cucumber',
@@ -105,7 +105,7 @@ class GroceryData {
               'Cool and refreshing cucumbers with a crisp bite. Great for hydrating snacks, salads, or sandwiches.',
           'price': 0.89,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXElcirV03FJwU1EONSuYOXl9VyNuHQDzwmw&s',
+              'https://www.shutterstock.com/image-photo/organic-cucumbers-slices-ceramic-bowl-600nw-2482485751.jpg'
         },
         {
           'name': 'Bell Peppers',
@@ -114,7 +114,7 @@ class GroceryData {
               'A mix of colorful bell peppers with a sweet and crisp flavor. Perfect for stir-fries, grilling, or stuffing with your favorite fillings.',
           'price': 2.99,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXElcirV03FJwU1EONSuYOXl9VyNuHQDzwmw&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScyLnRSMaEYdhSml2fbXl4Q3vWRrm1b3Js2Q&s'
         },
       ]
     },
@@ -137,7 +137,7 @@ class GroceryData {
               'Sharp and flavorful aged cheddar cheese. Great for sandwiches, pastas, or enjoying with crackers.',
           'price': 2.99,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzeRYfXTWA0YF5B6bF2BD5_yVxqQfoJXp4kg&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGdP_AuhevVwIl3MkA8UqkTfL0SAkL9OlH0g&s'
         },
         {
           'name': 'Butter',
@@ -146,7 +146,7 @@ class GroceryData {
               'Creamy salted butter that spreads easily and enhances the flavor of any dish. Ideal for baking or cooking.',
           'price': 1.99,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzeRYfXTWA0YF5B6bF2BD5_yVxqQfoJXp4kg&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzhdGHQQjual65Rt-JPjTb5ZG702D5J7EdCg&s'
         },
         {
           'name': 'Yogurt',
@@ -155,7 +155,7 @@ class GroceryData {
               'Tangy and creamy natural yogurt, rich in probiotics. Great for a healthy snack or using as a base for dips.',
           'price': 1.29,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzeRYfXTWA0YF5B6bF2BD5_yVxqQfoJXp4kg&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhw2hGAPmsT56bWMs-z32_-OxXmZK1zYyvew&s'
         },
         {
           'name': 'Eggs',
@@ -173,7 +173,7 @@ class GroceryData {
               'Luxurious heavy cream, perfect for adding richness to desserts, soups, or sauces.',
           'price': 1.99,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzeRYfXTWA0YF5B6bF2BD5_yVxqQfoJXp4kg&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_TfMW0FCvkyrHORup9DvrTcWy80LooZq9zw&s'
         },
       ]
     },
@@ -194,7 +194,8 @@ class GroceryData {
           'description':
               'Healthy whole wheat bread with a hearty texture and nutty flavor. Great for sandwiches and breakfast toast.',
           'price': 1.69,
-          'imageUrl': 'https://thumbs.dreamstime.com/b/bread-cut-14027607.jpg',
+          'imageUrl':
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR73CQcGEP-uj5ke9JE5np1Wq7OlN-JCiuDBA&s'
         },
         {
           'name': 'Croissants',
@@ -202,7 +203,8 @@ class GroceryData {
           'description':
               'Buttery and flaky croissants, freshly baked and perfect for breakfast or pairing with coffee.',
           'price': 4.99,
-          'imageUrl': 'https://thumbs.dreamstime.com/b/bread-cut-14027607.jpg',
+          'imageUrl':
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVPMAdG1wfnh87-V8uTWlKmhs-FvdMmrBIog&s'
         },
         {
           'name': 'Muffins',
@@ -210,7 +212,8 @@ class GroceryData {
           'description':
               'Soft and delicious assorted muffins, perfect for tea-time snacking or a quick dessert.',
           'price': 3.99,
-          'imageUrl': 'https://thumbs.dreamstime.com/b/bread-cut-14027607.jpg',
+          'imageUrl':
+              'https://t4.ftcdn.net/jpg/08/71/69/29/360_F_871692991_IC8elOpjnHYhhNu8RwNattXgZiOYT4lI.jpg'
         },
       ]
     },
@@ -224,7 +227,7 @@ class GroceryData {
               'Crispy and lightly salted potato chips, perfect for munching during movie nights or as a party snack. Made from farm-fresh potatoes for an authentic taste.',
           'price': 1.99,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWqkxb5IKgmEiT_9ebF4YeStJat_hL6f6g5A&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMfXpGR5dBtXLCHJDk_LldyOVLOO-D8UPqzA&s'
         },
         {
           'name': 'Chocolate Cookies',
@@ -251,7 +254,7 @@ class GroceryData {
               'A healthy mix of nuts, dried fruits, and seeds. Provides a perfect balance of energy and flavor, great for on-the-go snacking.',
           'price': 3.99,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWqkxb5IKgmEiT_9ebF4YeStJat_hL6f6g5A&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAXYsJD1ixlnDi0AX7E-kDRAITFT-j-N5LCA&s'
         },
         {
           'name': 'Pretzels',
@@ -260,7 +263,7 @@ class GroceryData {
               'Crunchy and slightly salted pretzels with a distinct twisted shape. An excellent snack for dipping into cheese or mustard.',
           'price': 1.79,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWqkxb5IKgmEiT_9ebF4YeStJat_hL6f6g5A&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqeWw4glBvbQP5IM1M3aNUgiFLn3alIPttBw&s'
         },
         {
           'name': 'Granola Bars',
@@ -269,7 +272,7 @@ class GroceryData {
               'Wholesome and chewy granola bars, packed with oats, nuts, and honey. Perfect for a quick, nutritious snack anytime, anywhere.',
           'price': 3.49,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWqkxb5IKgmEiT_9ebF4YeStJat_hL6f6g5A&s',
+              'https://media.istockphoto.com/id/185099151/photo/granola-bar.jpg?s=612x612&w=0&k=20&c=GRljdDmAca8zxsY7fLZsxy3N_MKzEi-ANWtBL7Txj3g='
         },
         {
           'name': 'Nachos',
@@ -278,7 +281,7 @@ class GroceryData {
               'Crispy and flavorful nacho chips, perfect for dipping into salsa, guacamole, or cheese sauce. A party favorite snack for everyone to enjoy.',
           'price': 2.29,
           'imageUrl':
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWqkxb5IKgmEiT_9ebF4YeStJat_hL6f6g5A&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTyfshedwI_rBRM7Qxv1FYKfVOEhh_8pURmw&s'
         },
       ]
     },
