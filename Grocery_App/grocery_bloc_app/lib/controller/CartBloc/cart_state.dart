@@ -20,3 +20,12 @@ class CartRemoveProductFromCartActionState extends CartActionState {
 
   CartRemoveProductFromCartActionState({required this.message});
 }
+
+class IncrementDecrementProductCountState extends CartState {
+  final int productCount;
+
+  IncrementDecrementProductCountState({required this.productCount});
+}
+// class DecrementProductCountState extends CartState{}
+
+

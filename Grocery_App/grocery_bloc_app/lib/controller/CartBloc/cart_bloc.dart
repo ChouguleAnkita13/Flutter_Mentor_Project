@@ -10,6 +10,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitialState()) {
     on<CartInitialEvent>(cartInitialEvent);
     on<CartRemoveProductFromCartEvent>(cartRemoveProductFromCartEvent);
+    on<IncrementProductCountEvent>(incrementProductCountEvent);
   }
   FutureOr<void> cartInitialEvent(
       CartInitialEvent event, Emitter<CartState> emit) async {
@@ -37,5 +38,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       emit(CartRemoveProductFromCartActionState(
           message: "${event.product.name} removed from Cart"));
     }
+  }
+
+  int count = 1;
+  FutureOr<void> incrementProductCountEvent(
+      IncrementProductCountEvent event, Emitter<CartState> emit) {
+    count = count + 1;
+    emit(IncrementDecrementProductCountState(productCount: count));
   }
 }

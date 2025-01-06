@@ -8,3 +8,7 @@ class CartRemoveProductFromCartEvent extends CartEvent {
   final ProductDataModel product;
   CartRemoveProductFromCartEvent({required this.product});
 }
+
+class IncrementProductCountEvent extends CartEvent {}
+
+class DecrementProductCountEvent extends CartEvent {}
