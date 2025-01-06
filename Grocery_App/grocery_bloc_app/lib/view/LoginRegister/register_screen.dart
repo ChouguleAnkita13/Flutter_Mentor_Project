@@ -27,6 +27,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
+
         //BLOC LISTERNER USED TO ONLY LISTEN THE STATE I.E PERFORM SOME ACTION HERE THE NAVIGATION
         body: BlocListener(
             bloc: loginRegisterBloc,
