@@ -53,7 +53,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                             children: [
                               SizedBox(
                                 height:
-                                    MediaQuery.of(context).size.height - 205,
+                                    MediaQuery.of(context).size.height - 228,
                                 child: ListView.separated(
                                   itemCount: successState.products.length,
                                   itemBuilder: (context, index) {

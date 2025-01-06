@@ -60,7 +60,7 @@ class HomeAppbar {
             child: Image.asset(
               "assets/images/veggie2.png",
               height: 100,
-              width: 350,
+              width: 320,
               fit: BoxFit.cover,
             ),
           ),

@@ -18,7 +18,7 @@ class ExploreProductTile extends StatelessWidget {
         children: [
           Container(
             height: 150,
-            width: 200,
+            width: 170,
             alignment: Alignment.topRight,
             decoration: BoxDecoration(
               image: DecorationImage(

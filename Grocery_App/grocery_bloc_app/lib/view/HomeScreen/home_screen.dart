@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
               appBar: HomeAppbar.appBar(homeBloc),
               body: SingleChildScrollView(
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 1.2,
+                  height: MediaQuery.of(context).size.height / 1.001,
                   child: Column(
                     children: [
                       CustomRow(
