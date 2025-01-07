@@ -69,6 +69,7 @@ class FirebaseAddtocartData {
               description: d['description'],
               price: d['price'],
               quantity: d['quantity'],
+              numberOfItems: d['numberOfItems'],
               imageUrl: d['imageUrl']));
         }
       }

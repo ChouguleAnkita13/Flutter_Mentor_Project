@@ -102,6 +102,7 @@ class FirebaseData {
             isAddToCart: FirebaseAddtocartData.addToCartIdList.contains(d.id),
             name: d['name'],
             description: d['description'],
+            numberOfItems: d['numberOfItems'],
             price: d['price'],
             quantity: d['quantity'],
             imageUrl: d['imageUrl']));

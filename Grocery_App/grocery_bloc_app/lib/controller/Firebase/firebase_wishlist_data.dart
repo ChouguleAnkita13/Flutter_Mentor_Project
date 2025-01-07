@@ -66,6 +66,7 @@ class FirebaseWishlistData {
               name: d['name'],
               description: d['description'],
               price: d['price'],
+              numberOfItems: d['numberOfItems'],
               quantity: d['quantity'],
               imageUrl: d['imageUrl']));
         }
