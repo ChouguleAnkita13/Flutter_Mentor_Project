@@ -10,7 +10,6 @@ class ProductModel {
 class ProductDataModel {
   final String id;
   final String category;
-
   final String name;
   final String description;
   final double price;
@@ -18,6 +17,7 @@ class ProductDataModel {
   final String quantity;
   bool isFev;
   bool isAddToCart;
+  int numberOfItems;
 
   ProductDataModel(
       {required this.id,
@@ -28,5 +28,6 @@ class ProductDataModel {
       required this.description,
       required this.price,
       required this.imageUrl,
+      required this.numberOfItems,
       required this.quantity});
 }
