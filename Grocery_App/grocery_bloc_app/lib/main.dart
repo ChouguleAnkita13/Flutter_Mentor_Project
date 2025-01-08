@@ -1,4 +1,5 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:grocery_bloc_app/controller/Data/grocery_data.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_bloc_app/view/splash_screen.dart';
@@ -14,7 +15,17 @@ void main() async {
   );
   runApp(const MainApp());
   // for (var data in GroceryData.groceryProducts) {
-  //   await FirebaseFirestore.instance.collection("Grocery").add(data);
+  //   await FirebaseFirestore.instance
+  //       .collection("Grocery")
+  //       .doc(data["category"])
+  //       .set({"category": data["category"]});
+  //   for (var d in data['itemList']) {
+  //     await FirebaseFirestore.instance
+  //         .collection("Grocery")
+  //         .doc(data["category"])
+  //         .collection("itemList")
+  //         .add(d);
+  //   }
   // }
 }
 
