@@ -12,6 +12,7 @@ class CartTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double price = productDataModel.price * productDataModel.numberOfItems;
     return Container(
       padding: const EdgeInsets.all(10),
       child: Row(
@@ -62,6 +63,10 @@ class CartTileWidget extends StatelessWidget {
               Row(
                 children: [
                   GestureDetector(
+                    onTap: () {
+                      cartBloc.add(DecrementProductCountEvent(
+                          product: productDataModel));
+                    },
                     child: Container(
                         height: 30,
                         width: 30,
@@ -71,12 +76,14 @@ class CartTileWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Icon(
                           Icons.remove,
-                          color: Colors.grey[400],
+                          color: productDataModel.numberOfItems > 1
+                              ? Colors.black
+                              : Colors.grey[400],
                           size: 21,
                         )),
                   ),
                   const SizedBox(width: 10),
-                  Text(cartBloc.count.toString(),
+                  Text("${productDataModel.numberOfItems}",
                       style: GoogleFonts.poppins(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
@@ -84,7 +91,8 @@ class CartTileWidget extends StatelessWidget {
                   const SizedBox(width: 10),
                   GestureDetector(
                     onTap: () {
-                      cartBloc.add(IncrementProductCountEvent());
+                      cartBloc.add(IncrementProductCountEvent(
+                          product: productDataModel));
                     },
                     child: Container(
                         height: 30,
@@ -99,10 +107,13 @@ class CartTileWidget extends StatelessWidget {
                           size: 21,
                         )),
                   ),
-                  const SizedBox(width: 78),
-                  Text("\$${productDataModel.price}",
-                      style: GoogleFonts.poppins(
-                          fontSize: 16, fontWeight: FontWeight.w600)),
+                  const SizedBox(width: 70),
+                  Expanded(
+                    flex: 0,
+                    child: Text("\$${price.toStringAsFixed(2)}",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16, fontWeight: FontWeight.w600)),
+                  ),
                 ],
               )
             ],

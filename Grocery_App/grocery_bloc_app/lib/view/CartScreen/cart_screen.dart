@@ -6,6 +6,9 @@ import 'package:grocery_bloc_app/controller/CartBloc/cart_bloc.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_event.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_state.dart';
 import 'package:grocery_bloc_app/view/CartScreen/cart_tile_widget.dart';
+import 'package:grocery_bloc_app/view/CartScreen/total_section.dart';
+import 'package:grocery_bloc_app/view/CheckoutScreen/checkout_screen.dart';
+import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 
@@ -18,6 +21,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   CartBloc cartBloc = CartBloc();
+
   @override
   void initState() {
     cartBloc.add(CartInitialEvent());
@@ -47,29 +51,64 @@ class _CartScreenState extends State<CartScreen> {
             return const Scaffold(
               body: Center(child: CircularProgressIndicator()),
             );
+
           case const (CartLoadedSuccessState):
             log("------In Case SuccessState");
 
             final successState = state as CartLoadedSuccessState;
+
+            // CALCULATE TOTAL ITEM COUNT AND PRICE
+            int totalItems = successState.products.length;
+
+            double totalPrice = successState.products.fold(
+                0.0, (sum, item) => sum + (item.price * item.numberOfItems));
+            totalPrice = totalPrice + 5;
+
             return Scaffold(
               appBar: CustomAppbar.customAppbar("My Cart"),
               backgroundColor: Colors.white,
               body: successState.products.isEmpty
                   ? const Center(child: Text("No Items In Cart"))
-                  : Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 15),
-                      child: ListView.separated(
-                        itemCount: successState.products.length,
-                        itemBuilder: (context, index) {
-                          return CartTileWidget(
-                              cartBloc: cartBloc,
-                              productDataModel: successState.products[index]);
-                        },
-                        separatorBuilder: (context, idx) => Divider(
-                          color: Colors.grey[300],
+                  : Column(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 15),
+                            child: ListView.separated(
+                              itemCount: successState.products.length,
+                              itemBuilder: (context, index) {
+                                return CartTileWidget(
+                                  cartBloc: cartBloc,
+                                  productDataModel:
+                                      successState.products[index],
+                                );
+                              },
+                              separatorBuilder: (context, idx) => Divider(
+                                color: Colors.grey[300],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        // Total Section
+                        TotalSection(
+                            totalPrice: totalPrice, totalItems: totalItems),
+                        // Checkout Button
+
+                        Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 5),
+                            child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => CheckoutScreen(
+                                          checkoutItems: successState.products,
+                                          deliveryAddress: "Narhe",
+                                          totalAmount: totalPrice)));
+                                },
+                                child:
+                                    const ButtonContainer(title: "Order Now")))
+                      ],
                     ),
             );
           default:
