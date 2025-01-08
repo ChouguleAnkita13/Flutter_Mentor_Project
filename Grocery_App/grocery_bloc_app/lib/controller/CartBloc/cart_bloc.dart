@@ -11,6 +11,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartInitialEvent>(cartInitialEvent);
     on<CartRemoveProductFromCartEvent>(cartRemoveProductFromCartEvent);
     on<IncrementProductCountEvent>(incrementProductCountEvent);
+    on<DecrementProductCountEvent>(decrementProductCountEvent);
   }
   FutureOr<void> cartInitialEvent(
       CartInitialEvent event, Emitter<CartState> emit) async {
@@ -40,10 +41,29 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  int count = 1;
   FutureOr<void> incrementProductCountEvent(
       IncrementProductCountEvent event, Emitter<CartState> emit) {
-    count = count + 1;
-    emit(IncrementDecrementProductCountState(productCount: count));
+    log("Incrementing product count for ${event.product.name}");
+
+    // Update the product's `numberOfItems`
+    event.product.numberOfItems += 1;
+
+    // Emit a state to refresh the cart view
+    emit(CartLoadedSuccessState(products: FirebaseAddtocartData.cartItems));
+  }
+
+  FutureOr<void> decrementProductCountEvent(
+      DecrementProductCountEvent event, Emitter<CartState> emit) {
+    log("Decrementing product count for ${event.product.name}");
+
+    if (event.product.numberOfItems > 1) {
+      // Update the product's `numberOfItems`
+      event.product.numberOfItems -= 1;
+
+      // Emit a state to refresh the cart view
+      emit(CartLoadedSuccessState(products: FirebaseAddtocartData.cartItems));
+    } else {
+      log("Cannot decrement below 1");
+    }
   }
 }
