@@ -84,8 +84,10 @@ class FirebaseData {
     ///GET ADDTOCARTIDLIST
     await FirebaseAddtocartData.getCartIdListFromFirebase();
 
-    /// GET GROCERY DATA
+    ///CLEAR LIST
+    groceryProduct.clear();
 
+    /// GET GROCERY DATA
     for (var e in response.docs) {
       QuerySnapshot res = await firebaseInstance
           .collection("Grocery")
