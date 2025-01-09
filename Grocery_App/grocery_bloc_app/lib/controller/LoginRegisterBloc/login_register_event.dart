@@ -17,3 +17,5 @@ class RegisterWithDataButtonNavigateEvent extends LoginRegisterEvent {
 class LogoutButtonNavigateEvent extends LoginRegisterEvent {}
 
 class NotificationButtonNavigateEvent extends LoginRegisterEvent {}
+
+class MyOrdersButtonNavigateEvent extends LoginRegisterEvent {}

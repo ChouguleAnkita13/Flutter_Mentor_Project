@@ -14,6 +14,7 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
         registerWithDataButtonNavigateEvent);
     on<LogoutButtonNavigateEvent>(logoutButtonNavigateEvent);
     on<NotificationButtonNavigateEvent>(notificationButtonNavigateEvent);
+    on<MyOrdersButtonNavigateEvent>(myOrdersButtonNavigateEvent);
   }
 
   FutureOr<void> loginButtonNavigateEvent(
@@ -57,5 +58,10 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
   FutureOr<void> notificationButtonNavigateEvent(
       NotificationButtonNavigateEvent event, Emitter<LoginRegisterState> emit) {
     emit(NavigateToNotificationPageState());
+  }
+
+  FutureOr<void> myOrdersButtonNavigateEvent(
+      MyOrdersButtonNavigateEvent event, Emitter<LoginRegisterState> emit) {
+    emit(NavigateToMyOrdersPageState());
   }
 }

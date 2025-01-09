@@ -16,3 +16,5 @@ class LoginRegisterWithDataButtonErrorState extends LoginRegisterState {
 class LogoutButtonNavigateState extends LoginRegisterState {}
 
 class NavigateToNotificationPageState extends LoginRegisterState {}
+
+class NavigateToMyOrdersPageState extends LoginRegisterState {}
