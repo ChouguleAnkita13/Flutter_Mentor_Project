@@ -30,4 +30,20 @@ class ProductDataModel {
       required this.imageUrl,
       required this.numberOfItems,
       required this.quantity});
+
+  // Convert to Map
+  Map<String, dynamic> productDataModelMap() {
+    return {
+      'id': id,
+      'category': category,
+      'name': name,
+      'description': description,
+      'price': price,
+      'imageUrl': imageUrl,
+      'quantity': quantity,
+      'isFev': isFev,
+      'isAddToCart': isAddToCart,
+      'numberOfItems': numberOfItems,
+    };
+  }
 }
