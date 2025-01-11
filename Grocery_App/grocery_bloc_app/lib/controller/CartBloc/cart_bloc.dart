@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_event.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_state.dart';
 import 'package:grocery_bloc_app/controller/Firebase/firebase_addtocart_data.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitialState()) {
@@ -69,10 +70,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   }
 
   FutureOr<void> cartNavigateToCheckoutScreenEvent(
-      CartNavigateToCheckoutScreenEvent event, Emitter<CartState> emit) {
+      CartNavigateToCheckoutScreenEvent event, Emitter<CartState> emit) async {
+    await SessionData.getSessionAddress();
     emit(CartNavigateToCheckoutScreenState(
         checkoutItems: event.checkoutItems,
-        deliveryAddress: "Narhe, Pune",
+        deliveryAddress: SessionData.address!,
         totalAmount: event.totalAmount));
   }
 }

@@ -19,3 +19,11 @@ class LogoutButtonNavigateEvent extends LoginRegisterEvent {}
 class NotificationButtonNavigateEvent extends LoginRegisterEvent {}
 
 class MyOrdersButtonNavigateEvent extends LoginRegisterEvent {}
+
+class AddressShowBottomSheetEvent extends LoginRegisterEvent {}
+
+class AddressSaveAddressButtonEvent extends LoginRegisterEvent {
+  final String deliveryAddress;
+
+  AddressSaveAddressButtonEvent({required this.deliveryAddress});
+}

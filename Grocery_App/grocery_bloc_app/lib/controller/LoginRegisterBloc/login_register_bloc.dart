@@ -1,9 +1,11 @@
 import 'dart:async';
-
+import 'dart:developer';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_bloc_app/controller/Firebase/firebase_data.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_event.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_state.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 
 class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
   LoginRegisterBloc() : super(LoginRegisterInitialState()) {
@@ -15,6 +17,8 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
     on<LogoutButtonNavigateEvent>(logoutButtonNavigateEvent);
     on<NotificationButtonNavigateEvent>(notificationButtonNavigateEvent);
     on<MyOrdersButtonNavigateEvent>(myOrdersButtonNavigateEvent);
+    on<AddressShowBottomSheetEvent>(addressShowBottomSheetEvent);
+    on<AddressSaveAddressButtonEvent>(addressSaveAddressButtonEvent);
   }
 
   FutureOr<void> loginButtonNavigateEvent(
@@ -63,5 +67,25 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
   FutureOr<void> myOrdersButtonNavigateEvent(
       MyOrdersButtonNavigateEvent event, Emitter<LoginRegisterState> emit) {
     emit(NavigateToMyOrdersPageState());
+  }
+
+  FutureOr<void> addressShowBottomSheetEvent(AddressShowBottomSheetEvent event,
+      Emitter<LoginRegisterState> emit) async {
+    final TextEditingController addressTextEditingController =
+        TextEditingController();
+    await SessionData.getSessionAddress();
+    addressTextEditingController.text = SessionData.address!;
+    emit(AddressShowBottomSheetState(
+        addressTextEditingController: addressTextEditingController));
+  }
+
+  FutureOr<void> addressSaveAddressButtonEvent(
+      AddressSaveAddressButtonEvent event,
+      Emitter<LoginRegisterState> emit) async {
+    if (SessionData.address != event.deliveryAddress) {
+      log("Here");
+      await FirebaseData.updateAddressFromFirebase(event.deliveryAddress);
+    }
+    emit(AddressSaveAddressButtonState());
   }
 }

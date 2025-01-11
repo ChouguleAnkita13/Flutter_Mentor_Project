@@ -4,6 +4,7 @@ class SessionData {
   static bool? isLogin;
   static String? email;
   static String? username;
+  static String? address;
 
   static Future<void> storeSessiondata(
       {required bool isLogin,
@@ -23,5 +24,19 @@ class SessionData {
     isLogin = pref.getBool("isLogin") ?? false;
     email = pref.getString("email") ?? "";
     username = pref.getString("username") ?? "";
+  }
+
+  static Future<void> storeSessionAddress({required String address}) async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("address", address);
+
+    address = pref.getString('address') ?? "";
+    getSessionAddress();
+  }
+
+  static Future<void> getSessionAddress() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+
+    address = pref.getString('address') ?? "";
   }
 }

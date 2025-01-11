@@ -55,6 +55,8 @@ class FirebaseData {
           ///STORING THE EXACT USER DATA TO SHAREDPREFERENCE DATABASE
           await SessionData.storeSessiondata(
               isLogin: true, email: data["email"], username: data["username"]);
+          await SessionData.storeSessionAddress(address: data["address"]);
+          SessionData.getSessionAddress();
           break;
         }
       }
@@ -68,10 +70,20 @@ class FirebaseData {
     }
   }
 
+  ///UPDATE DELIVERY ADDRESS
+  static Future<void> updateAddressFromFirebase(String address) async {
+    await firebaseInstance
+        .collection("Users")
+        .doc(SessionData.email)
+        .update({"address": address});
+    await SessionData.storeSessionAddress(address: address);
+  }
+
   ///Logout
   static Future<void> logoutFromFirebase() async {
     await FirebaseAuth.instance.signOut();
-    SessionData.storeSessiondata(isLogin: false, email: "", username: "");
+    await SessionData.storeSessiondata(isLogin: false, email: "", username: "");
+    await SessionData.storeSessionAddress(address: "");
   }
 
   ///FETCHING GROCERYS FROM FIREBASE
@@ -114,10 +126,5 @@ class FirebaseData {
           .add(ProductModel(category: e.id, itemList: itemList.toList()));
       itemList.clear();
     }
-    // log(groceryProduct[0].itemList.length.toString());
-    // log(groceryProduct[1].itemList.length.toString());
-    // log(groceryProduct[2].itemList.length.toString());
-    // log(groceryProduct[3].itemList.length.toString());
-    // log(groceryProduct[4].itemList.length.toString());
   }
 }
