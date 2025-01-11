@@ -11,18 +11,13 @@ import 'package:grocery_bloc_app/view/LoginRegister/Widget/custom_textfield.dart
 import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 
-class RegisterScreen extends StatefulWidget {
+class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
-}
-
-class _RegisterScreenState extends State<RegisterScreen> {
-  final loginRegisterBloc = LoginRegisterBloc();
-
-  @override
   Widget build(BuildContext context) {
+    final loginRegisterBloc = LoginRegisterBloc();
+
     return Scaffold(
         backgroundColor: Colors.white,
 

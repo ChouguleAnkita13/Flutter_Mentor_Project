@@ -13,17 +13,13 @@ import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 import 'package:grocery_bloc_app/view/navbar_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final loginRegisterBloc = LoginRegisterBloc();
-  @override
   Widget build(BuildContext context) {
+    final loginRegisterBloc = LoginRegisterBloc();
+
     return Scaffold(
         backgroundColor: Colors.white,
 
