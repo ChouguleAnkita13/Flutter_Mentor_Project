@@ -35,8 +35,7 @@ class AddressSection extends StatelessWidget {
           TextFormField(
             controller: deliveryAddressTextEditingController,
             decoration: const InputDecoration(
-              border: InputBorder.none,
-            ),
+                border: InputBorder.none, hintText: "Enter Address"),
             cursorColor: Colors.black54,
             style: const TextStyle(
                 fontSize: 15,
