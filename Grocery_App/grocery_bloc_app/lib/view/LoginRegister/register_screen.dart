@@ -19,9 +19,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
   final loginRegisterBloc = LoginRegisterBloc();
 
   @override
@@ -81,19 +78,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 children: [
                                   CustomTextfield(
                                       title: "Username",
-                                      textcontroller: _usernameController),
+                                      textcontroller:
+                                          loginRegisterBloc.usernameController),
                                   const SizedBox(
                                     height: 20,
                                   ),
                                   CustomTextfield(
                                       title: "Email",
-                                      textcontroller: _emailController),
+                                      textcontroller:
+                                          loginRegisterBloc.emailController),
                                   const SizedBox(
                                     height: 20,
                                   ),
                                   CustomTextfield(
                                       title: "Password",
-                                      textcontroller: _passwordController),
+                                      textcontroller:
+                                          loginRegisterBloc.passwordController),
                                   const SizedBox(
                                     height: 25,
                                   ),
@@ -103,11 +103,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       loginRegisterBloc.add(
                                           RegisterWithDataButtonNavigateEvent(
                                               userCredential: {
-                                            "email": _emailController.text,
-                                            "password":
-                                                _passwordController.text,
-                                            "username":
-                                                _usernameController.text,
+                                            "email": loginRegisterBloc
+                                                .emailController.text,
+                                            "password": loginRegisterBloc
+                                                .passwordController.text,
+                                            "username": loginRegisterBloc
+                                                .usernameController.text,
                                             "address": "",
                                             "fevList": [],
                                             'cartList': [],

@@ -44,7 +44,6 @@ class _CartScreenState extends State<CartScreen> {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => CheckoutScreen(
                   checkoutItems: state.checkoutItems,
-                  deliveryAddress: state.deliveryAddress,
                   totalAmount: state.totalAmount)));
         }
       },

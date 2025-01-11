@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 abstract class LoginRegisterState {}
 
 class LoginRegisterInitialState extends LoginRegisterState {}
@@ -22,9 +20,7 @@ class NavigateToNotificationPageState extends LoginRegisterState {}
 class NavigateToMyOrdersPageState extends LoginRegisterState {}
 
 class AddressShowBottomSheetState extends LoginRegisterState {
-  final TextEditingController addressTextEditingController;
-
-  AddressShowBottomSheetState({required this.addressTextEditingController});
+  AddressShowBottomSheetState();
 }
 
 class AddressSaveAddressButtonState extends LoginRegisterState {}

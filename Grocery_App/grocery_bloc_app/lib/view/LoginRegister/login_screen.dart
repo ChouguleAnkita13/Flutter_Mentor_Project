@@ -21,8 +21,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   final loginRegisterBloc = LoginRegisterBloc();
   @override
   Widget build(BuildContext context) {
@@ -90,14 +88,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               CustomTextfield(
                                 title: "Email",
-                                textcontroller: _emailController,
+                                textcontroller:
+                                    loginRegisterBloc.emailController,
                               ),
                               const SizedBox(
                                 height: 20,
                               ),
                               CustomTextfield(
                                 title: "Password",
-                                textcontroller: _passwordController,
+                                textcontroller:
+                                    loginRegisterBloc.passwordController,
                               ),
                               const SizedBox(
                                 height: 25,
@@ -109,8 +109,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   loginRegisterBloc.add(
                                       LoginWithDataButtonNavigateEvent(
                                           userCredential: {
-                                        "email": _emailController.text,
-                                        "password": _passwordController.text,
+                                        "email": loginRegisterBloc
+                                            .emailController.text,
+                                        "password": loginRegisterBloc
+                                            .passwordController.text,
                                       }));
                                 },
                                 child: const ButtonContainer(title: "Sign In"),

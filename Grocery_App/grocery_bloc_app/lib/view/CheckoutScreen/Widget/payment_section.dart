@@ -44,11 +44,8 @@ class PaymentSection extends StatelessWidget {
             onChanged: (String? newValue) {
               checkoutBloc.add(CheckoutPaymentMethodEvent(newValue!));
             },
-            items: [
-              'Credit/Debit Card',
-              'Cash on Delivery',
-              'PayPal',
-            ].map<DropdownMenuItem<String>>((String value) {
+            items: checkoutBloc.paymentMethodList
+                .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),

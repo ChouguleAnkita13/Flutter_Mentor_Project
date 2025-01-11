@@ -18,11 +18,9 @@ class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({
     super.key,
     required this.checkoutItems,
-    required this.deliveryAddress,
     required this.totalAmount,
   });
   final List<ProductDataModel> checkoutItems;
-  final String deliveryAddress;
   final double totalAmount;
 
   @override
@@ -31,13 +29,10 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   final checkoutBloc = CheckoutBloc();
-  final TextEditingController deliveryAddressTextEditingController =
-      TextEditingController();
 
   @override
   void initState() {
     checkoutBloc.add(CheckoutInitialEvent());
-    deliveryAddressTextEditingController.text = widget.deliveryAddress;
     super.initState();
   }
 
@@ -70,7 +65,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   // Delivery Address Section
                   AddressSection(
                       deliveryAddressTextEditingController:
-                          deliveryAddressTextEditingController),
+                          checkoutBloc.deliveryAddressTextEditingController),
                   const SizedBox(height: 10),
 
                   // Items List Section
@@ -96,7 +91,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   const SizedBox(height: 10),
 
                   // Estimated Delivery Time Section
-                  DeliveryTime(time: state.deliveryTime),
+                  DeliveryTime(time: checkoutBloc.deliveryTime),
                   const SizedBox(height: 10),
                   // Total Amount Section
                   TotalAmount(totalAmount: widget.totalAmount),
@@ -110,11 +105,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         onTap: () {
                           checkoutBloc.add(CheckoutButtonEvent(
                               checkoutItems: widget.checkoutItems,
-                              deliveryAddress:
-                                  deliveryAddressTextEditingController.text,
+                              deliveryAddress: checkoutBloc
+                                  .deliveryAddressTextEditingController.text,
                               totalAmount: widget.totalAmount,
                               paymentMethod: state.paymentMethod,
-                              deliveryTime: state.deliveryTime));
+                              deliveryTime: checkoutBloc.deliveryTime));
                         },
                         child: const ButtonContainer(title: "Checkout")),
                   )

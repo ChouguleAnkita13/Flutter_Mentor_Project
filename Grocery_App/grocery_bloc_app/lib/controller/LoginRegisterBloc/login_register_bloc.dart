@@ -20,7 +20,11 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
     on<AddressShowBottomSheetEvent>(addressShowBottomSheetEvent);
     on<AddressSaveAddressButtonEvent>(addressSaveAddressButtonEvent);
   }
-
+  final TextEditingController addressTextEditingController =
+      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   FutureOr<void> loginButtonNavigateEvent(
       LoginButtonNavigateEvent event, Emitter<LoginRegisterState> emit) {
     emit(LoginButtonNavigateState());
@@ -71,12 +75,9 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
 
   FutureOr<void> addressShowBottomSheetEvent(AddressShowBottomSheetEvent event,
       Emitter<LoginRegisterState> emit) async {
-    final TextEditingController addressTextEditingController =
-        TextEditingController();
     await SessionData.getSessionAddress();
     addressTextEditingController.text = SessionData.address!;
-    emit(AddressShowBottomSheetState(
-        addressTextEditingController: addressTextEditingController));
+    emit(AddressShowBottomSheetState());
   }
 
   FutureOr<void> addressSaveAddressButtonEvent(

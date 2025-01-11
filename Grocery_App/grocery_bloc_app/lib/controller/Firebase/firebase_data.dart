@@ -56,7 +56,6 @@ class FirebaseData {
           await SessionData.storeSessiondata(
               isLogin: true, email: data["email"], username: data["username"]);
           await SessionData.storeSessionAddress(address: data["address"]);
-          SessionData.getSessionAddress();
           break;
         }
       }

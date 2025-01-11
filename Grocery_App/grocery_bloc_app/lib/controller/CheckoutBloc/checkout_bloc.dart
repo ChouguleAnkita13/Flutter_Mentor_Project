@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_bloc_app/controller/CheckoutBloc/checkout_event.dart';
 import 'package:grocery_bloc_app/controller/CheckoutBloc/checkout_state.dart';
 import 'package:grocery_bloc_app/controller/Firebase/firebase_order_data.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 import 'package:intl/intl.dart';
 
 class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
@@ -14,12 +16,21 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
     on<CheckoutNavigateToNavbarDoneButtonEvent>(
         checkoutNavigateToNavbarDoneButtonEvent);
   }
+  final TextEditingController deliveryAddressTextEditingController =
+      TextEditingController();
+  final String deliveryTime = _calculateEstimatedDeliveryTime();
+  final List<String> paymentMethodList = [
+    'Credit/Debit Card',
+    'Cash on Delivery',
+    'PayPal',
+  ];
 
   FutureOr<void> checkoutInitialEvent(
       CheckoutInitialEvent event, Emitter<CheckoutState> emit) {
+    deliveryAddressTextEditingController.text = SessionData.address!;
     emit(CheckoutPaymentMethodState(
-        paymentMethod: "Credit/Debit Card",
-        deliveryTime: _calculateEstimatedDeliveryTime()));
+      paymentMethod: "Credit/Debit Card",
+    ));
   }
 
   static String _calculateEstimatedDeliveryTime() {
@@ -31,8 +42,8 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   FutureOr<void> checkoutPaymentMethodEvent(
       CheckoutPaymentMethodEvent event, Emitter<CheckoutState> emit) {
     emit(CheckoutPaymentMethodState(
-        paymentMethod: event.paymentMethod,
-        deliveryTime: _calculateEstimatedDeliveryTime()));
+      paymentMethod: event.paymentMethod,
+    ));
   }
 
   FutureOr<void> checkoutButtonEvent(
