@@ -12,6 +12,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartRemoveProductFromCartEvent>(cartRemoveProductFromCartEvent);
     on<IncrementProductCountEvent>(incrementProductCountEvent);
     on<DecrementProductCountEvent>(decrementProductCountEvent);
+    on<CartNavigateToCheckoutScreenEvent>(cartNavigateToCheckoutScreenEvent);
   }
   FutureOr<void> cartInitialEvent(
       CartInitialEvent event, Emitter<CartState> emit) async {
@@ -65,5 +66,13 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     } else {
       log("Cannot decrement below 1");
     }
+  }
+
+  FutureOr<void> cartNavigateToCheckoutScreenEvent(
+      CartNavigateToCheckoutScreenEvent event, Emitter<CartState> emit) {
+    emit(CartNavigateToCheckoutScreenState(
+        checkoutItems: event.checkoutItems,
+        deliveryAddress: "Narhe, Pune",
+        totalAmount: event.totalAmount));
   }
 }

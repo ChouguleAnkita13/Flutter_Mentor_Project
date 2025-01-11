@@ -20,3 +20,14 @@ class CartRemoveProductFromCartActionState extends CartActionState {
 
   CartRemoveProductFromCartActionState({required this.message});
 }
+
+class CartNavigateToCheckoutScreenState extends CartActionState {
+  final List<ProductDataModel> checkoutItems;
+  final String deliveryAddress;
+  final double totalAmount;
+
+  CartNavigateToCheckoutScreenState(
+      {required this.checkoutItems,
+      required this.deliveryAddress,
+      required this.totalAmount});
+}

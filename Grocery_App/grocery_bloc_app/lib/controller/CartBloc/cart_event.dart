@@ -20,3 +20,11 @@ class DecrementProductCountEvent extends CartEvent {
 
   DecrementProductCountEvent({required this.product});
 }
+
+class CartNavigateToCheckoutScreenEvent extends CartEvent {
+  final List<ProductDataModel> checkoutItems;
+  final double totalAmount;
+
+  CartNavigateToCheckoutScreenEvent(
+      {required this.checkoutItems, required this.totalAmount});
+}
