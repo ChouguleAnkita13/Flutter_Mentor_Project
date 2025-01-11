@@ -40,6 +40,12 @@ class _CartScreenState extends State<CartScreen> {
         if (state is CartRemoveProductFromCartActionState) {
           log("------In Snackbar RemoveCartActionState");
           CustomSnackbar.customSnackbar(context, state.message);
+        } else if (state is CartNavigateToCheckoutScreenState) {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => CheckoutScreen(
+                  checkoutItems: state.checkoutItems,
+                  deliveryAddress: state.deliveryAddress,
+                  totalAmount: state.totalAmount)));
         }
       },
       builder: (context, state) {
@@ -100,11 +106,10 @@ class _CartScreenState extends State<CartScreen> {
                                 horizontal: 16, vertical: 5),
                             child: GestureDetector(
                                 onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => CheckoutScreen(
+                                  cartBloc.add(
+                                      CartNavigateToCheckoutScreenEvent(
                                           checkoutItems: successState.products,
-                                          deliveryAddress: "Narhe",
-                                          totalAmount: totalPrice)));
+                                          totalAmount: totalPrice));
                                 },
                                 child:
                                     const ButtonContainer(title: "Order Now")))
