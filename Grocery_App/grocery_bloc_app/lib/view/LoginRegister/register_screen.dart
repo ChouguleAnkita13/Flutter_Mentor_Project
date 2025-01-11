@@ -108,6 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                                 _passwordController.text,
                                             "username":
                                                 _usernameController.text,
+                                            "address": "",
                                             "fevList": [],
                                             'cartList': [],
                                             'ordersList': []

@@ -31,10 +31,13 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   final checkoutBloc = CheckoutBloc();
+  final TextEditingController deliveryAddressTextEditingController =
+      TextEditingController();
 
   @override
   void initState() {
     checkoutBloc.add(CheckoutInitialEvent());
+    deliveryAddressTextEditingController.text = widget.deliveryAddress;
     super.initState();
   }
 
@@ -65,7 +68,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Delivery Address Section
-                  AddressSection(deliveryAddress: widget.deliveryAddress),
+                  AddressSection(
+                      deliveryAddressTextEditingController:
+                          deliveryAddressTextEditingController),
                   const SizedBox(height: 10),
 
                   // Items List Section
@@ -105,7 +110,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         onTap: () {
                           checkoutBloc.add(CheckoutButtonEvent(
                               checkoutItems: widget.checkoutItems,
-                              deliveryAddress: widget.deliveryAddress,
+                              deliveryAddress:
+                                  deliveryAddressTextEditingController.text,
                               totalAmount: widget.totalAmount,
                               paymentMethod: state.paymentMethod,
                               deliveryTime: state.deliveryTime));

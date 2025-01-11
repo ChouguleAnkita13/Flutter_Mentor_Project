@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AddressSection extends StatelessWidget {
-  const AddressSection({super.key, required this.deliveryAddress});
+  const AddressSection(
+      {super.key, required this.deliveryAddressTextEditingController});
 
-  final String deliveryAddress;
+  final TextEditingController deliveryAddressTextEditingController;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +32,12 @@ class AddressSection extends StatelessWidget {
                 color: Colors.black87),
           ),
           const SizedBox(height: 8),
-          Text(
-            deliveryAddress,
+          TextFormField(
+            controller: deliveryAddressTextEditingController,
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+            ),
+            cursorColor: Colors.black54,
             style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
