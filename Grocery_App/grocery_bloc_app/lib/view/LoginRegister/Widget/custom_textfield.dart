@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextfield extends StatelessWidget {
-  const CustomTextfield(
-      {super.key, required this.title, required this.textcontroller});
+  const CustomTextfield({
+    super.key,
+    required this.title,
+    required this.textcontroller,
+  });
   final String title;
   final TextEditingController textcontroller;
 
@@ -23,6 +26,8 @@ class CustomTextfield extends StatelessWidget {
       ),
       child: TextFormField(
         controller: textcontroller,
+        obscureText: title != "Password" ? false : true,
+        cursorColor: Colors.black,
         decoration: InputDecoration(
             label: Text(
               title,
@@ -34,6 +39,16 @@ class CustomTextfield extends StatelessWidget {
                 ),
               ),
             ),
+            suffixIcon: title != "Password"
+                ? const SizedBox()
+                : GestureDetector(
+                    onTap: () {},
+                    child: const Icon(
+                      Icons.visibility_off,
+                      color: Color.fromRGBO(0, 0, 0, 0.4),
+                      size: 18,
+                    ),
+                  ),
             border: const OutlineInputBorder(
               borderSide: BorderSide.none,
             )),
