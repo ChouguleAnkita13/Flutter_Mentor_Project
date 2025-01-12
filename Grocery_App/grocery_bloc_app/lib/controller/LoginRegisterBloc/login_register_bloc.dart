@@ -19,12 +19,17 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
     on<MyOrdersButtonNavigateEvent>(myOrdersButtonNavigateEvent);
     on<AddressShowBottomSheetEvent>(addressShowBottomSheetEvent);
     on<AddressSaveAddressButtonEvent>(addressSaveAddressButtonEvent);
+    on<UpdateUsernameOnFieldSubmittedEvent>(
+        updateUsernameOnFieldSubmittedEvent);
+    on<OnPasswordVisibilityEvent>(onPasswordVisibilityEvent);
   }
   final TextEditingController addressTextEditingController =
       TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController usernameController =
+      TextEditingController(text: SessionData.username);
+
   FutureOr<void> loginButtonNavigateEvent(
       LoginButtonNavigateEvent event, Emitter<LoginRegisterState> emit) {
     emit(LoginButtonNavigateState());
@@ -84,9 +89,21 @@ class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
       AddressSaveAddressButtonEvent event,
       Emitter<LoginRegisterState> emit) async {
     if (SessionData.address != event.deliveryAddress) {
-      log("Here");
       await FirebaseData.updateAddressFromFirebase(event.deliveryAddress);
     }
     emit(AddressSaveAddressButtonState());
   }
+
+  FutureOr<void> updateUsernameOnFieldSubmittedEvent(
+      UpdateUsernameOnFieldSubmittedEvent event,
+      Emitter<LoginRegisterState> emit) async {
+    if (SessionData.username != event.username) {
+      log("Username Updated");
+      SessionData.username = event.username;
+      await FirebaseData.updateUsernameFromFirebase(event.username);
+    }
+  }
+
+  FutureOr<void> onPasswordVisibilityEvent(
+      OnPasswordVisibilityEvent event, Emitter<LoginRegisterState> emit) {}
 }

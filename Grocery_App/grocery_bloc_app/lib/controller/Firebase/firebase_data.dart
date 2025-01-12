@@ -78,6 +78,19 @@ class FirebaseData {
     await SessionData.storeSessionAddress(address: address);
   }
 
+  ///UPDATE DELIVERY ADDRESS
+  static Future<void> updateUsernameFromFirebase(String username) async {
+    await firebaseInstance
+        .collection("Users")
+        .doc(SessionData.email)
+        .update({"username": username});
+
+    await SessionData.storeSessiondata(
+        isLogin: SessionData.isLogin!,
+        email: SessionData.email!,
+        username: username);
+  }
+
   ///Logout
   static Future<void> logoutFromFirebase() async {
     await FirebaseAuth.instance.signOut();

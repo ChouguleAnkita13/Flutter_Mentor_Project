@@ -16,6 +16,12 @@ class RegisterWithDataButtonNavigateEvent extends LoginRegisterEvent {
 
 class LogoutButtonNavigateEvent extends LoginRegisterEvent {}
 
+class OnPasswordVisibilityEvent extends LoginRegisterEvent {
+  //final bool isPasswordVisible;
+
+  //OnPasswordVisibilityEvent({required this.isPasswordVisible});
+}
+
 class NotificationButtonNavigateEvent extends LoginRegisterEvent {}
 
 class MyOrdersButtonNavigateEvent extends LoginRegisterEvent {}
@@ -26,4 +32,10 @@ class AddressSaveAddressButtonEvent extends LoginRegisterEvent {
   final String deliveryAddress;
 
   AddressSaveAddressButtonEvent({required this.deliveryAddress});
+}
+
+class UpdateUsernameOnFieldSubmittedEvent extends LoginRegisterEvent {
+  final String username;
+
+  UpdateUsernameOnFieldSubmittedEvent({required this.username});
 }
