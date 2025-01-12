@@ -6,6 +6,9 @@ import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_eve
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_state.dart';
 import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/login_screen.dart';
+import 'package:grocery_bloc_app/view/OrderScreen/orderscreen.dart';
+import 'package:grocery_bloc_app/view/ProfileScreen/address_bottomsheet.dart';
+import 'package:grocery_bloc_app/view/ProfileScreen/display_username_textfield.dart';
 import 'package:grocery_bloc_app/view/ProfileScreen/profile_options.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
 import 'package:grocery_bloc_app/view/notification_screen.dart';
@@ -24,13 +27,22 @@ class ProfileScreen extends StatelessWidget {
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (context) => const LoginScreen()),
               (route) => false);
-        } else {
-          if (state is NavigateToNotificationPageState) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const NotificationScreen()));
-          }
+        } else if (state is NavigateToNotificationPageState) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const NotificationScreen()));
+        } else if (state is NavigateToMyOrdersPageState) {
+          /// Navigate to Orders Page
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MyOrdersPage()),
+          );
+        } else if (state is AddressSaveAddressButtonState) {
+          Navigator.of(context).pop();
+        } else if (state is AddressShowBottomSheetState) {
+          /// Show bottomSheet`
+          AddressBottomsheet.showAddressBottomSheet(context, loginRegisterBloc);
         }
       },
       child: Scaffold(
@@ -63,13 +75,8 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               // User Name and Email
-              Text(
-                SessionData.username!,
-                style: GoogleFonts.poppins(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+              DisplayUsernameTextfield(
+                loginRegisterBloc: loginRegisterBloc,
               ),
               const SizedBox(height: 4),
               Text(
@@ -91,7 +98,7 @@ class ProfileScreen extends StatelessWidget {
                       icon: Icons.shopping_cart_outlined,
                       title: "My Orders",
                       onTap: () {
-                        // Navigate to Orders Page
+                        loginRegisterBloc.add(MyOrdersButtonNavigateEvent());
                       },
                     ),
                     ProfileOptions(
@@ -106,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
                       icon: Icons.location_on_outlined,
                       title: "Delivery Address",
                       onTap: () {
-                        // Navigate to Delivery Address Page
+                        loginRegisterBloc.add(AddressShowBottomSheetEvent());
                       },
                     ),
                     ProfileOptions(
