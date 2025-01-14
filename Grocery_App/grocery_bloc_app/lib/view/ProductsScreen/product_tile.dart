@@ -79,10 +79,10 @@ class ProductTile extends StatelessWidget {
                     child: Icon(
                       FirebaseWishlistData.fevIdList
                               .contains(productDataModel.id)
-                          ? Icons.remove
-                          : Icons.add,
+                          ? Icons.favorite
+                          : Icons.favorite_border,
                       color: Colors.white,
-                      size: 25,
+                      size: 23,
                     )),
               )
             ],
