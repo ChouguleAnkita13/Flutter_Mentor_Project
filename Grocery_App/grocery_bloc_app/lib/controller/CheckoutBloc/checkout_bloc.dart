@@ -35,7 +35,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
 
   static String _calculateEstimatedDeliveryTime() {
     final now = DateTime.now();
-    final estimatedTime = now.add(const Duration(hours: 2));
+    final estimatedTime = now.add(const Duration(minutes: 10));
     return DateFormat('d MMM yyyy,h:mm a').format(estimatedTime);
   }
 
@@ -55,6 +55,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
 
     Map<String, dynamic> orderMap = {
       "orderItemList": orderItemList,
+      "orderPlacedTime": DateTime.now().toString(),
       "paymentMethod": event.paymentMethod,
       "deliveryAddress": event.deliveryAddress,
       "deliveryTime": event.deliveryTime,
