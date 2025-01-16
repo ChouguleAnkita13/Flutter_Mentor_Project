@@ -70,11 +70,36 @@ class FirebaseOrderData {
                 numberOfItems: data['orderItemList'][index]['numberOfItems'],
                 quantity: data['orderItemList'][index]['quantity']));
 
+        /// PARSE ORDERPLACED TIME
+        DateTime orderPlacedTime = DateTime.parse(data['orderPlacedTime']);
+        // DateFormat('d MMM yyyy,h:mm a').parse('16 Jan 2025,12:49 PM');
+
+        DateTime now = DateTime.now();
+
+        /// CALCULATE DELIVERY STATUS BASED ON TIME ELAPSED
+        String status;
+        Duration timeElapsed = now.difference(orderPlacedTime);
+
+        if (timeElapsed.inMinutes < 2) {
+          status = "Active";
+        } else if (timeElapsed.inMinutes < 5) {
+          status = "Being Packed";
+        } else if (timeElapsed.inMinutes >= 7 && timeElapsed.inMinutes < 10) {
+          status = "Out for Delivery";
+        } else {
+          status = "Delivered";
+        }
+
+        /// UPDATE STATUS IN FIREBASE
+        await firebaseInstance.collection("Orders").doc(data.id).update({
+          'status': status,
+        });
+
         ///
         OrderDetails orderDetailObj = OrderDetails(
             id: data.id,
             dateTime: data['deliveryTime'],
-            status: "Delivered",
+            status: status,
             deliveryAddress: data['deliveryAddress'],
             paymentMethod: data['paymentMethod'],
             totalAmount: data['totalAmount'],
