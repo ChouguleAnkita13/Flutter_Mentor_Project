@@ -45,7 +45,15 @@ class OrderSummary extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     color: Colors.black87),
               ),
-              GetStatusContainer.getStatusContainer(orderDetails.status),
+              Row(
+                children: [
+                  GetStatusContainer.getStatusContainer(orderDetails.status),
+                  const SizedBox(width: 10),
+                  (orderDetails.status != "Delivered")
+                      ? GetStatusContainer.getStatusContainer("Cancel Order")
+                      : const SizedBox()
+                ],
+              ),
             ],
           )
         ],

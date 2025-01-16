@@ -12,6 +12,8 @@ class GetStatusContainer {
         return const Color.fromRGBO(14, 161, 125, 0.5);
       case 'Cancelled':
         return Colors.red;
+      case 'Cancel Order':
+        return Colors.red;
       default:
         return Colors.blue[200]!;
     }
