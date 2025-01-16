@@ -80,11 +80,11 @@ class FirebaseOrderData {
         String status;
         Duration timeElapsed = now.difference(orderPlacedTime);
 
-        if (timeElapsed.inMinutes < 1) {
+        if (timeElapsed.inMinutes < 5) {
           status = "Being Packed";
-        } else if (timeElapsed.inMinutes < 2) {
+        } else if (timeElapsed.inMinutes < 10) {
           status = "Out for Delivery";
-        } else if (timeElapsed.inMinutes >= 2) {
+        } else if (timeElapsed.inMinutes >= 10) {
           status = "Delivered";
         } else {
           status = "Active";
