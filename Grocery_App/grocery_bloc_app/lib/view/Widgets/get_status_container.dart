@@ -9,13 +9,13 @@ class GetStatusContainer {
       case 'Being Packed':
         return Colors.orange;
       case 'Out for Delivery':
-        return const Color.fromRGBO(14, 161, 125, 0.5);
+        return Colors.purple[300]!;
       case 'Cancelled':
         return Colors.red;
       case 'Cancel Order':
         return Colors.red;
       default:
-        return Colors.blue[200]!;
+        return Colors.blue[500]!;
     }
   }
 
