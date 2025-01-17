@@ -7,6 +7,7 @@ class OrderDetails {
   final String deliveryAddress;
   final String paymentMethod;
   final double totalAmount;
+  final String orderPlacedTime;
   final List<ProductDataModel> items;
 
   OrderDetails({
@@ -16,6 +17,7 @@ class OrderDetails {
     required this.deliveryAddress,
     required this.paymentMethod,
     required this.totalAmount,
+    required this.orderPlacedTime,
     required this.items,
   });
 }
