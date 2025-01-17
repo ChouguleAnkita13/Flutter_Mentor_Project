@@ -29,12 +29,17 @@ class OrderSummary extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildInfoRow("Order ID:", orderDetails.id),
-          const SizedBox(height: 8),
+          const SizedBox(height: 5),
           _buildInfoRow(
             "Order Date:",
+            orderDetails.orderPlacedTime,
+          ),
+          const SizedBox(height: 5),
+          _buildInfoRow(
+            "Delivery Date:",
             orderDetails.dateTime,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

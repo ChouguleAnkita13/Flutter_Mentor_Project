@@ -43,7 +43,7 @@ class OrderTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Date: ${order.dateTime}",
+                  "Date: ${order.orderPlacedTime}",
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.grey[600],

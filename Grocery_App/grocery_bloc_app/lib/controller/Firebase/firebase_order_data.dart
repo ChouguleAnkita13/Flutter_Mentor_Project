@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 import 'package:grocery_bloc_app/model/order_details_model.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
+import 'package:intl/intl.dart';
 
 class FirebaseOrderData {
   static FirebaseFirestore firebaseInstance = FirebaseFirestore.instance;
@@ -73,7 +74,9 @@ class FirebaseOrderData {
         /// PARSE ORDERPLACED TIME
         DateTime orderPlacedTime = DateTime.parse(data['orderPlacedTime']);
         // DateFormat('d MMM yyyy,h:mm a').parse('16 Jan 2025,12:49 PM');
-
+        ///FORMAT ORDERPLACED TIME
+        String orderTime =
+            DateFormat('d MMM yyyy,h:mm a').format(orderPlacedTime);
         DateTime now = DateTime.now();
 
         /// CALCULATE DELIVERY STATUS BASED ON TIME ELAPSED
@@ -100,6 +103,7 @@ class FirebaseOrderData {
         OrderDetails orderDetailObj = OrderDetails(
             id: data.id,
             dateTime: data['deliveryTime'],
+            orderPlacedTime: orderTime,
             status: status,
             deliveryAddress: data['deliveryAddress'],
             paymentMethod: data['paymentMethod'],
