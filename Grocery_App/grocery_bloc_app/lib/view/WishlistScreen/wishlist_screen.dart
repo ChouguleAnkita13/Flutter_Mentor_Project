@@ -76,8 +76,10 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                           wishlistItems:
                                               successState.products));
                                 },
-                                child: const ButtonContainer(
-                                    title: "Add All To cart"),
+                                child: ButtonContainer(
+                                    title: successState.products.length != 1
+                                        ? "Add All To cart"
+                                        : "Add To cart"),
                               )
                             ],
                           ),
