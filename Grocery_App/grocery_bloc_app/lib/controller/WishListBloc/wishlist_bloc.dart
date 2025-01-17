@@ -58,11 +58,21 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
 
     if (response) {
       ///This state is emitted to show some action after items add to cart
-      emit(WishlistAllAddToCartActionState(message: "All Items Added in cart"));
+      if (event.wishlistItems.length == 1) {
+        emit(WishlistAllAddToCartActionState(message: "Item Added in cart"));
+      } else {
+        emit(WishlistAllAddToCartActionState(
+            message: "All Items Added in cart"));
+      }
     } else {
       ///This state is emitted to show some action after item add to cart
-      emit(WishlistAllAddToCartActionState(
-          message: "All Items Already Added in cart"));
+      if (event.wishlistItems.length == 1) {
+        emit(WishlistAllAddToCartActionState(
+            message: "Item Already Added in cart"));
+      } else {
+        emit(WishlistAllAddToCartActionState(
+            message: "All Items Already Added in cart"));
+      }
     }
   }
 }
