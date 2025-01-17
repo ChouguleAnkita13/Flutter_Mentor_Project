@@ -48,6 +48,7 @@ class FirebaseData {
 
       ///FETCHING USERS DATA FROM FIRESTORE DATABASE
       QuerySnapshot response = await firebaseInstance.collection("Users").get();
+      bool isUserPresent = false;
 
       ///TO GET USER DATA
       for (var data in response.docs) {
@@ -56,16 +57,23 @@ class FirebaseData {
           await SessionData.storeSessiondata(
               isLogin: true, email: data["email"], username: data["username"]);
           await SessionData.storeSessionAddress(address: data["address"]);
+          isUserPresent = true;
           break;
         }
       }
 
+      if (!isUserPresent) {
+        log("No User Present");
+        throw Exception("No User Present");
+      }
       log("$userCredentials");
       return "true";
     } on FirebaseAuthException catch (e) {
       log(e.code);
 
       return e.code;
+    } catch (error) {
+      return error.toString();
     }
   }
 
