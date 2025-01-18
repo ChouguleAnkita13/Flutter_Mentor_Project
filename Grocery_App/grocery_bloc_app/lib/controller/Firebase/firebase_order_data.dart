@@ -8,6 +8,7 @@ class FirebaseOrderData {
   static FirebaseFirestore firebaseInstance = FirebaseFirestore.instance;
   static List orderIdList = [];
   static List<OrderDetails> ordersList = [];
+  static List notificationList = [];
 
   ///FUNCTION FOR GETTING ALL ORDERS IDS WHICH ARE IN USER COLLECTION
   static Future<void> getOrderIdListFromFirebase() async {
@@ -16,6 +17,7 @@ class FirebaseOrderData {
     DocumentSnapshot userDoc = await docInstance.get();
 
     orderIdList = userDoc['ordersList'];
+    notificationList = userDoc['notificationList'];
   }
 
   static Future<bool> addOrderToFirebase(Map<String, dynamic> orderMap) async {
@@ -28,7 +30,7 @@ class FirebaseOrderData {
     DocumentReference docId =
         await firebaseInstance.collection("Orders").add(orderMap);
 
-    ///GET LIST OF ORDERID
+    ///GET LIST OF ORDERID AND NOTIFICTAIONS
     await getOrderIdListFromFirebase();
 
     ///[docId] CONTAINES PATH OF ID FORM IT'S COLLECTIONS I.E /ORDERS/VHGHGJHGID
@@ -36,9 +38,22 @@ class FirebaseOrderData {
     ///IT GIVES E.G "VHGHGJHGID"
     orderIdList.add(docId.id);
 
+    ///ADD NOTIFICATION IN LOCAL LIST
+    notificationList.add({
+      "orderId": docId.id,
+      "message": "Your Order Placed Successfully",
+      "dateTime": DateFormat('d MMM yyyy,h:mm a').format(DateTime.now()),
+    });
+
     ///UPDATING USERS COLLECTION BY ADDING ORDERID IN ORDERLIST
     ///AND REMOVING ALL CARTID'S FROM CARTLIST
-    docInstance.update({'ordersList': orderIdList, 'cartList': []});
+    ///ALSO UPDATE FIREBASE NOTIFICATIONLIST FROM USER COLLECTION
+
+    docInstance.update({
+      'ordersList': orderIdList,
+      'cartList': [],
+      'notificationList': notificationList
+    });
 
     return false;
   }
@@ -50,6 +65,8 @@ class FirebaseOrderData {
     /// GET OORDERIDLIST
     await getOrderIdListFromFirebase();
     ordersList.clear();
+
+    ///
 
     ///GET ALL ORDERS WHOSE ID IS PRESENT IN ORDERLIST OF USERS COLLECTION IN USER DOCUMENT
     List<ProductDataModel> itemList = [];
