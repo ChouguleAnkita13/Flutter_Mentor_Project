@@ -107,7 +107,8 @@ class RegisterScreen extends StatelessWidget {
                                             "address": "",
                                             "fevList": [],
                                             'cartList': [],
-                                            'ordersList': []
+                                            'ordersList': [],
+                                            'notificationList': []
                                           }));
                                     },
                                     child:
