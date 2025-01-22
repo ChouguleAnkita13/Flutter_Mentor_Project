@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:wallet_app/model/more_model.dart';
 
+///CONTROLLER FOR SHOWING MORE ITEMS
 class MoreController extends GetxController {
+  ///LIST OF ITEMS SHOWING ON CLICKED ON MORE BUTTON OF BOTTOMNAVIGATION BAR
   final List<MoreModel> moreItemList = [
     const MoreModel(
         moreImgUrl: "assets/images/more/paybill.png", moreTitle: "Pay bills"),

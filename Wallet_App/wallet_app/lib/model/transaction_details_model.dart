@@ -1,3 +1,4 @@
+///MODEL CLASS FOR TRANSACTION DETAILS
 class TransactionDetailsModel {
   final String imgUrl;
   final String transactionTitle;
