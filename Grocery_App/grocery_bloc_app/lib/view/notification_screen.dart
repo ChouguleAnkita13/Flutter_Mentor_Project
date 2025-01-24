@@ -10,8 +10,12 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final NotificationBloc noteficationBloc = NotificationBloc();
+
     return BlocProvider(
-      create: (context) => NotificationBloc()..add(NotificationInitialEvent()),
+      create: (context) {
+        return noteficationBloc..add(NotificationInitialEvent());
+      },
       child: BlocBuilder<NotificationBloc, NotificationState>(
           builder: (context, state) {
         if (state is NotificationLoadedSuccessState) {
@@ -71,7 +75,7 @@ class NotificationScreen extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 5),
                                     Text(
-                                      notification.dateTime,
+                                      notification.date,
                                       style: const TextStyle(
                                         fontSize: 14,
                                         color: Colors.white70,
@@ -80,11 +84,17 @@ class NotificationScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              // Order ID
-                              const Icon(
-                                Icons.cancel_outlined,
-                                color: Colors.white,
-                                size: 20,
+                              // Remove button
+                              GestureDetector(
+                                onTap: () {
+                                  noteficationBloc.add(NotificationRemoveEvent(
+                                      notification: notification));
+                                },
+                                child: const Icon(
+                                  Icons.cancel_outlined,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
                               ),
                             ],
                           ),
