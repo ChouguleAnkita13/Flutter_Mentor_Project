@@ -11,4 +11,12 @@ class NotificationModel {
       required this.message,
       required this.date,
       required this.time});
+
+  // Map<String, dynamic> notificationMap() {
+  //   return {
+  //     "message": message,
+  //     "dateTime": dateTime,
+  //     "orderId": orderId,
+  //   };
+  // }
 }
