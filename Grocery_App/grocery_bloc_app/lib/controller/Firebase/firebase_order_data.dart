@@ -8,7 +8,7 @@ class FirebaseOrderData {
   static FirebaseFirestore firebaseInstance = FirebaseFirestore.instance;
   static List orderIdList = [];
   static List<OrderDetails> ordersList = [];
-  static List notificationList = [];
+  static List notificationListOfMap = [];
 
   ///FUNCTION FOR GETTING ALL ORDERS IDS WHICH ARE IN USER COLLECTION
   static Future<void> getOrderIdListFromFirebase() async {
@@ -17,7 +17,7 @@ class FirebaseOrderData {
     DocumentSnapshot userDoc = await docInstance.get();
 
     orderIdList = userDoc['ordersList'];
-    notificationList = userDoc['notificationList'];
+    notificationListOfMap = userDoc['notificationList'];
   }
 
   static Future<bool> addOrderToFirebase(Map<String, dynamic> orderMap) async {
@@ -39,10 +39,11 @@ class FirebaseOrderData {
     orderIdList.add(docId.id);
 
     ///ADD NOTIFICATION IN LOCAL LIST
-    notificationList.add({
+    notificationListOfMap.add({
       "orderId": docId.id,
       "message": "Your Order Placed Successfully",
-      "dateTime": DateFormat('d MMM yyyy,h:mm a').format(DateTime.now()),
+      "date": DateFormat('d MMM yyyy,h:mm a').format(DateTime.now()),
+      "time": Timestamp.now()
     });
 
     ///UPDATING USERS COLLECTION BY ADDING ORDERID IN ORDERLIST
@@ -52,7 +53,7 @@ class FirebaseOrderData {
     docInstance.update({
       'ordersList': orderIdList,
       'cartList': [],
-      'notificationList': notificationList
+      'notificationList': notificationListOfMap
     });
 
     return false;
