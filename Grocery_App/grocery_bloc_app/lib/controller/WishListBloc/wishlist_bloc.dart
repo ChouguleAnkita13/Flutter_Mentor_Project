@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:grocery_bloc_app/controller/Firebase/firebase_addtocart_data.dart';
-import 'package:grocery_bloc_app/controller/Firebase/firebase_wishlist_data.dart';
+import 'package:grocery_bloc_app/controller/FirebaseData/firebase_addtocart_data.dart';
+import 'package:grocery_bloc_app/controller/FirebaseData/firebase_wishlist_data.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_event.dart';
 import 'package:grocery_bloc_app/controller/WishListBloc/wishlist_state.dart';
 

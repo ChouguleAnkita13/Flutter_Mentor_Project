@@ -8,7 +8,7 @@ import 'package:grocery_bloc_app/model/product_data_model.dart';
 import 'package:grocery_bloc_app/view/DetailsScreen/nutrition_card.dart';
 import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
-import 'package:grocery_bloc_app/controller/Firebase/firebase_wishlist_data.dart';
+import 'package:grocery_bloc_app/controller/FirebaseData/firebase_wishlist_data.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final ProductDataModel productDataModel;

@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_bloc.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_event.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_state.dart';
-import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernceData/session_data.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/login_screen.dart';
 import 'package:grocery_bloc_app/view/navbar_screen.dart';
 

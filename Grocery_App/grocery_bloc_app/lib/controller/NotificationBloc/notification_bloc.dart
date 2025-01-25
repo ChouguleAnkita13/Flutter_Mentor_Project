@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:grocery_bloc_app/controller/Firebase/firebase_notifications.dart';
+import 'package:grocery_bloc_app/controller/FirebaseData/firebase_notifications.dart';
 import 'package:grocery_bloc_app/controller/NotificationBloc/notification_event.dart';
 import 'package:grocery_bloc_app/controller/NotificationBloc/notification_state.dart';
 

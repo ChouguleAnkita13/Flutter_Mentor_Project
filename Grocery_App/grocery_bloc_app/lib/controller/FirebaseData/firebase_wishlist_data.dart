@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernceData/session_data.dart';
 import 'package:grocery_bloc_app/model/product_data_model.dart';
 
 class FirebaseWishlistData {

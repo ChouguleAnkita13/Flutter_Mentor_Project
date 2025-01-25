@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:grocery_bloc_app/controller/Firebase/firebase_order_data.dart';
-import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
+import 'package:grocery_bloc_app/controller/FirebaseData/firebase_order_data.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernceData/session_data.dart';
 import 'package:grocery_bloc_app/model/notification_model.dart';
 
 class FirebaseNotifications {

@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_event.dart';
 import 'package:grocery_bloc_app/controller/CartBloc/cart_state.dart';
-import 'package:grocery_bloc_app/controller/Firebase/firebase_addtocart_data.dart';
-import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
+import 'package:grocery_bloc_app/controller/FirebaseData/firebase_addtocart_data.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernceData/session_data.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitialState()) {

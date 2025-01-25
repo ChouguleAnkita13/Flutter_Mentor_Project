@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:grocery_bloc_app/controller/Firebase/firebase_data.dart';
+import 'package:grocery_bloc_app/controller/FirebaseData/firebase_data.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_event.dart';
 import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_state.dart';
-import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernceData/session_data.dart';
 
 class LoginRegisterBloc extends Bloc<LoginRegisterEvent, LoginRegisterState> {
   LoginRegisterBloc() : super(LoginRegisterInitialState()) {

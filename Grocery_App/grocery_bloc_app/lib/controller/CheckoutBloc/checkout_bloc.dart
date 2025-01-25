@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_bloc_app/controller/CheckoutBloc/checkout_event.dart';
 import 'package:grocery_bloc_app/controller/CheckoutBloc/checkout_state.dart';
-import 'package:grocery_bloc_app/controller/Firebase/firebase_order_data.dart';
-import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
+import 'package:grocery_bloc_app/controller/FirebaseData/firebase_order_data.dart';
+import 'package:grocery_bloc_app/controller/SharedPrefernceData/session_data.dart';
 import 'package:intl/intl.dart';
 
 class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
