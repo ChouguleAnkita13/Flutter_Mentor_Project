@@ -28,7 +28,7 @@ class HomeAppbar {
                 width: 8,
               ),
               Text(
-                'Hi, ${SessionData.username}',
+                'Hi, ${SessionData.username?.split(' ').first}',
                 style: GoogleFonts.poppins(
                   textStyle: const TextStyle(
                     color: Colors.white,
