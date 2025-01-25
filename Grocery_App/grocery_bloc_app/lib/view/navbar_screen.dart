@@ -30,6 +30,7 @@ class NavbarView extends StatelessWidget {
         if (state is ChangeBottomNavTapState) {
           return Scaffold(
             body: state.currentScreen,
+            backgroundColor: Colors.white,
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: state.currentIndex,
               onTap: (index) {

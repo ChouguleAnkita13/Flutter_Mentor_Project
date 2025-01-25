@@ -104,7 +104,12 @@ class NotificationScreen extends StatelessWidget {
                   ),
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Scaffold(
+            backgroundColor: Colors.white,
+            body: Center(
+              child: CircularProgressIndicator(color: Color(0xFF0EA17D)),
+            ),
+          );
         }
       }),
     );

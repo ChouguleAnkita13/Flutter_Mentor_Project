@@ -16,7 +16,12 @@ class MyOrdersPage extends StatelessWidget {
       child: BlocBuilder<OrderBloc, OrderState>(
         builder: (context, state) {
           if (state is OrdersLoadingState) {
-            return const Center(child: CircularProgressIndicator());
+            return const Scaffold(
+              backgroundColor: Colors.white,
+              body: Center(
+                child: CircularProgressIndicator(color: Color(0xFF0EA17D)),
+              ),
+            );
           } else if (state is OrdersLoadedSuccessState) {
             return Scaffold(
               appBar: CustomAppbar.customAppbar("My Orders"),

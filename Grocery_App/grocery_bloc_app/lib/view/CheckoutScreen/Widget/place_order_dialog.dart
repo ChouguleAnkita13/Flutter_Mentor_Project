@@ -11,6 +11,7 @@ class PlaceOrderDialog {
       context: context,
       barrierDismissible: false, // Prevent dialog dismissal by tapping outside
       builder: (context) => AlertDialog(
+        backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),

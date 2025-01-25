@@ -53,8 +53,9 @@ class _CartScreenState extends State<CartScreen> {
         switch (state.runtimeType) {
           case const (CartLoadingState):
             log("------In Case LoadingState");
-            return const Scaffold(
-              body: Center(child: CircularProgressIndicator()),
+            return const Center(
+              child: CircularProgressIndicator(
+                  color: Color.fromRGBO(14, 161, 125, 1)),
             );
 
           case const (CartLoadedSuccessState):

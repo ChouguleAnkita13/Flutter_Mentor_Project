@@ -9,6 +9,7 @@ class AddressBottomsheet {
       BuildContext context, LoginRegisterBloc loginRegisterBloc) {
     showModalBottomSheet(
         context: context,
+        backgroundColor: Colors.white,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
         ),

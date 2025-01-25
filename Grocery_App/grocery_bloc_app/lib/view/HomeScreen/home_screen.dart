@@ -60,10 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         switch (state.runtimeType) {
           case const (HomeLoadingState):
-            return const Scaffold(
-                body: Center(
-              child: CircularProgressIndicator(),
-            ));
+            return const Center(
+              child: CircularProgressIndicator(
+                  color: Color.fromRGBO(14, 161, 125, 1)),
+            );
           case const (HomeLoadedSuccessState):
             final successState = state as HomeLoadedSuccessState;
             return Scaffold(
@@ -124,7 +124,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             );
-
           case const (HomeErrorState):
             return const Scaffold(body: Center(child: Text('Error')));
           default:

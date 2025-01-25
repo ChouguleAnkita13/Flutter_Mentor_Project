@@ -45,10 +45,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
       builder: (context, state) {
         switch (state.runtimeType) {
           case const (HomeLoadingState):
-            return const Scaffold(
-                body: Center(
-              child: CircularProgressIndicator(),
-            ));
+            return const Center(
+              child: CircularProgressIndicator(
+                  color: Color.fromRGBO(14, 161, 125, 1)),
+            );
           case const (HomeLoadedSuccessState):
             final successState = state as HomeLoadedSuccessState;
             return Scaffold(

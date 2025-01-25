@@ -32,10 +32,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
         builder: (context, state) {
           switch (state.runtimeType) {
             case const (WishlistLoadingState):
-              return const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
+              return const Center(
+                child: CircularProgressIndicator(
+                    color: Color.fromRGBO(14, 161, 125, 1)),
               );
             case const (WishlistSuccessState):
               final successState = state as WishlistSuccessState;
