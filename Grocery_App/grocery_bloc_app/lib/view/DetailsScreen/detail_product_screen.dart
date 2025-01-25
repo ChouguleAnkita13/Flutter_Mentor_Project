@@ -41,7 +41,6 @@ class ProductDetailsScreen extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Colors.white,
-            // appBar: CustomAppbar.customAppbar(product.category),
             body: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
