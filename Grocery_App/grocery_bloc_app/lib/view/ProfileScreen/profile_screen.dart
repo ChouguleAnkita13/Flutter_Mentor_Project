@@ -7,9 +7,9 @@ import 'package:grocery_bloc_app/controller/LoginRegisterBloc/login_register_sta
 import 'package:grocery_bloc_app/controller/SharedPrefernce/session_data.dart';
 import 'package:grocery_bloc_app/view/LoginRegister/login_screen.dart';
 import 'package:grocery_bloc_app/view/OrderScreen/orderscreen.dart';
-import 'package:grocery_bloc_app/view/ProfileScreen/address_bottomsheet.dart';
-import 'package:grocery_bloc_app/view/ProfileScreen/display_username_textfield.dart';
-import 'package:grocery_bloc_app/view/ProfileScreen/profile_options.dart';
+import 'package:grocery_bloc_app/view/ProfileScreen/Widgets/address_bottomsheet.dart';
+import 'package:grocery_bloc_app/view/ProfileScreen/Widgets/display_username_textfield.dart';
+import 'package:grocery_bloc_app/view/ProfileScreen/Widgets/profile_options.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
 import 'package:grocery_bloc_app/view/notification_screen.dart';
 
