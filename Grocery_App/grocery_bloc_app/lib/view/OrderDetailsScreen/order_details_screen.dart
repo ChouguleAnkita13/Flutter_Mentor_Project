@@ -31,7 +31,7 @@ class OrderDetailsPage extends StatelessWidget {
             /// ITEMS SECTION
             const SectionTitle(title: "Items"),
             SizedBox(
-              height: 300,
+              height: MediaQuery.of(context).size.height / 4.2,
               child: ListView.separated(
                 shrinkWrap: true,
                 itemCount: orderDetails.items.length,
