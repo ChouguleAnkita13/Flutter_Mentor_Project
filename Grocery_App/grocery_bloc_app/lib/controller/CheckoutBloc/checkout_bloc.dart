@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +21,9 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       TextEditingController();
   final String deliveryTime = _calculateEstimatedDeliveryTime();
   final List<String> paymentMethodList = [
-    'Credit/Debit Card',
     'Cash on Delivery',
+    'Credit/Debit Card',
+    'GPay',
     'PayPal',
   ];
 
@@ -29,7 +31,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       CheckoutInitialEvent event, Emitter<CheckoutState> emit) {
     deliveryAddressTextEditingController.text = SessionData.address!;
     emit(CheckoutPaymentMethodState(
-      paymentMethod: "Credit/Debit Card",
+      paymentMethod: 'Cash on Delivery',
     ));
   }
 
@@ -48,21 +50,28 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
 
   FutureOr<void> checkoutButtonEvent(
       CheckoutButtonEvent event, Emitter<CheckoutState> emit) async {
-    ///COVERTING THE LIST OF PRODUCTDATAMODEL INTO LIST OF MAP
-    List<Map<String, dynamic>> orderItemList = List.generate(
-        event.checkoutItems.length,
-        (index) => event.checkoutItems[index].productDataModelMap());
+    if (deliveryAddressTextEditingController.text.isEmpty) {
+      ///EMIT THIS STATE WHEN THE DELIVERY ADDRESS IS NOT PROVIDED
+      log("Please Enter Address");
+      emit(CheckoutButtonEnterAddressSnackbarState(
+          message: "Please Enter Delivery Address"));
+    } else {
+      ///COVERTING THE LIST OF PRODUCTDATAMODEL INTO LIST OF MAP
+      List<Map<String, dynamic>> orderItemList = List.generate(
+          event.checkoutItems.length,
+          (index) => event.checkoutItems[index].productDataModelMap());
 
-    Map<String, dynamic> orderMap = {
-      "orderItemList": orderItemList,
-      "orderPlacedTime": DateTime.now().toString(),
-      "paymentMethod": event.paymentMethod,
-      "deliveryAddress": event.deliveryAddress,
-      "deliveryTime": event.deliveryTime,
-      "totalAmount": event.totalAmount
-    };
-    await FirebaseOrderData.addOrderToFirebase(orderMap);
-    emit(CheckoutButtonPlaceOrderDialogState());
+      Map<String, dynamic> orderMap = {
+        "orderItemList": orderItemList,
+        "orderPlacedTime": DateTime.now().toString(),
+        "paymentMethod": event.paymentMethod,
+        "deliveryAddress": event.deliveryAddress,
+        "deliveryTime": event.deliveryTime,
+        "totalAmount": event.totalAmount
+      };
+      await FirebaseOrderData.addOrderToFirebase(orderMap);
+      emit(CheckoutButtonPlaceOrderDialogState());
+    }
   }
 
   FutureOr<void> checkoutNavigateToNavbarDoneButtonEvent(

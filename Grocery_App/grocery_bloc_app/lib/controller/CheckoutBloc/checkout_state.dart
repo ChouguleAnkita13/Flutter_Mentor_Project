@@ -13,4 +13,10 @@ class CheckoutPaymentMethodState extends CheckoutState {
 
 class CheckoutButtonPlaceOrderDialogState extends CheckoutActionState {}
 
+class CheckoutButtonEnterAddressSnackbarState extends CheckoutActionState {
+  final String message;
+
+  CheckoutButtonEnterAddressSnackbarState({required this.message});
+}
+
 class CheckoutDoneButtonState extends CheckoutActionState {}
