@@ -12,6 +12,7 @@ import 'package:grocery_bloc_app/view/CheckoutScreen/Widget/place_order_dialog.d
 import 'package:grocery_bloc_app/view/CheckoutScreen/Widget/total_amount.dart';
 import 'package:grocery_bloc_app/view/Widgets/button_container.dart';
 import 'package:grocery_bloc_app/view/Widgets/custom_appbar.dart';
+import 'package:grocery_bloc_app/view/Widgets/custom_snackbar.dart';
 import 'package:grocery_bloc_app/view/navbar_screen.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -45,8 +46,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         listener: (context, state) {
           if (state is CheckoutButtonPlaceOrderDialogState) {
             PlaceOrderDialog.showPlaceOrderDialog(context, checkoutBloc);
+          }
+          if (state is CheckoutButtonEnterAddressSnackbarState) {
+            CustomSnackbar.customSnackbar(context, state.message);
           } else if (state is CheckoutDoneButtonState) {
-            //
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(

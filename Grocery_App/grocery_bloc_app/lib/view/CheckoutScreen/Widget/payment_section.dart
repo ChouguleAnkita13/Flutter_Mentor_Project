@@ -41,6 +41,7 @@ class PaymentSection extends StatelessWidget {
           const SizedBox(height: 8),
           DropdownButton<String>(
             value: paymentMethod,
+            dropdownColor: Colors.white,
             onChanged: (String? newValue) {
               checkoutBloc.add(CheckoutPaymentMethodEvent(newValue!));
             },
