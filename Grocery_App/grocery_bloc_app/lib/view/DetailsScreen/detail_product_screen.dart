@@ -54,7 +54,9 @@ class ProductDetailsScreen extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     decoration: BoxDecoration(
                         color: const Color.fromRGBO(14, 161, 125, 1),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20)),
                         image: DecorationImage(
                             fit: BoxFit.cover,
                             image: NetworkImage(
