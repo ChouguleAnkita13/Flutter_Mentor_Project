@@ -62,61 +62,67 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             return Scaffold(
               appBar: CustomAppbar.customAppbar("Your Order"),
               backgroundColor: Colors.white,
-              body: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Delivery Address Section
-                  AddressSection(
-                      deliveryAddressTextEditingController:
-                          checkoutBloc.deliveryAddressTextEditingController),
-                  const SizedBox(height: 10),
+              body: SingleChildScrollView(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height / 1.14,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Delivery Address Section
+                      AddressSection(
+                          deliveryAddressTextEditingController: checkoutBloc
+                              .deliveryAddressTextEditingController),
+                      const SizedBox(height: 10),
 
-                  // Items List Section
-                  Expanded(
-                    child: ListView.separated(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      itemCount: widget.checkoutItems.length,
-                      itemBuilder: (context, index) {
-                        final item = widget.checkoutItems[index];
-                        return ItemTile(item: item);
-                      },
-                      separatorBuilder: (context, index) => Divider(
-                        color: Colors.grey[300],
+                      // Items List Section
+                      Expanded(
+                        child: ListView.separated(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          itemCount: widget.checkoutItems.length,
+                          itemBuilder: (context, index) {
+                            final item = widget.checkoutItems[index];
+                            return ItemTile(item: item);
+                          },
+                          separatorBuilder: (context, index) => Divider(
+                            color: Colors.grey[300],
+                          ),
+                        ),
                       ),
-                    ),
+                      const SizedBox(height: 15),
+                      // Payment Method Section
+
+                      PaymentSection(
+                          paymentMethod: state.paymentMethod,
+                          checkoutBloc: checkoutBloc),
+                      const SizedBox(height: 10),
+
+                      // Estimated Delivery Time Section
+                      DeliveryTime(time: checkoutBloc.deliveryTime),
+                      const SizedBox(height: 10),
+                      // Total Amount Section
+                      TotalAmount(totalAmount: widget.totalAmount),
+                      const SizedBox(height: 20),
+
+                      ///Checkout
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, bottom: 10),
+                        child: GestureDetector(
+                            onTap: () {
+                              checkoutBloc.add(CheckoutButtonEvent(
+                                  checkoutItems: widget.checkoutItems,
+                                  deliveryAddress: checkoutBloc
+                                      .deliveryAddressTextEditingController
+                                      .text,
+                                  totalAmount: widget.totalAmount,
+                                  paymentMethod: state.paymentMethod,
+                                  deliveryTime: checkoutBloc.deliveryTime));
+                            },
+                            child: const ButtonContainer(title: "Checkout")),
+                      )
+                    ],
                   ),
-                  const SizedBox(height: 15),
-                  // Payment Method Section
-
-                  PaymentSection(
-                      paymentMethod: state.paymentMethod,
-                      checkoutBloc: checkoutBloc),
-                  const SizedBox(height: 10),
-
-                  // Estimated Delivery Time Section
-                  DeliveryTime(time: checkoutBloc.deliveryTime),
-                  const SizedBox(height: 10),
-                  // Total Amount Section
-                  TotalAmount(totalAmount: widget.totalAmount),
-                  const SizedBox(height: 20),
-
-                  ///Checkout
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    child: GestureDetector(
-                        onTap: () {
-                          checkoutBloc.add(CheckoutButtonEvent(
-                              checkoutItems: widget.checkoutItems,
-                              deliveryAddress: checkoutBloc
-                                  .deliveryAddressTextEditingController.text,
-                              totalAmount: widget.totalAmount,
-                              paymentMethod: state.paymentMethod,
-                              deliveryTime: checkoutBloc.deliveryTime));
-                        },
-                        child: const ButtonContainer(title: "Checkout")),
-                  )
-                ],
+                ),
               ),
             );
           } else {
